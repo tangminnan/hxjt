@@ -21,19 +21,6 @@
 						<div class="columns pull-right">
 							<button class="btn btn-success" onclick="reLoad()">查询</button>
 						</div>
-						
-						<div class="columns pull-right col-md-2 nopadding ">
-							<input id="endTime" name="endTime" class="form-control" placeholder="结束时间：" type="text">
-						</div>
-						<div class="columns pull-right col-md-2 nopadding">
-							<input id="startTime" name="startTime" class="form-control" placeholder="开始时间：" type="text">
-						</div>
-						<div class="columns pull-right col-md-2 nopadding">
-							<select id="place" name="place" data-placeholder="图片位置" class="form-control chosen-select" tabindex="2" style="width: 100%">
-								<option value="">图片位置</option>
-								<option value="1">首页轮播</option>
-							</select>
-						</div>
 						<div class="columns pull-right col-md-2 nopadding">
 							<select id="isEnable" name="isEnable" data-placeholder="状态" class="form-control chosen-select" tabindex="2" style="width: 100%">
 								<option value="">状态</option>
@@ -42,7 +29,16 @@
 							</select>
 						</div>
 						<div class="columns pull-right col-md-2 nopadding ">
-							<input id="name" name="name" class="form-control" placeholder="广告名称：" type="text">
+							<select name="type" id="type" data-placeholder="选择名称" class="form-control chosen-select" tabindex="2" style="width: 100%">
+								<option value="">选择广告名称</option>
+								<option value="1">店面图</option>
+								<option value="2">公司活动图</option>
+								<option value="3">家政保洁图</option>
+								<option value="4">人力资源图</option>
+								<option value="5">劳务合作社图</option>
+								<option value="6">送技术下乡图</option>
+								<option value="7">一人就业  全家安心</option>
+							</select>
 						</div>
 					</div>
 					<table id="exampleTable" data-mobile-responsive="true">

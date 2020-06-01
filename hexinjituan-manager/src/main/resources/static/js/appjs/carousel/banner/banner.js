@@ -1,25 +1,6 @@
 
 var prefix = "/carousel/banner"
 $(function() {
-	
-	//	var config = {
-	//		'.chosen-select' : {},
-	//		'.chosen-select-deselect' : {
-	//			allow_single_deselect : true
-	//		},
-	//		'.chosen-select-no-single' : {
-	//			disable_search_threshold : 10
-	//		},
-	//		'.chosen-select-no-results' : {
-	//			no_results_text : '没有数据'
-	//		},
-	//		'.chosen-select-width' : {
-	//			width : "95%"
-	//		}
-	//	}
-	//	for (var selector in config) {
-	//		$(selector).chosen(config[selector]);
-	//	}
 	load();
 });
 function selectLoad() {
@@ -78,11 +59,8 @@ function load() {
 						//说明：传入后台的参数包括offset开始索引，limit步长，sort排序列，order：desc或者,以及所有列的键值对
 						limit : params.limit,
 						offset : params.offset,
-						startTime:$('#startTime').val(),
-						endTime:$('#endTime').val(),
-						place : $('#place').val(),
-						isEnable : $('#isEnable').val(),
-						name : $('#name').val(),
+						types : $('#type').val(),
+						isEnable : $('#isEnable').val()
 					};
 				},
 				// //请求服务器数据时，你可以通过重写参数的方式添加一些额外的参数，例如 toolbar 中的参数 如果
@@ -93,43 +71,25 @@ function load() {
 				// 返回false将会终止请求
 				columns : [
 					{
-						checkbox : true
-					},
-					{
 						field : 'id',
 						title : '编号'
 					},
 					{
 						field : 'url',
-						title : '图片',
+						title : '轮播图',
 						formatter : function(value, row, index) {
 							var e = '<div class="image"><img width="90" height="100" alt="image" class="img-responsive" src="' + value + '"></div>'
 							return e;
 						}
 					},
 					{
-						field : 'name',
+						field : 'typeName',
 						title : '广告名称'
 					},
-					{
-						field : 'place',
-						title : '位置',
-						width : '100px',
-						formatter : function(value, row, index) {
-							var str = '';
-							if(row.place == 1)
-								str = '首页轮播';
-							return str;
-						}
-					},
-					{
-						field : 'startTime',
-						title : '开始时间'
-					},
-					{
-						field : 'endTime',
-						title : '结束时间'
-					},
+                    {
+                        field : 'sort',
+                        title : '轮播顺序'
+                    },
 					{
 						field : 'isEnable',
 						title : '状态',
@@ -167,7 +127,7 @@ function load() {
 							var d = '<a class="btn btn-warning btn-sm '+s_remove_h+'" href="#" title="删除"  mce_href="#" onclick="remove(\''
 							+ row.id
 							+ '\')"><i class="fa fa-remove"></i></a> ';
-							return e +f+d;
+							return e +d;
 						}
 					} ]
 			});

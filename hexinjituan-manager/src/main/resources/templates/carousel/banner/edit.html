@@ -13,38 +13,24 @@
                         <div class="form-group">
 								<label class="col-sm-3 control-label">广告名称：</label>
 								<div class="col-sm-8">
-									<input id="name" name="name" class="form-control" type="text" th:value="${model.name}">
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-3 control-label">图片位置：</label>
-								<div class="col-sm-8">
-									<select name="place" data-placeholder="选择类别" class="form-control chosen-select" tabindex="2" style="width: 100%">
-										<option value="1" th:selected=${model.place==1}>首页轮播</option>
+									<select name="type" data-placeholder="选择名称" class="form-control chosen-select" tabindex="2" style="width: 100%">
+										<option value="1" th:selected="${model.isEnable == 1}">店面图</option>
+										<option value="2" th:selected="${model.isEnable == 2}">公司活动图</option>
+										<option value="3" th:selected="${model.isEnable == 3}">家政保洁图</option>
+										<option value="4" th:selected="${model.isEnable == 4}">人力资源图</option>
+										<option value="5" th:selected="${model.isEnable == 5}">劳务合作社图</option>
+										<option value="6" th:selected="${model.isEnable == 6}">送技术下乡图</option>
+										<option value="7" th:selected="${model.isEnable == 7}">一人就业  全家安心</option>
 									</select>
+									<input type="hidden" name="typeName" id="typeName" value="店面图">
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-sm-3 control-label">显示样式：</label>
+								<label class="col-sm-3 control-label">轮播顺序：</label>
 								<div class="col-sm-8">
-									<select name="type" data-placeholder="选择类别" th:checked="${model.type}"  class="form-control chosen-select" tabindex="2" style="width: 100%">
-										<option value="1">一张图片</option>
-									</select>
+									<input class="form-control" id="sort" name="sort" th:value="${model.sort}"/>
 								</div>
 							</div>
-							<div class="form-group">
-								<label class="col-sm-3 control-label">开始时间：</label>
-								<div class="col-sm-8">
-									<input id="startTime" name="startTime" th:value="${model.startTime1}" class="form-control" type="text">
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-3 control-label">结束时间：</label>
-								<div class="col-sm-8">
-									<input id="endTime" name="endTime" th:value="${model.endTime1}" class="form-control" type="text">
-								</div>
-							</div>
-
 							<div class="form-group">
 								<label class="col-sm-3 control-label">状态：</label>
 								<div class="col-sm-8">
@@ -104,6 +90,11 @@
 			}
 			return url;
 		}
+
+        $("[name='type']").change(function(){
+            var text=$("[name='type'] :checked").text();
+            $("#typeName").val(text);
+        });
 	</script>
 </body>
 </html>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hexinjituan.information.dao.CompanyInfoDao">
+
+	<select id="get" resultType="com.hexinjituan.information.domain.CompanyInfoDO">
+		select `id`,`company_name`,address,phone,url,`company_content`,`deleted`,`update_time`,`create_time`,`user_id` from company_info where id = #{value}
+	</select>
+
+	<select id="list" resultType="com.hexinjituan.information.domain.CompanyInfoDO">
+		select `id`,`company_name`,address,phone,url,`company_content`,`deleted`,`update_time`,`create_time`,`user_id` from company_info
+        where  deleted=0
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="companyName != null and companyName != ''"> and company_name = #{companyName} </if>
+		  		  <if test="companyContent != null and companyContent != ''"> and company_content = #{companyContent} </if>
+		  		  <if test="deleted != null and deleted != ''"> and deleted = #{deleted} </if>
+		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+		  		  <if test="userId != null and userId != ''"> and user_id = #{userId} </if>
+
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from company_info
+		 where deleted=0
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="companyName != null and companyName != ''"> and company_name = #{companyName} </if>
+		  		  <if test="companyContent != null and companyContent != ''"> and company_content = #{companyContent} </if>
+		  		  <if test="deleted != null and deleted != ''"> and deleted = #{deleted} </if>
+		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+		  		  <if test="userId != null and userId != ''"> and user_id = #{userId} </if>
+
+	</select>
+	 
+	<insert id="save" parameterType="com.hexinjituan.information.domain.CompanyInfoDO" useGeneratedKeys="true" keyProperty="id">
+		insert into company_info
+		(
+			`company_name`, 
+			`company_content`, 
+			`deleted`, 
+			`update_time`, 
+			`create_time`, 
+			`user_id`,
+			 address,
+			 phone,
+			 url
+		)
+		values
+		(
+			#{companyName}, 
+			#{companyContent}, 
+			#{deleted}, 
+			#{updateTime}, 
+			#{createTime}, 
+			#{userId},
+			#{address},
+			 #{phone},
+			 #{url }
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.hexinjituan.information.domain.CompanyInfoDO">
+		update company_info 
+		<set>
+			<if test="companyName != null">`company_name` = #{companyName}, </if>
+			<if test="companyContent != null">`company_content` = #{companyContent}, </if>
+			<if test="deleted != null">`deleted` = #{deleted}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
+			<if test="createTime != null">`create_time` = #{createTime}, </if>
+			<if test="address != null">`address` = #{address}, </if>
+			<if test="phone != null">`phone` = #{phone}, </if>
+			<if test="url != null">`url` = #{url}, </if>
+			<if test="userId != null">`user_id` = #{userId}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from company_info where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from company_info where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

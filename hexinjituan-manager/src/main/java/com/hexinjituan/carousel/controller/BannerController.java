@@ -103,29 +103,22 @@ public class BannerController extends BaseController {
 	@PostMapping("/save")
 	@RequiresPermissions("carousel:banner:add")
 	public R save(BannerDO sysFile) {
-		
-		
-		Map<String, Object> param = new HashMap<String, Object>();
-		param.put("isEnable", "0");
-		int total = bannerService.count(param);
-		if(total >= 5 && sysFile.getIsEnable() == 0){
-			return R.error("最多显示5张轮播图!");
-		}
-		
-		
-		String fileName = sysFile.getImgFile().getOriginalFilename();
-		fileName = FileUtil.renameToUUID(fileName);
 		try {
-			FileUtil.uploadFile(sysFile.getImgFile().getBytes(), bootdoConfig.getUploadPath(), fileName);
-			sysFile.setUrl("/files/" + fileName);
-			sysFile.setAddTime(new Date());
-			sysFile.setUpdateTime(new Date());
-			sysFile.setUserId(this.getUserId());
+			if(sysFile.getImgFile()!=null && !sysFile.getImgFile().isEmpty()) {
+				String fileName = sysFile.getImgFile().getOriginalFilename();
+				fileName = FileUtil.renameToUUID(fileName);
+				FileUtil.uploadFile(sysFile.getImgFile().getBytes(), bootdoConfig.getUploadPath(), fileName);
+				sysFile.setUrl("/files/" + fileName);
+			}
 		} catch (Exception e) {
 			return R.error();
 		}
-		
-		
+		sysFile.setAddTime(new Date());
+		sysFile.setUpdateTime(new Date());
+		sysFile.setUserId(this.getUserId());
+		sysFile.setDeleteFlag(0);
+		if(sysFile.getSort()==null)
+			sysFile.setSort(1000);
 		if (bannerService.save(sysFile) > 0) {
 			return R.ok();
 		}
@@ -138,20 +131,9 @@ public class BannerController extends BaseController {
 	@ResponseBody
 	@RequestMapping(value="/updateEnable")
 	public R updateEnable(Long id,Integer enable) {
-		System.out.println("id"+id);
-		System.out.println("enable"+enable);
-		Map<String, Object> param = new HashMap<String, Object>();
-		param.put("isEnable", "0");
-		int total = bannerService.count(param);
-		System.out.println("total:"+total);
-		if(enable == 0 && total >= 5){
-			return R.error("最多显示5张轮播图!");
-		}
-		
 		BannerDO sysFile = bannerService.get(id);
 		sysFile.setIsEnable(enable);
 		bannerService.update(sysFile);
-		
 		return R.ok();
 	}
 	/**
@@ -175,7 +157,6 @@ public class BannerController extends BaseController {
 		}
 		sysFile.setUserId(this.getUserId());
 		sysFile.setUpdateTime(new Date());
-		sysFile.setUserId(this.getUserId());
 		bannerService.update(sysFile);
 		
 		return R.ok();
@@ -188,19 +169,12 @@ public class BannerController extends BaseController {
 	@ResponseBody
 	// @RequiresPermissions("carousel:remove")
 	public R remove(Long id, HttpServletRequest request) {
-		if ("test".equals(getUsername())) {
-			return R.error(1, "演示系统不允许修改,完整体验请部署程序");
-		}
-		String fileName = bootdoConfig.getUploadPath() + bannerService.get(id).getUrl().replace("/files/", "");
-		if (bannerService.remove(id) > 0) {
-			boolean b = FileUtil.deleteFile(fileName);
-			if (!b) {
-				return R.error("数据库记录删除成功，文件删除失败");
-			}
+		BannerDO bannerDO = new BannerDO();
+		bannerDO.setDeleteFlag(1);
+		bannerDO.setId(id);
+		if(bannerService.update(bannerDO)>0)
 			return R.ok();
-		} else {
-			return R.error();
-		}
+		return R.error();
 	}
 
 	/**
