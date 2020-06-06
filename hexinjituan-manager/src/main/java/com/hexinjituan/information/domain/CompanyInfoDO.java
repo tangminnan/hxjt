@@ -27,6 +27,36 @@ public class CompanyInfoDO implements Serializable {
 	private String address;
 	//联系电话
 	private String phone;
+	//负责人微信
+	private String weixin;
+	//负责人姓名
+	private String principal;
+
+	public String getIfJianjie() {
+		return ifJianjie;
+	}
+
+	public void setIfJianjie(String ifJianjie) {
+		this.ifJianjie = ifJianjie;
+	}
+
+	private String ifJianjie;
+
+	public String getWeixin() {
+		return weixin;
+	}
+
+	public void setWeixin(String weixin) {
+		this.weixin = weixin;
+	}
+
+	public String getPrincipal() {
+		return principal;
+	}
+
+	public void setPrincipal(String principal) {
+		this.principal = principal;
+	}
 
 	//0  未删除     1  已删除
 	private Integer deleted;

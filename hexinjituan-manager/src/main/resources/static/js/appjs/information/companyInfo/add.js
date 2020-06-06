@@ -1,6 +1,6 @@
 $().ready(function() {
     $('.summernote').summernote({
-        height : '100px',
+        height : '400px',
         lang : 'zh-CN',
         callbacks: {
             onImageUpload: function(files, editor, $editable) {
@@ -15,15 +15,6 @@ $().ready(function() {
             }
         }
     });
-    $('.summernote').summernote({
-        height : '80px',
-        lang : 'zh-CN',
-        callbacks: {
-            onImageUpload: function(files, editor, $editable) {
-                sendFile(files);
-            }
-        }
-    });
     validateRule();
 });
 
@@ -33,6 +24,8 @@ $.validator.setDefaults({
 	}
 });
 function save() {
+    var content_sn = $("#content_sn").summernote('code');
+    $("#content_sn").parent().next().val(content_sn);
     var formData = new FormData(document.getElementById("signupForm"));
 	$.ajax({
 		cache : true,

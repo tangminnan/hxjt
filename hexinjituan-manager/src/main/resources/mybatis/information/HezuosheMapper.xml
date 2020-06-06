@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hexinjituan.information.dao.HezuosheDao">
+
+	<select id="get" resultType="com.hexinjituan.information.domain.HezuosheDO">
+		select `id`,`weixin`,`phone`,`principal`,`title`,`deleted`,`update_time`,`create_time`,`gongcheng_content`,`url`,`gongcheng_detail` from hezuoshe where id = #{value}
+	</select>
+
+	<select id="list" resultType="com.hexinjituan.information.domain.HezuosheDO">
+		select `id`,`weixin`,`phone`,`principal`,`title`,`deleted`,`update_time`,`create_time`,`gongcheng_content`,`url`,`gongcheng_detail` from hezuoshe
+		where deleted=0
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="weixin != null and weixin != ''"> and weixin = #{weixin} </if>
+		  		  <if test="phone != null and phone != ''"> and phone = #{phone} </if>
+		  		  <if test="principal != null and principal != ''"> and principal = #{principal} </if>
+		  		  <if test="title != null and title != ''"> and title = #{title} </if>
+		  		  <if test="deleted != null and deleted != ''"> and deleted = #{deleted} </if>
+		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+		  		  <if test="gongchengContent != null and gongchengContent != ''"> and gongcheng_content = #{gongchengContent} </if>
+		  		  <if test="url != null and url != ''"> and url = #{url} </if>
+		  		  <if test="gongchengDetail != null and gongchengDetail != ''"> and gongcheng_detail = #{gongchengDetail} </if>
+
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from hezuoshe
+		 where deleted=0
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="weixin != null and weixin != ''"> and weixin = #{weixin} </if>
+		  		  <if test="phone != null and phone != ''"> and phone = #{phone} </if>
+		  		  <if test="principal != null and principal != ''"> and principal = #{principal} </if>
+		  		  <if test="title != null and title != ''"> and title = #{title} </if>
+		  		  <if test="deleted != null and deleted != ''"> and deleted = #{deleted} </if>
+		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+		  		  <if test="gongchengContent != null and gongchengContent != ''"> and gongcheng_content = #{gongchengContent} </if>
+		  		  <if test="url != null and url != ''"> and url = #{url} </if>
+		  		  <if test="gongchengDetail != null and gongchengDetail != ''"> and gongcheng_detail = #{gongchengDetail} </if>
+
+	</select>
+	 
+	<insert id="save" parameterType="com.hexinjituan.information.domain.HezuosheDO" useGeneratedKeys="true" keyProperty="id">
+		insert into hezuoshe
+		(
+			`weixin`, 
+			`phone`, 
+			`principal`, 
+			`title`, 
+			`deleted`, 
+			`update_time`, 
+			`create_time`, 
+			`gongcheng_content`, 
+			`url`, 
+			`gongcheng_detail`
+		)
+		values
+		(
+			#{weixin}, 
+			#{phone}, 
+			#{principal}, 
+			#{title}, 
+			#{deleted}, 
+			#{updateTime}, 
+			#{createTime}, 
+			#{gongchengContent}, 
+			#{url}, 
+			#{gongchengDetail}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.hexinjituan.information.domain.HezuosheDO">
+		update hezuoshe 
+		<set>
+			<if test="weixin != null">`weixin` = #{weixin}, </if>
+			<if test="phone != null">`phone` = #{phone}, </if>
+			<if test="principal != null">`principal` = #{principal}, </if>
+			<if test="title != null">`title` = #{title}, </if>
+			<if test="deleted != null">`deleted` = #{deleted}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
+			<if test="createTime != null">`create_time` = #{createTime}, </if>
+			<if test="gongchengContent != null">`gongcheng_content` = #{gongchengContent}, </if>
+			<if test="url != null">`url` = #{url}, </if>
+			<if test="gongchengDetail != null">`gongcheng_detail` = #{gongchengDetail}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from hezuoshe where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from hezuoshe where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

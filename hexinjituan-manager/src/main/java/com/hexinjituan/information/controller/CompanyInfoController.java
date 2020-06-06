@@ -1,11 +1,13 @@
 package com.hexinjituan.information.controller;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import com.hexinjituan.common.config.BootdoConfig;
 import com.hexinjituan.common.utils.*;
+import com.hexinjituan.information.domain.SkillTrainingDO;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -76,6 +78,20 @@ public class CompanyInfoController {
 	@PostMapping("/save")
 	@RequiresPermissions("information:companyInfo:add")
 	public R save( CompanyInfoDO companyInfo){
+
+		if("COMPANY_JIANJIE".equals(companyInfo.getIfJianjie())){
+			Map<String,Object> map = new HashMap<String,Object>();
+			map.put("ifJianjie","COMPANY_JIANJIE");
+			List<CompanyInfoDO> list = companyInfoService.list(map);
+			if(list.size()>0){
+				companyInfo.setId(list.get(0).getId());
+				if(companyInfoService.update(companyInfo)>0){
+					return R.ok();
+				}
+				else
+					return R.error();
+			}
+		}
 		companyInfo.setCreateTime(new Date());
 		companyInfo.setUpdateTime(new Date());
 		companyInfo.setDeleted(0);
@@ -163,6 +179,21 @@ public class CompanyInfoController {
 		if(companyInfoService.update(companyInfo) > 0)
 			return R.ok();
 		return R.error();
+	}
+
+	/**
+	 * 集团简介
+	 */
+	@GetMapping("/jianjie")
+	public String jianjie(Model model){
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("ifJianjie","COMPANY_JIANJIE");
+		CompanyInfoDO companyInfoDO = new CompanyInfoDO();
+		List<CompanyInfoDO> list = companyInfoService.list(map);
+		if(list.size()>0)
+			companyInfoDO = list.get(0);
+		model.addAttribute("companyContent",companyInfoDO.getCompanyContent());
+		return "information/companyInfo/jianjie";
 	}
 	
 }

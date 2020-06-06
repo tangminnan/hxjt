@@ -1,11 +1,21 @@
 $().ready(function() {
-    $('.summernote').summernote({
-        height : '400px',
+    $('#content_sn').summernote({
+        height : '100px',
         lang : 'zh-CN',
         callbacks: {
-            onImageUpload: function(files, editor, $editable) {
-                sendFile(files);
-            },
+            onPaste: function (ne) {
+                var bufferText = ((ne.originalEvent || ne).clipboardData || window.clipboardData).getData('Text/plain');
+                ne.preventDefault ? ne.preventDefault() : (ne.returnValue = false);
+                setTimeout(function () {
+                    document.execCommand("insertText", false, bufferText);
+                }, 10);
+            }
+        }
+    });
+    $('#content_sncontent_sn').summernote({
+        height : '500px',
+        lang : 'zh-CN',
+        callbacks: {
             onPaste: function (ne) {
                 var bufferText = ((ne.originalEvent || ne).clipboardData || window.clipboardData).getData('Text/plain');
                 ne.preventDefault ? ne.preventDefault() : (ne.returnValue = false);
@@ -26,6 +36,8 @@ $.validator.setDefaults({
 function save() {
     var content_sn = $("#content_sn").summernote('code');
     $("#gongchengContent").val(content_sn);
+    var content_sncontent_sn = $("#content_sncontent_sn").summernote('code');
+    $("#gongchengDetail").val(content_sncontent_sn);
     var formData = new FormData(document.getElementById("signupForm"));
 	$.ajax({
 		cache : true,

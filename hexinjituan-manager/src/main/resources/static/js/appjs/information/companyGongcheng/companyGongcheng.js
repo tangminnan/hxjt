@@ -32,7 +32,8 @@ function load() {
 							return {
 								//说明：传入后台的参数包括offset开始索引，limit步长，sort排序列，order：desc或者,以及所有列的键值对
 								limit: params.limit,
-								offset:params.offset
+								offset:params.offset,
+                                companyId:$("#companyId").val()
 					           // name:$('#searchName').val(),
 					           // username:$('#searchName').val()
 							};
@@ -44,36 +45,39 @@ function load() {
 						// sortOrder.
 						// 返回false将会终止请求
 						columns : [
-                            {
+                           /* {
                                 field : 'gongchengClass',
                                 title : '工程名称'
-                            },
-                            {
+                            },*/
+                           /* {
                                 field : 'principal',
                                 title : '负责人'
                             },
 																{
 									field : 'weixin',
 									title : 'VX'
-								},
-																{
+								},*/
+																/*{
 									field : 'phone', 
 									title : '电话'
-								}, {field : 'gongchengContent',
-									title : '内容描述'
-								},
+								}, */
+
                             {
                                 field : 'gongchengName',
                                 title : '标题'
                             },
-																{
+							  /* {field : 'gongchengContent',
+									title : '内容描述'
+								},*/
+
+																/*{
 									field : 'url', 
 									title : '图片',
 									formatter : function(value, row, index) {
 										var e = '<div class="image"><img width="90" height="100" alt="image" class="img-responsive" src="' + value + '"></div>'
 										return e;
 									}
-								},
+								},*/
                             {
                                 field : 'updateTime',
                                 title : '修改时间'
@@ -104,7 +108,7 @@ function add() {
 		maxmin : true,
 		shadeClose : false, // 点击遮罩关闭层
 		area : [ '800px', '520px' ],
-		content : prefix + '/add' // iframe的url
+		content : prefix + '/add/'+$("#companyId").val() // iframe的url
 	});
     layer.full(addPage);
 }

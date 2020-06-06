@@ -4,11 +4,11 @@
 <mapper namespace="com.hexinjituan.information.dao.CompanyInfoDao">
 
 	<select id="get" resultType="com.hexinjituan.information.domain.CompanyInfoDO">
-		select `id`,`company_name`,address,phone,url,`company_content`,`deleted`,`update_time`,`create_time`,`user_id` from company_info where id = #{value}
+		select `id`,if_jianjie,weixin,principal,`company_name`,address,phone,url,`company_content`,`deleted`,`update_time`,`create_time`,`user_id` from company_info where id = #{value}
 	</select>
 
 	<select id="list" resultType="com.hexinjituan.information.domain.CompanyInfoDO">
-		select `id`,`company_name`,address,phone,url,`company_content`,`deleted`,`update_time`,`create_time`,`user_id` from company_info
+		select `id`,weixin,principal,`company_name`,address,phone,url,`company_content`,`deleted`,`update_time`,`create_time`,`user_id` from company_info
         where  deleted=0
 		  		  <if test="id != null and id != ''"> and id = #{id} </if>
 		  		  <if test="companyName != null and companyName != ''"> and company_name = #{companyName} </if>
@@ -17,7 +17,7 @@
 		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
 		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
 		  		  <if test="userId != null and userId != ''"> and user_id = #{userId} </if>
-
+		          <if test="ifJianjie != null and ifJianjie != ''"> and if_jianjie = #{ifJianjie} </if>
         <choose>
             <when test="sort != null and sort.trim() != ''">
                 order by ${sort} ${order}
@@ -47,6 +47,8 @@
 	<insert id="save" parameterType="com.hexinjituan.information.domain.CompanyInfoDO" useGeneratedKeys="true" keyProperty="id">
 		insert into company_info
 		(
+			`weixin`,
+			`principal`,
 			`company_name`, 
 			`company_content`, 
 			`deleted`, 
@@ -55,10 +57,13 @@
 			`user_id`,
 			 address,
 			 phone,
-			 url
+			 url,
+			 if_jianjie
 		)
 		values
 		(
+			#{weixin},
+			#{principal},
 			#{companyName}, 
 			#{companyContent}, 
 			#{deleted}, 
@@ -67,7 +72,8 @@
 			#{userId},
 			#{address},
 			 #{phone},
-			 #{url }
+			 #{url },
+			 #{ifJianjie}
 		)
 	</insert>
 	 
@@ -82,7 +88,8 @@
 			<if test="address != null">`address` = #{address}, </if>
 			<if test="phone != null">`phone` = #{phone}, </if>
 			<if test="url != null">`url` = #{url}, </if>
-			<if test="userId != null">`user_id` = #{userId}</if>
+			<if test="weixin != null">`weixin` = #{weixin},</if>
+			<if test="principal != null">`principal` = #{principal}</if>
 		</set>
 		where id = #{id}
 	</update>

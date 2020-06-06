@@ -57,6 +57,14 @@ function load() {
 									title : '公司电话'
 								},
 								{
+									field : 'principal',
+									title : '负责人'
+								},
+								{
+									field : 'weixin',
+									title : 'VX'
+								},
+								{
 									field : 'url',
 									title : '展示图片',
                                     formatter : function(value, row, index) {
@@ -77,10 +85,8 @@ function load() {
 									field : 'id',
 									align : 'center',
 									formatter : function(value, row, index) {
-
-                                        var g='<button type="button" class="btn  btn-xs btn-success" onclick="companyShuoMing('+row.id+')"> 详情 </button>    ';
-                                        var f='<button type="button" class="btn  btn-xs btn-primary" onclick="companyYeWu('+row.id+')">具体工程</button>    ';
-										return  g+f;
+                                        var f='<button type="button" class="btn  btn-xs btn-primary" onclick="companyYeWu('+row.id+')">可添加案例</button>    ';
+										return  f;
 									}
 								} ,
                             {
@@ -99,7 +105,7 @@ function reLoad() {
 	$('#exampleTable').bootstrapTable('refresh');
 }
 function add() {
-    layer.open({
+    var addPage=layer.open({
 		type : 2,
 		title : '增加',
 		maxmin : true,
@@ -107,9 +113,10 @@ function add() {
 		area : [ '800px', '520px' ],
 		content : prefix + '/add' // iframe的url
 	});
+    layer.full(addPage);
 }
 function edit(id) {
-	layer.open({
+    var addPage=layer.open({
 		type : 2,
 		title : '编辑',
 		maxmin : true,
@@ -117,6 +124,7 @@ function edit(id) {
 		area : [ '800px', '520px' ],
 		content : prefix + '/edit/' + id // iframe的url
 	});
+    layer.full(addPage);
 }
 function remove(id) {
 	layer.confirm('确定要删除选中的记录？', {
@@ -156,5 +164,5 @@ function companyShuoMing(id){
 }
 
 function companyYeWu(id){
-	window.location.href="/information/companyGongcheng";
+	window.location.href="/information/companyGongcheng/"+id;
 }

@@ -4,7 +4,7 @@
 <mapper namespace="com.hexinjituan.information.dao.CompanyGongchengDao">
 
 	<select id="get" resultType="com.hexinjituan.information.domain.CompanyGongchengDO">
-		select `id`,`weixin`,`phone`,`principal`,`company_id`,`gongcheng_class`,`deleted`,`update_time`,`create_time`,`gongcheng_name`,`gongcheng_content`,`url` from company_gongcheng where id = #{value}
+		select `id`,gongcheng_detail,iurl,`weixin`,`phone`,`principal`,`company_id`,`gongcheng_class`,`deleted`,`update_time`,`create_time`,`gongcheng_name`,`gongcheng_content`,`url` from company_gongcheng where id = #{value}
 	</select>
 
 	<select id="list" resultType="com.hexinjituan.information.domain.CompanyGongchengDO">
@@ -67,7 +67,9 @@
 			`create_time`, 
 			`gongcheng_name`, 
 			`gongcheng_content`, 
-			`url`
+			`url`,
+			gongcheng_detail,
+			iurl
 		)
 		values
 		(
@@ -81,7 +83,9 @@
 			#{createTime}, 
 			#{gongchengName}, 
 			#{gongchengContent}, 
-			#{url}
+			#{url},
+			#{gongchengDetail},
+			#{iurl}
 		)
 	</insert>
 	 
@@ -98,7 +102,10 @@
 			<if test="createTime != null">`create_time` = #{createTime}, </if>
 			<if test="gongchengName != null">`gongcheng_name` = #{gongchengName}, </if>
 			<if test="gongchengContent != null">`gongcheng_content` = #{gongchengContent}, </if>
-			<if test="url != null">`url` = #{url}</if>
+			<if test="url != null">`url` = #{url},</if>
+			<if test="gongchengDetail != null">`gongcheng_detail` = #{gongchengDetail},</if>
+			<if test="iurl != null">`iurl` = #{iurl}</if>
+
 		</set>
 		where id = #{id}
 	</update>

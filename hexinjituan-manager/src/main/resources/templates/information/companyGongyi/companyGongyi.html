@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+
+<div>
+	<ul class="nav nav-tabs" id="myTab">
+		<li class="active"><a class="btn btn-primary btn-xs" href="#gongyizaixingdong" mce_href="#" style="text-decoration: none;">公益在行动</a></li>
+		<li><a class="btn btn-primary btn-xs" href="#juankuananli" mce_href="#" style="text-decoration: none;">慈善捐款案例</a></li>
+	</ul>
+	<div class="tab-content">
+		<div class="tab-pane active " id="gongyizaixingdong">
+			<div class="ibox-body">
+				<div class="fixed-table-toolbar">
+					<div class="columns pull-left">
+						<button type="button" class="btn btn-default" onclick="addz()"> 添加 行动 </button>
+
+					</div>
+				</div>
+				<table id="zaixingdong" data-mobile-responsive="true"></table>
+			</div>
+
+
+		</div>
+
+		<div class="tab-pane" id="juankuananli">
+			<div class="ibox-body">
+				<div class="fixed-table-toolbar">
+					<div class="columns pull-left">
+						<button type="button" class="btn btn-default" onclick="add()"> 添加案例 </button>
+
+					</div>
+				</div>
+				<table id="exampleTable" data-mobile-responsive="true">
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+	<!--shiro控制bootstraptable行内按钮看见性 来自bootdo的创新方案 -->
+		<div>
+			<script type="text/javascript">
+				var s_edit_h = 'hidden';
+				var s_remove_h = 'hidden';
+				var s_resetPwd_h = 'hidden';
+			</script>
+		</div>
+		<div shiro:hasPermission="information:companyGongyi:edit">
+			<script type="text/javascript">
+				s_edit_h = '';
+			</script>
+		</div>
+		<div shiro:hasPermission="information:companyGongyi:remove">
+			<script type="text/javascript">
+				var s_remove_h = '';
+			</script>
+		</div>
+		<div shiro:hasPermission="information:companyGongyi:resetPwd">
+			<script type="text/javascript">
+				var s_resetPwd_h = '';
+			</script>
+		</div>
+	</div>
+	<div th:include="include :: footer"></div>
+	<script type="text/javascript" src="/js/appjs/information/companyGongyi/companyGongyi.js"></script>
+	<script type="text/javascript" src="/js/appjs/information/companyGongyi/gongyizaixingdong.js"></script>
+	<script>
+
+        $('#myTab a').click(function (e) {
+            e.preventDefault();
+            $(this).tab('show');
+        });
+	</script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hexinjituan.information.dao.StudentsElegantDao">
+
+	<select id="get" resultType="com.hexinjituan.information.domain.StudentsElegantDO">
+		select `id`,`type_name`,`is_enable`,`add_time`,`update_time`,`user_id`,`url`,`sort`,`delete_flag` from students_elegant where id = #{value}
+	</select>
+
+	<select id="list" resultType="com.hexinjituan.information.domain.StudentsElegantDO">
+		select `id`,`type_name`,`is_enable`,`add_time`,`update_time`,`user_id`,`url`,`sort`,`delete_flag` from students_elegant
+        where delete_flag=0
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		          <if test="typeName != null and typeName != ''"> and type_name like concat('%',#{typeName},'%') </if>
+		  		  <if test="isEnable != null and isEnable != ''"> and is_enable = #{isEnable} </if>
+		  		  <if test="addTime != null and addTime != ''"> and add_time = #{addTime} </if>
+		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
+		  		  <if test="userId != null and userId != ''"> and user_id = #{userId} </if>
+		  		  <if test="url != null and url != ''"> and url = #{url} </if>
+		  		  <if test="sort != null and sort != ''"> and sort = #{sort} </if>
+		  		  <if test="deleteFlag != null and deleteFlag != ''"> and delete_flag = #{deleteFlag} </if>
+
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from students_elegant
+		 where delete_flag=0
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="typeName != null and typeName != ''"> and type_name like concat('%', #{typeName},'%') </if>
+		  		  <if test="isEnable != null and isEnable != ''"> and is_enable = #{isEnable} </if>
+		  		  <if test="addTime != null and addTime != ''"> and add_time = #{addTime} </if>
+		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
+		  		  <if test="userId != null and userId != ''"> and user_id = #{userId} </if>
+		  		  <if test="url != null and url != ''"> and url = #{url} </if>
+		  		  <if test="sort != null and sort != ''"> and sort = #{sort} </if>
+		  		  <if test="deleteFlag != null and deleteFlag != ''"> and delete_flag = #{deleteFlag} </if>
+
+	</select>
+	 
+	<insert id="save" parameterType="com.hexinjituan.information.domain.StudentsElegantDO" useGeneratedKeys="true" keyProperty="id">
+		insert into students_elegant
+		(
+			`type_name`, 
+			`is_enable`, 
+			`add_time`, 
+			`update_time`, 
+			`user_id`, 
+			`url`, 
+			`sort`, 
+			`delete_flag`
+		)
+		values
+		(
+			#{typeName}, 
+			#{isEnable}, 
+			#{addTime}, 
+			#{updateTime}, 
+			#{userId}, 
+			#{url}, 
+			#{sort}, 
+			#{deleteFlag}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.hexinjituan.information.domain.StudentsElegantDO">
+		update students_elegant 
+		<set>
+			<if test="typeName != null">`type_name` = #{typeName}, </if>
+			<if test="isEnable != null">`is_enable` = #{isEnable}, </if>
+			<if test="addTime != null">`add_time` = #{addTime}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
+			<if test="userId != null">`user_id` = #{userId}, </if>
+			<if test="url != null">`url` = #{url}, </if>
+			<if test="sort != null">`sort` = #{sort}, </if>
+			<if test="deleteFlag != null">`delete_flag` = #{deleteFlag}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from students_elegant where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from students_elegant where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

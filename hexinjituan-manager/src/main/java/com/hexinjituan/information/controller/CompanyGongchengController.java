@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hexinjituan.information.domain.CompanyGongchengDO;
 import com.hexinjituan.information.service.CompanyGongchengService;
+import org.springframework.web.multipart.MultipartFile;
 
 
 /**
@@ -41,8 +42,9 @@ public class CompanyGongchengController {
 	@Autowired
 	private BootdoConfig bootdoConfig;
 	
-	@GetMapping()
-	String CompanyGongcheng(){
+	@GetMapping("/{id}")
+	String CompanyGongcheng(@PathVariable("id") Long id,Model model){
+		model.addAttribute("id",id);
 	    return "information/companyGongcheng/companyGongcheng";
 	}
 	
@@ -57,8 +59,9 @@ public class CompanyGongchengController {
 		return pageUtils;
 	}
 	
-	@GetMapping("/add")
-	String add(){
+	@GetMapping("/add/{companyId}")
+	String add(@PathVariable("companyId") Long companyId,Model model){
+		model.addAttribute("companyId",companyId);
 	    return "information/companyGongcheng/add";
 	}
 
@@ -76,12 +79,18 @@ public class CompanyGongchengController {
 	@PostMapping("/save")
 	public R save( CompanyGongchengDO companyGongcheng){
 		try {
-			if(companyGongcheng.getImgFile()!=null && !companyGongcheng.getImgFile().isEmpty()) {
-				String fileName = companyGongcheng.getImgFile().getOriginalFilename();
-				fileName = FileUtil.renameToUUID(fileName);
-				FileUtil.uploadFile(companyGongcheng.getImgFile().getBytes(), bootdoConfig.getUploadPath(), fileName);
-				companyGongcheng.setUrl("/files/" + fileName);
+			String iurl = "";
+			List<MultipartFile> imgFileList  = companyGongcheng.getImgFileList();
+			for(MultipartFile m :imgFileList){
+				if(!m.isEmpty()) {
+					String fileName = m.getOriginalFilename();
+					fileName = FileUtil.renameToUUID(fileName);
+					FileUtil.uploadFile(m.getBytes(), bootdoConfig.getUploadPath(), fileName);
+					companyGongcheng.setUrl("/files/" + fileName);
+					iurl+="/files/" + fileName+"::";
+				}
 			}
+			companyGongcheng.setIurl(iurl);
 		} catch (Exception e) {
 			return R.error();
 		}
@@ -99,16 +108,21 @@ public class CompanyGongchengController {
 	@ResponseBody
 	@RequestMapping("/update")
 	public R update(CompanyGongchengDO companyGongcheng){
-		if(companyGongcheng.getImgFile() != null && companyGongcheng.getImgFile().getSize() > 0){
-			String fileName = companyGongcheng.getImgFile().getOriginalFilename();
-			fileName = FileUtil.renameToUUID(fileName);
-			try {
-				FileUtil.uploadFile(companyGongcheng.getImgFile().getBytes(), bootdoConfig.getUploadPath(), fileName);
-				companyGongcheng.setUrl("/files/" + fileName);
-			} catch (Exception e) {
-				return R.error();
+		try {
+			String iurl = "";
+			List<MultipartFile> imgFileList  = companyGongcheng.getImgFileList();
+			for(MultipartFile m :imgFileList){
+				if(!m.isEmpty()) {
+					String fileName = m.getOriginalFilename();
+					fileName = FileUtil.renameToUUID(fileName);
+					FileUtil.uploadFile(m.getBytes(), bootdoConfig.getUploadPath(), fileName);
+					companyGongcheng.setUrl("/files/" + fileName);
+					iurl+="/files/" + fileName+"::";
+				}
 			}
-
+			companyGongcheng.setIurl(iurl);
+		} catch (Exception e) {
+			return R.error();
 		}
 		companyGongchengService.update(companyGongcheng);
 		return R.ok();
