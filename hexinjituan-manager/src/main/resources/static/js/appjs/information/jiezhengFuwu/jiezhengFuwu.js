@@ -1,5 +1,5 @@
 
-var prefix = "/information/studentsElegant"
+var prefix = "/information/jiezhengFuwu"
 $(function() {
 	load();
 });
@@ -32,8 +32,7 @@ function load() {
 							return {
 								//说明：传入后台的参数包括offset开始索引，limit步长，sort排序列，order：desc或者,以及所有列的键值对
 								limit: params.limit,
-								offset:params.offset,
-                                typeName:$("#typeName").val()
+								offset:params.offset
 					           // name:$('#searchName').val(),
 					           // username:$('#searchName').val()
 							};
@@ -45,79 +44,64 @@ function load() {
 						// sortOrder.
 						// 返回false将会终止请求
 						columns : [
-																{
-                                field : 'typeName',
-                                title : '类型',
-								formatter : function(value, row, index) {
-                                	if(value=="SHENGHUO_ZHAO")
-                                		return "生活照";
-                                    if(value=="GONGZUO_ZHAO")
-                                        return "工作照";
-                                    if(value=="HEZUOSHE")
-                                        return "合作社照片";
-                                    if(value=="XUEYUAN_RONGYU")
-                                        return "学员赠与";
-                                    if(value=="GUZHU_RONGYU")
-                                        return "雇主赠与";
-                                    if(value=="QIYE_RONGYU")
-                                        return "企业荣获";
-								}
-                            },
-                            {
-                                field : 'url',
-                                title : '照片',
-                                formatter : function(value, row, index) {
-                                    var e = '<div class="image"><img width="90" height="100" alt="image" class="img-responsive" src="' + value + '"></div>'
-                                    return e;
-                                }
-
-                            },
-																{
-									field : 'isEnable', 
-									title : '启用/禁用' ,
-									formatter : function(value, row, index) {
-										var str = '';
-
-										str +=' <div class="switch onoffswitch col-sm-1"> ';
-										str +=' <div class="onoffswitch"> ';
-										str +=' <input name="allowComment" ';
-										//启用状态 0：是；1：否
-										if(row.isEnable == 0)
-											str += ' checked="" ';
-
-										str +=' type="checkbox" onchange="updateEnable(' +row.id+ ',this)" value="' +row.id+ '" class="onoffswitch-checkbox" id="example1' +row.id+ '">  ';
-										str +=' <label class="onoffswitch-label" for="example1' +row.id+ '">  ';
-										str +=' <span class="onoffswitch-inner"></span> ';
-										str +=' <span class="onoffswitch-switch"></span> ';
-										str +=' </label> ';
-										str +=' </div>';
-										str +=' </div>';
-										return str;
-									}
+								{
+									checkbox : true
 								},
 																{
-									field : 'addTime', 
-									title : '添加时间' 
+									field : 'id', 
+									title : '主键' 
+								},
+																{
+									field : 'deleted', 
+									title : '0  未删除     1  已删除' 
 								},
 																{
 									field : 'updateTime', 
-									title : '修改时间' 
+									title : '' 
 								},
-
-
-																/*{
-									field : 'sort',
-									title : '顺序'
-								},*/
+																{
+									field : 'createTime', 
+									title : '发布时间' 
+								},
+																{
+									field : 'fuwuName', 
+									title : '服务名称' 
+								},
+																{
+									field : 'gongchengContent', 
+									title : '内容描述' 
+								},
+																{
+									field : 'url', 
+									title : '图片展示地址' 
+								},
+																{
+									field : 'gongchengDetail', 
+									title : '内容详情' 
+								},
+																{
+									field : 'iurl', 
+									title : '图片列表' 
+								},
+																{
+									field : 'type', 
+									title : 'SHOUYE=首页' 
+								},
 																{
 									title : '操作',
 									field : 'id',
 									align : 'center',
 									formatter : function(value, row, index) {
-										var g='<button type="button" class="btn  btn-xs btn-default" onclick="edit('+row.id+')">编辑</button>    ';
-                                        var a='<button type="button" class="btn  btn-xs btn-danger" onclick="remove('+row.id+')">删除</button> ';
-                                        return  g+ a;
-
+										var e = '<a class="btn btn-primary btn-sm '+s_edit_h+'" href="#" mce_href="#" title="编辑" onclick="edit(\''
+												+ row.id
+												+ '\')"><i class="fa fa-edit"></i></a> ';
+										var d = '<a class="btn btn-warning btn-sm '+s_remove_h+'" href="#" title="删除"  mce_href="#" onclick="remove(\''
+												+ row.id
+												+ '\')"><i class="fa fa-remove"></i></a> ';
+										var f = '<a class="btn btn-success btn-sm" href="#" title="备用"  mce_href="#" onclick="resetPwd(\''
+												+ row.id
+												+ '\')"><i class="fa fa-key"></i></a> ';
+										return e + d ;
 									}
 								} ]
 					});
@@ -145,34 +129,6 @@ function edit(id) {
 		content : prefix + '/edit/' + id // iframe的url
 	});
 }
-
-function updateEnable(id,enable){
-    var isEnable = 1;
-    if($(enable).prop("checked")){
-        isEnable = 0;
-    }
-
-    $.ajax({
-        url : prefix + "/updateEnable",
-        type : "post",
-        data : {
-            'id' : id,
-            'enable' : isEnable
-        },
-        dataType: 'JSON',
-        async : false,
-        success : function(r) {
-            if (r.code == 0) {
-                layer.msg(r.msg);
-                reLoad();
-            } else {
-                layer.msg(r.msg);
-                reLoad();
-            }
-        }
-    });
-}
-
 function remove(id) {
 	layer.confirm('确定要删除选中的记录？', {
 		btn : [ '确定', '取消' ]

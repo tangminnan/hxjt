@@ -1,5 +1,6 @@
 package com.hexinjituan.information.service.impl;
 
+import com.hexinjituan.information.domain.HezuosheShouyeDO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -51,5 +52,20 @@ public class HezuosheServiceImpl implements HezuosheService {
 	public int batchRemove(Integer[] ids){
 		return hezuosheDao.batchRemove(ids);
 	}
-	
+
+	@Override
+	public List<HezuosheShouyeDO> listHezuosheShouyeDO(Map<String, Object> map) {
+		return hezuosheDao.listHezuosheShouyeDO(map);
+	}
+
+	@Override
+	public int updateHezuosheShouyeDO(HezuosheShouyeDO hezuosheShouyeDO) {
+		return hezuosheDao.updateHezuosheShouyeDO(hezuosheShouyeDO);
+	}
+
+	@Override
+	public int saveHezuosheShouyeDO(HezuosheShouyeDO hezuosheShouyeDO) {
+		return hezuosheDao.saveHezuosheShouyeDO(hezuosheShouyeDO);
+	}
+
 }

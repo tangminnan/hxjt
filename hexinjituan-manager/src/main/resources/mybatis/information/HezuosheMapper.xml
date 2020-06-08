@@ -109,4 +109,58 @@
 		</foreach>
 	</delete>
 
+	<select id="listHezuosheShouyeDO" resultType="com.hexinjituan.information.domain.HezuosheShouyeDO">
+		select `id`,`hezuoshe_jianjie`,`dingxiang_peixun`,`hezuoshe_anli`,ziliao_zhichi,`type` from hezuoshe_shouye
+		<where>
+			<if test="id != null and id != ''"> and id = #{id} </if>
+			<if test="hezuosheJianjie != null and hezuosheJianjie != ''"> and hezuoshe_jianjie = #{hezuosheJianjie} </if>
+			<if test="dingxiangPeixun != null and dingxiangPeixun != ''"> and dingxiang_peixun = #{dingxiangPeixun} </if>
+			<if test="hezuosheAnli != null and hezuosheAnli != ''"> and hezuoshe_anli = #{hezuosheAnli} </if>
+			<if test="ziliaoZhichi != null and ziliaoZhichi != ''"> and ziliao_zhichi = #{ziliaoZhichi} </if>
+			<if test="type != null and type != ''"> and type = #{type} </if>
+		</where>
+		<choose>
+			<when test="sort != null and sort.trim() != ''">
+				order by ${sort} ${order}
+			</when>
+			<otherwise>
+				order by id desc
+			</otherwise>
+		</choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
+	<update id="updateHezuosheShouyeDO" parameterType="com.hexinjituan.information.domain.HezuosheShouyeDO">
+		update hezuoshe_shouye
+		<set>
+			<if test="hezuosheJianjie != null">`hezuoshe_jianjie` = #{hezuosheJianjie}, </if>
+			<if test="dingxiangPeixun != null">`dingxiang_peixun` = #{dingxiangPeixun}, </if>
+			<if test="hezuosheAnli != null">`hezuoshe_anli` = #{hezuosheAnli}, </if>
+			<if test="type != null">`type` = #{type},</if>
+			<if test="ziliaoZhichi != null">  ziliao_zhichi = #{ziliaoZhichi} </if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<insert id="saveHezuosheShouyeDO" parameterType="com.hexinjituan.information.domain.HezuosheShouyeDO" useGeneratedKeys="true" keyProperty="id">
+		insert into hezuoshe_shouye
+		(
+		`hezuoshe_jianjie`,
+		`dingxiang_peixun`,
+		`hezuoshe_anli`,
+		`type`,
+		ziliao_zhichi
+		)
+		values
+		(
+		#{hezuosheJianjie},
+		#{dingxiangPeixun},
+		#{hezuosheAnli},
+		#{type},
+		#{ziliaoZhichi}
+		)
+	</insert>
+
 </mapper>

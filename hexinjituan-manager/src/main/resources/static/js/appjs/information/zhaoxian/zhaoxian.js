@@ -1,5 +1,5 @@
 
-var prefix = "/information/studentsElegant"
+var prefix = "/information/zhaoxian"
 $(function() {
 	load();
 });
@@ -32,8 +32,7 @@ function load() {
 							return {
 								//说明：传入后台的参数包括offset开始索引，limit步长，sort排序列，order：desc或者,以及所有列的键值对
 								limit: params.limit,
-								offset:params.offset,
-                                typeName:$("#typeName").val()
+								offset:params.offset
 					           // name:$('#searchName').val(),
 					           // username:$('#searchName').val()
 							};
@@ -45,79 +44,35 @@ function load() {
 						// sortOrder.
 						// 返回false将会终止请求
 						columns : [
-																{
-                                field : 'typeName',
-                                title : '类型',
-								formatter : function(value, row, index) {
-                                	if(value=="SHENGHUO_ZHAO")
-                                		return "生活照";
-                                    if(value=="GONGZUO_ZHAO")
-                                        return "工作照";
-                                    if(value=="HEZUOSHE")
-                                        return "合作社照片";
-                                    if(value=="XUEYUAN_RONGYU")
-                                        return "学员赠与";
-                                    if(value=="GUZHU_RONGYU")
-                                        return "雇主赠与";
-                                    if(value=="QIYE_RONGYU")
-                                        return "企业荣获";
-								}
-                            },
                             {
-                                field : 'url',
-                                title : '照片',
-                                formatter : function(value, row, index) {
-                                    var e = '<div class="image"><img width="90" height="100" alt="image" class="img-responsive" src="' + value + '"></div>'
-                                    return e;
-                                }
-
+                                field : 'title',
+                                title : '招聘'
                             },
-																{
-									field : 'isEnable', 
-									title : '启用/禁用' ,
-									formatter : function(value, row, index) {
-										var str = '';
-
-										str +=' <div class="switch onoffswitch col-sm-1"> ';
-										str +=' <div class="onoffswitch"> ';
-										str +=' <input name="allowComment" ';
-										//启用状态 0：是；1：否
-										if(row.isEnable == 0)
-											str += ' checked="" ';
-
-										str +=' type="checkbox" onchange="updateEnable(' +row.id+ ',this)" value="' +row.id+ '" class="onoffswitch-checkbox" id="example1' +row.id+ '">  ';
-										str +=' <label class="onoffswitch-label" for="example1' +row.id+ '">  ';
-										str +=' <span class="onoffswitch-inner"></span> ';
-										str +=' <span class="onoffswitch-switch"></span> ';
-										str +=' </label> ';
-										str +=' </div>';
-										str +=' </div>';
-										return str;
-									}
-								},
-																{
-									field : 'addTime', 
-									title : '添加时间' 
-								},
 																{
 									field : 'updateTime', 
-									title : '修改时间' 
+									title : '修改时间'
+								},
+																{
+									field : 'createTime', 
+									title : '创建时间'
 								},
 
-
-																/*{
-									field : 'sort',
-									title : '顺序'
-								},*/
+																{
+									field : 'phoneF', 
+									title : '招聘电话1' 
+								},
+																{
+									field : 'phoneS', 
+									title : '招聘电话2' 
+								},
 																{
 									title : '操作',
 									field : 'id',
 									align : 'center',
 									formatter : function(value, row, index) {
-										var g='<button type="button" class="btn  btn-xs btn-default" onclick="edit('+row.id+')">编辑</button>    ';
+                                        var g='<button type="button" class="btn  btn-xs btn-default" onclick="edit('+row.id+')">编辑</button>    ';
                                         var a='<button type="button" class="btn  btn-xs btn-danger" onclick="remove('+row.id+')">删除</button> ';
                                         return  g+ a;
-
 									}
 								} ]
 					});
@@ -126,7 +81,7 @@ function reLoad() {
 	$('#exampleTable').bootstrapTable('refresh');
 }
 function add() {
-	layer.open({
+    var addPage=layer.open({
 		type : 2,
 		title : '增加',
 		maxmin : true,
@@ -134,9 +89,10 @@ function add() {
 		area : [ '800px', '520px' ],
 		content : prefix + '/add' // iframe的url
 	});
+    layer.full(addPage);
 }
 function edit(id) {
-	layer.open({
+    var addPage=layer.open({
 		type : 2,
 		title : '编辑',
 		maxmin : true,
@@ -144,35 +100,8 @@ function edit(id) {
 		area : [ '800px', '520px' ],
 		content : prefix + '/edit/' + id // iframe的url
 	});
+    layer.full(addPage);
 }
-
-function updateEnable(id,enable){
-    var isEnable = 1;
-    if($(enable).prop("checked")){
-        isEnable = 0;
-    }
-
-    $.ajax({
-        url : prefix + "/updateEnable",
-        type : "post",
-        data : {
-            'id' : id,
-            'enable' : isEnable
-        },
-        dataType: 'JSON',
-        async : false,
-        success : function(r) {
-            if (r.code == 0) {
-                layer.msg(r.msg);
-                reLoad();
-            } else {
-                layer.msg(r.msg);
-                reLoad();
-            }
-        }
-    });
-}
-
 function remove(id) {
 	layer.confirm('确定要删除选中的记录？', {
 		btn : [ '确定', '取消' ]

@@ -1,11 +1,8 @@
 $().ready(function() {
-    $('.summernote').summernote({
+    $('#content_snlaowuContent').summernote({
         height : '400px',
         lang : 'zh-CN',
         callbacks: {
-            onImageUpload: function(files, editor, $editable) {
-                sendFile(files);
-            },
             onPaste: function (ne) {
                 var bufferText = ((ne.originalEvent || ne).clipboardData || window.clipboardData).getData('Text/plain');
                 ne.preventDefault ? ne.preventDefault() : (ne.returnValue = false);
@@ -19,9 +16,6 @@ $().ready(function() {
         height : '100px',
         lang : 'zh-CN',
         callbacks: {
-            onImageUpload: function(files, editor, $editable) {
-                sendFile(files);
-            },
             onPaste: function (ne) {
                 var bufferText = ((ne.originalEvent || ne).clipboardData || window.clipboardData).getData('Text/plain');
                 ne.preventDefault ? ne.preventDefault() : (ne.returnValue = false);
@@ -31,16 +25,18 @@ $().ready(function() {
             }
         }
     });
+    $('#content_snlaowuContent').summernote('code',  $("#laowuContent").val());
+    $('#jianjie').summernote('code',  $("#gongchengJ").val());
 	validateRule();
 });
 
 $.validator.setDefaults({
 	submitHandler : function() {
-		save();
+		update();
 	}
 });
-function save() {
-    var content_sn = $("#content_sn").summernote('code');
+function update() {
+    var content_sn = $("#content_snlaowuContent").summernote('code');
     $("#laowuContent").val(content_sn);
     var jianjie = $("#jianjie").summernote('code');
     $("#gongchengJ").val(jianjie);
@@ -48,7 +44,7 @@ function save() {
 	$.ajax({
 		cache : true,
 		type : "POST",
-		url : "/information/companyGongyi/save",
+		url : "/information/laowuAnli/update",
         data : formData,//$('#signupForm').serialize(), // 你的formid
         processData:false,
         contentType:false,
@@ -81,7 +77,7 @@ function validateRule() {
 		},
 		messages : {
 			name : {
-				required : icon + "请输入姓名"
+				required : icon + "请输入名字"
 			}
 		}
 	})

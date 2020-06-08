@@ -5,6 +5,7 @@ import com.hexinjituan.information.domain.HezuosheDO;
 import java.util.List;
 import java.util.Map;
 
+import com.hexinjituan.information.domain.HezuosheShouyeDO;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -29,4 +30,10 @@ public interface HezuosheDao {
 	int remove(Integer id);
 	
 	int batchRemove(Integer[] ids);
+
+    List<HezuosheShouyeDO> listHezuosheShouyeDO(Map<String, Object> map);
+
+	int updateHezuosheShouyeDO(HezuosheShouyeDO hezuosheShouyeDO);
+
+	int saveHezuosheShouyeDO(HezuosheShouyeDO hezuosheShouyeDO);
 }

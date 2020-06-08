@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-content">
+						<form class="form-horizontal m-t" id="signupForm">
+							<input id="type" name="type" class="form-control" type="hidden" value="HEZUOSHE_SHOUYE">
+														<div class="form-group">	
+								<label class="col-sm-1 control-label">合作社简介</label>
+								<div class="col-sm-8">
+									<div class="ibox-content no-padding">
+										<div id="content_snhezuosheJianjie" class="summernote"></div>
+									</div>
+									<input id="hezuosheJianjie" name="hezuosheJianjie" class="form-control" type="hidden" th:value="${hezuosheShouyeDO.hezuosheJianjie}">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-1 control-label">合作社案例</label>
+								<div class="col-sm-8">
+									<div class="ibox-content no-padding">
+										<div id="content_snhezuosheAnli" class="summernote"></div>
+									</div>
+									<input id="hezuosheAnli" name="hezuosheAnli" class="form-control" type="hidden" th:value="${hezuosheShouyeDO.hezuosheAnli}">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-1 control-label">定向培训</label>
+								<div class="col-sm-8">
+									<div class="ibox-content no-padding">
+										<div id="content_sndingxiangPeixun" class="summernote"></div>
+									</div>
+									<input id="dingxiangPeixun" name="dingxiangPeixun" class="form-control" type="hidden" th:value="${hezuosheShouyeDO.dingxiangPeixun}">
+								</div>
+							</div>
+
+																					<div class="form-group">
+								<div class="col-sm-8 col-sm-offset-3">
+									<button onclick="bj()" class="btn btn-primary">提交</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+	</div>
+	</div>
+	<div th:include="include::footer"></div>
+
+	<script>
+        $('#content_snhezuosheJianjie').summernote({
+            height : '400px',
+            lang : 'zh-CN',
+            callbacks: {
+                onPaste: function (ne) {
+                    var bufferText = ((ne.originalEvent || ne).clipboardData || window.clipboardData).getData('Text/plain');
+                    ne.preventDefault ? ne.preventDefault() : (ne.returnValue = false);
+                    setTimeout(function () {
+                        document.execCommand("insertText", false, bufferText);
+                    }, 10);
+                }
+            }
+        });
+        $('#content_sndingxiangPeixun').summernote({
+            height : '500px',
+            lang : 'zh-CN',
+            callbacks: {
+                onPaste: function (ne) {
+                    var bufferText = ((ne.originalEvent || ne).clipboardData || window.clipboardData).getData('Text/plain');
+                    ne.preventDefault ? ne.preventDefault() : (ne.returnValue = false);
+                    setTimeout(function () {
+                        document.execCommand("insertText", false, bufferText);
+                    }, 10);
+                }
+            }
+        });
+        $('#content_snhezuosheAnli').summernote({
+            height : '400px',
+            lang : 'zh-CN',
+            callbacks: {
+                onPaste: function (ne) {
+                    var bufferText = ((ne.originalEvent || ne).clipboardData || window.clipboardData).getData('Text/plain');
+                    ne.preventDefault ? ne.preventDefault() : (ne.returnValue = false);
+                    setTimeout(function () {
+                        document.execCommand("insertText", false, bufferText);
+                    }, 10);
+                }
+            }
+        });
+        $('#content_snhezuosheJianjie').summernote('code',  $("#hezuosheJianjie").val());
+        $('#content_snhezuosheAnli').summernote('code',  $("#hezuosheAnli").val());
+        $('#content_sndingxiangPeixun').summernote('code',  $("#dingxiangPeixun").val());
+        function bj(){
+
+            var hezuosheJianjie = $("#content_snhezuosheJianjie").summernote('code');
+            $("#hezuosheJianjie").val(hezuosheJianjie);
+            var hezuosheAnli = $("#content_snhezuosheAnli").summernote('code');
+            $("#hezuosheAnli").val(hezuosheAnli);
+            var dingxiangPeixun = $("#content_sndingxiangPeixun").summernote('code');
+            $("#dingxiangPeixun").val(dingxiangPeixun);
+            $.ajax({
+                cache : true,
+                type : "POST",
+                url : "/information/hezuoshe/savehezuoshoye",
+                data : $('#signupForm').serialize(), // 你的formid
+                async : false,
+                error : function(request) {
+                    parent.layer.alert("Connection error");
+                },
+                success : function(data) {
+                    if (data.code == 0) {
+                        parent.layer.msg("操作成功");
+                        parent.reLoad();
+                        var index = parent.layer.getFrameIndex(window.name); // 获取窗口索引
+                        parent.layer.close(index);
+
+                    } else {
+                        parent.layer.alert(data.msg)
+                    }
+
+                }
+            });
+		}
+	</script>
+</body>
+</html>

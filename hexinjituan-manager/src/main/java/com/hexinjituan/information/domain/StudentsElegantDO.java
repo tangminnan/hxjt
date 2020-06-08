@@ -19,7 +19,12 @@ public class StudentsElegantDO implements Serializable {
 	
 	//
 	private Integer id;
-	//类型
+	//类型  SHENGHUO_ZHAO=生活照
+	// GONGZUO_ZHAO=工作照
+	// HEZUOSHE=合作社
+	// XUEYUAN_RONGYU=学员赠与
+	// GUZHU_RONGYU=雇主赠与
+	// QIYE_RONGYU=企业荣获
 	private String typeName;
 	//启用状态 0：是；1：否
 	private Integer isEnable;

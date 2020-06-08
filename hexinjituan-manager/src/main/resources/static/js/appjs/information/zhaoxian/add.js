@@ -15,22 +15,6 @@ $().ready(function() {
             }
         }
     });
-    $('#jianjie').summernote({
-        height : '100px',
-        lang : 'zh-CN',
-        callbacks: {
-            onImageUpload: function(files, editor, $editable) {
-                sendFile(files);
-            },
-            onPaste: function (ne) {
-                var bufferText = ((ne.originalEvent || ne).clipboardData || window.clipboardData).getData('Text/plain');
-                ne.preventDefault ? ne.preventDefault() : (ne.returnValue = false);
-                setTimeout(function () {
-                    document.execCommand("insertText", false, bufferText);
-                }, 10);
-            }
-        }
-    });
 	validateRule();
 });
 
@@ -41,17 +25,12 @@ $.validator.setDefaults({
 });
 function save() {
     var content_sn = $("#content_sn").summernote('code');
-    $("#laowuContent").val(content_sn);
-    var jianjie = $("#jianjie").summernote('code');
-    $("#gongchengJ").val(jianjie);
-    var formData = new FormData(document.getElementById("signupForm"));
+    $("#content_sn").parent().next().val(content_sn);
 	$.ajax({
 		cache : true,
 		type : "POST",
-		url : "/information/companyGongyi/save",
-        data : formData,//$('#signupForm').serialize(), // 你的formid
-        processData:false,
-        contentType:false,
+		url : "/information/zhaoxian/save",
+		data : $('#signupForm').serialize(),// 你的formid
 		async : false,
 		error : function(request) {
 			parent.layer.alert("Connection error");
