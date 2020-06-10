@@ -44,64 +44,47 @@ function load() {
 						// sortOrder.
 						// 返回false将会终止请求
 						columns : [
-								{
-									checkbox : true
-								},
-																{
-									field : 'id', 
-									title : '主键' 
-								},
-																{
-									field : 'deleted', 
-									title : '0  未删除     1  已删除' 
-								},
+									{
+                                field : 'fuwuName',
+                                title : '服务名称'
+                            },
+									{
+										field : 'createTime',
+										title : '发布时间'
+									},
 																{
 									field : 'updateTime', 
-									title : '' 
+									title : '修改时间'
 								},
-																{
-									field : 'createTime', 
-									title : '发布时间' 
-								},
-																{
-									field : 'fuwuName', 
-									title : '服务名称' 
-								},
-																{
-									field : 'gongchengContent', 
-									title : '内容描述' 
-								},
+
 																{
 									field : 'url', 
-									title : '图片展示地址' 
+									title : '列表图',
+                                                                    formatter : function(value, row, index) {
+                                                                        var e = '<div class="image"><img width="90" height="100" alt="image" class="img-responsive" src="' + value + '"></div>'
+                                                                        return e;
+                                                                    }
 								},
-																{
-									field : 'gongchengDetail', 
-									title : '内容详情' 
-								},
-																{
+																/*{
+									field : 'gongchengDetail',
+									title : '内容详情'
+								},*/
+																/*{
 									field : 'iurl', 
 									title : '图片列表' 
-								},
-																{
+								},*/
+																/*{
 									field : 'type', 
 									title : 'SHOUYE=首页' 
-								},
+								},*/
 																{
 									title : '操作',
 									field : 'id',
 									align : 'center',
 									formatter : function(value, row, index) {
-										var e = '<a class="btn btn-primary btn-sm '+s_edit_h+'" href="#" mce_href="#" title="编辑" onclick="edit(\''
-												+ row.id
-												+ '\')"><i class="fa fa-edit"></i></a> ';
-										var d = '<a class="btn btn-warning btn-sm '+s_remove_h+'" href="#" title="删除"  mce_href="#" onclick="remove(\''
-												+ row.id
-												+ '\')"><i class="fa fa-remove"></i></a> ';
-										var f = '<a class="btn btn-success btn-sm" href="#" title="备用"  mce_href="#" onclick="resetPwd(\''
-												+ row.id
-												+ '\')"><i class="fa fa-key"></i></a> ';
-										return e + d ;
+                                        var g='<button type="button" class="btn  btn-xs btn-default" onclick="edit('+row.id+')">编辑</button>    ';
+                                        var a='<button type="button" class="btn  btn-xs btn-danger" onclick="remove('+row.id+')">删除</button> ';
+                                        return  g+ a;
 									}
 								} ]
 					});
@@ -110,7 +93,7 @@ function reLoad() {
 	$('#exampleTable').bootstrapTable('refresh');
 }
 function add() {
-	layer.open({
+    var addPage=layer.open({
 		type : 2,
 		title : '增加',
 		maxmin : true,
@@ -118,9 +101,10 @@ function add() {
 		area : [ '800px', '520px' ],
 		content : prefix + '/add' // iframe的url
 	});
+    layer.full(addPage);
 }
 function edit(id) {
-	layer.open({
+    var addPage=layer.open({
 		type : 2,
 		title : '编辑',
 		maxmin : true,
@@ -128,6 +112,7 @@ function edit(id) {
 		area : [ '800px', '520px' ],
 		content : prefix + '/edit/' + id // iframe的url
 	});
+    layer.full(addPage);
 }
 function remove(id) {
 	layer.confirm('确定要删除选中的记录？', {

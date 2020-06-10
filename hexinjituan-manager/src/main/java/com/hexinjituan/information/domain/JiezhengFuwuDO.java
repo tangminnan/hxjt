@@ -1,8 +1,10 @@
 package com.hexinjituan.information.domain;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import java.io.Serializable;
 import java.util.Date;
-
+import java.util.List;
 
 
 /**
@@ -19,7 +21,7 @@ public class JiezhengFuwuDO implements Serializable {
 	private Integer id;
 	//0  未删除     1  已删除
 	private Integer deleted;
-	//
+	//修改时间
 	private Date updateTime;
 	//发布时间
 	private Date createTime;
@@ -34,7 +36,9 @@ public class JiezhengFuwuDO implements Serializable {
 	//图片列表
 	private String iurl;
 	//SHOUYE=首页
-	private String type;
+	private String leixing;
+	private MultipartFile imgFile;
+	private List<MultipartFile> imgFileList;
 
 	/**
 	 * 设置：主键
@@ -144,16 +148,28 @@ public class JiezhengFuwuDO implements Serializable {
 	public String getIurl() {
 		return iurl;
 	}
-	/**
-	 * 设置：SHOUYE=首页
-	 */
-	public void setType(String type) {
-		this.type = type;
+
+	public String getLeixing() {
+		return leixing;
 	}
-	/**
-	 * 获取：SHOUYE=首页
-	 */
-	public String getType() {
-		return type;
+
+	public void setLeixing(String leixing) {
+		this.leixing = leixing;
+	}
+
+	public MultipartFile getImgFile() {
+		return imgFile;
+	}
+
+	public void setImgFile(MultipartFile imgFile) {
+		this.imgFile = imgFile;
+	}
+
+	public List<MultipartFile> getImgFileList() {
+		return imgFileList;
+	}
+
+	public void setImgFileList(List<MultipartFile> imgFileList) {
+		this.imgFileList = imgFileList;
 	}
 }

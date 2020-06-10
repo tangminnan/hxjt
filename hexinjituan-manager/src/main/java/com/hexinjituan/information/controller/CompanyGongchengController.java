@@ -94,6 +94,19 @@ public class CompanyGongchengController {
 		} catch (Exception e) {
 			return R.error();
 		}
+
+		if(companyGongcheng.getImgFile() != null && companyGongcheng.getImgFile().getSize() > 0){
+			String fileName = companyGongcheng.getImgFile().getOriginalFilename();
+			fileName = FileUtil.renameToUUID(fileName);
+			try {
+				FileUtil.uploadFile(companyGongcheng.getImgFile().getBytes(), bootdoConfig.getUploadPath(), fileName);
+				companyGongcheng.setUrl("/files/" + fileName);
+			} catch (Exception e) {
+				return R.error();
+			}
+
+		}
+
 		companyGongcheng.setDeleted(0);
 		companyGongcheng.setCreateTime(new Date());
 		companyGongcheng.setUpdateTime(new Date());
@@ -124,6 +137,19 @@ public class CompanyGongchengController {
 		} catch (Exception e) {
 			return R.error();
 		}
+
+		if(companyGongcheng.getImgFile() != null && companyGongcheng.getImgFile().getSize() > 0){
+			String fileName = companyGongcheng.getImgFile().getOriginalFilename();
+			fileName = FileUtil.renameToUUID(fileName);
+			try {
+				FileUtil.uploadFile(companyGongcheng.getImgFile().getBytes(), bootdoConfig.getUploadPath(), fileName);
+				companyGongcheng.setUrl("/files/" + fileName);
+			} catch (Exception e) {
+				return R.error();
+			}
+
+		}
+
 		companyGongchengService.update(companyGongcheng);
 		return R.ok();
 	}

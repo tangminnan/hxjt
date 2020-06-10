@@ -4,12 +4,12 @@
 <mapper namespace="com.hexinjituan.information.dao.JiezhengFuwuDao">
 
 	<select id="get" resultType="com.hexinjituan.information.domain.JiezhengFuwuDO">
-		select `id`,`deleted`,`update_time`,`create_time`,`fuwu_name`,`gongcheng_content`,`url`,`gongcheng_detail`,`iurl`,`type` from jiezheng_fuwu where id = #{value}
+		select `id`,`deleted`,`update_time`,`create_time`,`fuwu_name`,`gongcheng_content`,`url`,`gongcheng_detail`,`iurl`,`leixing` from jiezheng_fuwu where id = #{value}
 	</select>
 
 	<select id="list" resultType="com.hexinjituan.information.domain.JiezhengFuwuDO">
-		select `id`,`deleted`,`update_time`,`create_time`,`fuwu_name`,`gongcheng_content`,`url`,`gongcheng_detail`,`iurl`,`type` from jiezheng_fuwu
-        <where>  
+		select `id`,`deleted`,`update_time`,`create_time`,`fuwu_name`,`gongcheng_content`,`url`,`gongcheng_detail`,`iurl`,`leixing` from jiezheng_fuwu
+        where deleted=0
 		  		  <if test="id != null and id != ''"> and id = #{id} </if>
 		  		  <if test="deleted != null and deleted != ''"> and deleted = #{deleted} </if>
 		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
@@ -19,8 +19,8 @@
 		  		  <if test="url != null and url != ''"> and url = #{url} </if>
 		  		  <if test="gongchengDetail != null and gongchengDetail != ''"> and gongcheng_detail = #{gongchengDetail} </if>
 		  		  <if test="iurl != null and iurl != ''"> and iurl = #{iurl} </if>
-		  		  <if test="type != null and type != ''"> and type = #{type} </if>
-		  		</where>
+		  		  <if test="leixing != null and leixing != ''"> and leixing = #{leixing} </if>
+
         <choose>
             <when test="sort != null and sort.trim() != ''">
                 order by ${sort} ${order}
@@ -36,7 +36,7 @@
 	
  	<select id="count" resultType="int">
 		select count(*) from jiezheng_fuwu
-		 <where>  
+		where deleted=0
 		  		  <if test="id != null and id != ''"> and id = #{id} </if>
 		  		  <if test="deleted != null and deleted != ''"> and deleted = #{deleted} </if>
 		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
@@ -46,8 +46,8 @@
 		  		  <if test="url != null and url != ''"> and url = #{url} </if>
 		  		  <if test="gongchengDetail != null and gongchengDetail != ''"> and gongcheng_detail = #{gongchengDetail} </if>
 		  		  <if test="iurl != null and iurl != ''"> and iurl = #{iurl} </if>
-		  		  <if test="type != null and type != ''"> and type = #{type} </if>
-		  		</where>
+		  		  <if test="leixing != null and type != ''"> and leixing = #{leixing} </if>
+
 	</select>
 	 
 	<insert id="save" parameterType="com.hexinjituan.information.domain.JiezhengFuwuDO" useGeneratedKeys="true" keyProperty="id">
@@ -61,7 +61,7 @@
 			`url`, 
 			`gongcheng_detail`, 
 			`iurl`, 
-			`type`
+			`leixing`
 		)
 		values
 		(
@@ -73,7 +73,7 @@
 			#{url}, 
 			#{gongchengDetail}, 
 			#{iurl}, 
-			#{type}
+			#{leixing}
 		)
 	</insert>
 	 
@@ -88,7 +88,7 @@
 			<if test="url != null">`url` = #{url}, </if>
 			<if test="gongchengDetail != null">`gongcheng_detail` = #{gongchengDetail}, </if>
 			<if test="iurl != null">`iurl` = #{iurl}, </if>
-			<if test="type != null">`type` = #{type}</if>
+			<if test="leixing != null">`leixing` = #{leixing}</if>
 		</set>
 		where id = #{id}
 	</update>

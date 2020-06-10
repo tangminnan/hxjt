@@ -1,4 +1,21 @@
 $().ready(function() {
+    $('.summernote').summernote({
+        height : '400px',
+        lang : 'zh-CN',
+        callbacks: {
+            onImageUpload: function(files, editor, $editable) {
+                sendFile(files);
+            },
+            onPaste: function (ne) {
+                var bufferText = ((ne.originalEvent || ne).clipboardData || window.clipboardData).getData('Text/plain');
+                ne.preventDefault ? ne.preventDefault() : (ne.returnValue = false);
+                setTimeout(function () {
+                    document.execCommand("insertText", false, bufferText);
+                }, 10);
+            }
+        }
+    });
+    $('#content_sn').summernote('code',  $("#content_sn").parent().next().val());
 	validateRule();
 });
 
@@ -8,11 +25,16 @@ $.validator.setDefaults({
 	}
 });
 function update() {
+    var content_sn = $("#content_sn").summernote('code');
+    $("#content_sn").parent().next().val(content_sn);
+    var formData = new FormData(document.getElementById("signupForm"));
 	$.ajax({
 		cache : true,
 		type : "POST",
 		url : "/information/jiezhengFuwu/update",
-		data : $('#signupForm').serialize(),// 你的formid
+        data : formData,//$('#signupForm').serialize(), // 你的formid
+        processData:false,
+        contentType:false,
 		async : false,
 		error : function(request) {
 			parent.layer.alert("Connection error");
