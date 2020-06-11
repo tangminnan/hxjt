@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>联系我们</title>
+<link rel="stylesheet" href="css/css.css" type="text/css">
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script src="http://api.map.baidu.com/api?v=2.0&ak=u70A5pnNrRtRT1XAgwM5jL2YIVj1Gv97"></script>
+</head>
+<body>
+    <div class="top">
+    	<div class="main">
+			<p class="fl"><img src="images/logo.png" alt=""/>一人就业 全家安心</p>
+   			<span class="fr"><img src="images/zxrx.png" alt=""/></span>
+    	</div>
+	</div>
+   	<div class="topnav">
+    	<ul class="main">
+    		<li><a href="index.html">首页</a></li>
+    		<li><a href="">企业荣誉</a></li>
+    		<li><a href="jianjie.html">集团简介</a></li>
+    		<li><a href="fuwu.html">家政服务</a></li>
+    		<li><a href="xiaxiang.html">送技术下乡</a></li>
+    		<li><a href="hezuo.html">劳务合作社</a></li>
+    		<li><a href="zhaoxian.html">招贤纳士</a></li>
+    		<li class="on"><a href="lianxi.html">联系我们</a></li>
+    		<li><a href="jiameng.html">合作加盟</a></li>
+    	</ul>
+    </div>
+	<!--联系我们-->
+	<div class="main">
+		<div class="lianxi">
+			<h3>我要留言</h3>
+			<p>尊敬的朋友，您有什么需求，可以留下联系方式，我们的工作人员会第一时间给予你回复！</p>
+			<div class="txt">
+				<span><em>*</em>姓名</span>
+				<input type="text"/>
+			</div>
+			<div class="txt">
+				<span><em>*</em>手机号</span>
+				<input type="text"/>
+			</div>
+			<div class="txt">
+				<span style="vertical-align:top;">留言内容</span>
+				<textarea name="" id="" cols="30" rows="10"></textarea>
+			</div>
+			<input type="button" value="提交留言" class="tijiao"/>
+		</div>
+		<div class="titbreak"><span>集团地址</span></div>
+		<div id="myMap"></div>
+		<div class="mapTxt">
+			<ul>
+				<li><span>集团网址:</span>sdhexinjituan.com</li>
+				<li><span>全国统一免费热线:</span>400-7169-518</li>
+				<li><span>微信二维码:</span> <img src="images/erweima.jpg" alt=""/></li>
+			</ul>
+		</div>
+	</div>
+	<!--QQ浮窗-->
+	<div class="popQQ QQ">
+		<h3>企业QQ</h3>
+		<ul>
+			<li><a href="">糖城广场店QQ<br/>2785570045</a></li>
+			<li><a href="">禹王大市场店QQ<br/>3186523972</a></li>
+			<li><a href="">山东国际商贸港店QQ<br/>15621237198</a></li>
+		</ul>
+	</div>
+	<!--微信浮窗-->
+	<div class="popQQ WX">
+		<h3>企业微信</h3>
+		<ul>
+			<li><a href="">糖城广场分店微信<br/>hexin17653434569</a></li>
+			<li><a href="">禹王大市场分店微信<br/>18953451938</a></li>
+			<li><a href="">山东国际商贸港分店<br/>15621237198</a></li>
+		</ul>
+	</div>
+	
+	<!--底部-->
+	<div class="foot">
+		<div class="main">
+			<div class="fl leftTxt">
+				<div class="fotnav">
+					<a href="">首页</a>
+					<a href="">联系我们</a>
+					<a href="">投诉意见</a>
+					<a href="">免费培训</a>
+					<a href="">人才招聘</a>
+					<a href="">连锁加盟</a>
+					<a href="">寻求帮助</a>
+				</div>
+				<p>地址：山东省德州市禹城建设路中段633号（人社局沿街一楼）</p>
+			</div>
+			<div class="fr rightTxt">
+				<img src="images/laifang.png" alt=""/>
+				<div class="link">
+					<p>友情链接：</p>
+					<div class="friend">
+						<a href="">中国家庭服务业协会</a>
+						<a href="">山东妇女网</a>
+						<a href="">德州市人社局</a>
+						<a href="">德州市人社局</a>
+						<a href="">德州市人社局</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	//地图
+	var map = new BMap.Map("myMap");// 创建地图实例
+	var point = new BMap.Point(116.65064,36.937559);  // 创建点坐标
+	map.addControl(new BMap.NavigationControl());//导航控件
+	map.addControl(new BMap.ScaleControl());//缩放控件
+	map.addControl(new BMap.OverviewMapControl());//概览图控件
+	map.addControl(new BMap.MapTypeControl()); //地图类型控件
+	map.centerAndZoom(point, 16);// 初始化地图，设置中心点坐标和地图级别
+	var marker = new BMap.Marker(point);
+	map.addOverlay(marker);//标出所在地
+	var opts = {
+		title:"合心集团"
+	}
+	var infoWindow = new BMap.InfoWindow("山东省德州市禹城市建设路中段633号（人社局沿街一楼）",opts);
+	map.openInfoWindow(infoWindow, map.getCenter());
+</script>

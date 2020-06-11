@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hexinjituan.information.dao.CompanyGongchengDao">
+
+	<select id="get" resultType="com.hexinjituan.information.domain.CompanyGongchengDO">
+		select `id`,gongcheng_detail,iurl,`weixin`,`phone`,`principal`,`company_id`,`gongcheng_class`,`deleted`,`update_time`,`create_time`,`gongcheng_name`,`gongcheng_content`,`url` from company_gongcheng where id = #{value}
+	</select>
+
+	<select id="list" resultType="com.hexinjituan.information.domain.CompanyGongchengDO">
+		select `id`,`weixin`,`phone`,`principal`,`company_id`,`gongcheng_class`,`deleted`,`update_time`,`create_time`,`gongcheng_name`,`gongcheng_content`,`url` from company_gongcheng
+        where deleted=0
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="weixin != null and weixin != ''"> and weixin = #{weixin} </if>
+		  		  <if test="phone != null and phone != ''"> and phone = #{phone} </if>
+		  		  <if test="principal != null and principal != ''"> and principal = #{principal} </if>
+		  		  <if test="companyId != null and companyId != ''"> and company_id = #{companyId} </if>
+		  		  <if test="gongchengClass != null and gongchengClass != ''"> and gongcheng_class = #{gongchengClass} </if>
+		  		  <if test="deleted != null and deleted != ''"> and deleted = #{deleted} </if>
+		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+		  		  <if test="gongchengName != null and gongchengName != ''"> and gongcheng_name = #{gongchengName} </if>
+		  		  <if test="gongchengContent != null and gongchengContent != ''"> and gongcheng_content = #{gongchengContent} </if>
+		  		  <if test="url != null and url != ''"> and url = #{url} </if>
+
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from company_gongcheng
+		 where deleted=0
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="weixin != null and weixin != ''"> and weixin = #{weixin} </if>
+		  		  <if test="phone != null and phone != ''"> and phone = #{phone} </if>
+		  		  <if test="principal != null and principal != ''"> and principal = #{principal} </if>
+		  		  <if test="companyId != null and companyId != ''"> and company_id = #{companyId} </if>
+		  		  <if test="gongchengClass != null and gongchengClass != ''"> and gongcheng_class = #{gongchengClass} </if>
+		  		  <if test="deleted != null and deleted != ''"> and deleted = #{deleted} </if>
+		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+		  		  <if test="gongchengName != null and gongchengName != ''"> and gongcheng_name = #{gongchengName} </if>
+		  		  <if test="gongchengContent != null and gongchengContent != ''"> and gongcheng_content = #{gongchengContent} </if>
+		  		  <if test="url != null and url != ''"> and url = #{url} </if>
+
+	</select>
+	 
+	<insert id="save" parameterType="com.hexinjituan.information.domain.CompanyGongchengDO" useGeneratedKeys="true" keyProperty="id">
+		insert into company_gongcheng
+		(
+			`weixin`, 
+			`phone`, 
+			`principal`, 
+			`company_id`, 
+			`gongcheng_class`, 
+			`deleted`, 
+			`update_time`, 
+			`create_time`, 
+			`gongcheng_name`, 
+			`gongcheng_content`, 
+			`url`,
+			gongcheng_detail,
+			iurl
+		)
+		values
+		(
+			#{weixin}, 
+			#{phone}, 
+			#{principal}, 
+			#{companyId}, 
+			#{gongchengClass}, 
+			#{deleted}, 
+			#{updateTime}, 
+			#{createTime}, 
+			#{gongchengName}, 
+			#{gongchengContent}, 
+			#{url},
+			#{gongchengDetail},
+			#{iurl}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.hexinjituan.information.domain.CompanyGongchengDO">
+		update company_gongcheng 
+		<set>
+			<if test="weixin != null">`weixin` = #{weixin}, </if>
+			<if test="phone != null">`phone` = #{phone}, </if>
+			<if test="principal != null">`principal` = #{principal}, </if>
+			<if test="companyId != null">`company_id` = #{companyId}, </if>
+			<if test="gongchengClass != null">`gongcheng_class` = #{gongchengClass}, </if>
+			<if test="deleted != null">`deleted` = #{deleted}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
+			<if test="createTime != null">`create_time` = #{createTime}, </if>
+			<if test="gongchengName != null">`gongcheng_name` = #{gongchengName}, </if>
+			<if test="gongchengContent != null">`gongcheng_content` = #{gongchengContent}, </if>
+			<if test="url != null">`url` = #{url},</if>
+			<if test="gongchengDetail != null">`gongcheng_detail` = #{gongchengDetail},</if>
+			<if test="iurl != null">`iurl` = #{iurl}</if>
+
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from company_gongcheng where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from company_gongcheng where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head th:include="include :: header">
+<meta charset="utf-8">
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>公益在行动</title>
+<link rel="stylesheet" href="css/css.css" type="text/css">
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
+</head>
+<body>
+    <div class="top">
+    	<div class="main">
+			<p class="fl"><img src="images/logo.png" alt=""/>一人就业 全家安心</p>
+   			<span class="fr"><img src="images/zxrx.png" alt=""/></span>
+    	</div>
+	</div>
+   	<div class="topnav">
+    	<ul class="main">
+    		<li><a href="/index.html">首页</a></li>
+    		<li><a href="">企业荣誉</a></li>
+    		<li class="on"><a href="/jianjie.html">集团简介</a></li>
+    		<li><a href="/fuwu.html">家政服务</a></li>
+    		<li><a href="/xiaxiang.html">送技术下乡</a></li>
+    		<li><a href="/peixun.html">技能培训</a></li>
+    		<li><a href="/hezuo.html">劳务合作社</a></li>
+    		<li><a href="/renli.html">人力资源</a></li>
+    		<li><a href="/zhaoxian.html">招贤纳士</a></li>
+    		<li><a href="/lianxi.html">联系我们</a></li>
+    		<li><a href="/jiameng.html">合作加盟</a></li>
+    	</ul>
+    </div>
+	<!--公益在行动-->
+	<div class="main jiuYe">
+		<div class="breadNav">集团简介>慈善公益>公益活动</div>
+		<div class="titbreak"><span>公益在行动</span></div>
+		<div class="gongyiTxt">
+			<div id="companyContent" style="display: none" th:text="${newGongyi.gongchengContent}"></div>
+			<div class="ibox-content no-padding" style="border-color: #fff;">
+				<div id="content_sn" class="summernote"></div>
+			</div>
+			<!--
+			<img src="images/gongyi.jpg" alt=""/>
+			<p>山东合心家政集团在2019年12月3日，以“送技术，关爱老人”为主题的公益活动在安仁镇敬老院举行。合心集团为敬老院的养老护理员送去技术，为她们进行统一的免费培训，为老人们送去米、面、油、饼干、健身器材等爱心礼物，成为冬日里一道温暖的风景。</p>
+     		<p>这次活动是专为老人而准备的，合心集团员工来到这里，通过各种各样的形式，帮助这些需要关心的空巢老人。合心集团员工们刚到敬老院，就在院长的带领下开始唱歌热场。刚开始，员工或许还有点羞涩，但看到老人们舒展的笑颜，大家都抛开顾虑，大声唱了起来。“东方红”、“今天是个好日子”、“洪湖水呀浪打浪”，深受老一辈们喜爱的红歌一首紧接着一首，完全把欢乐的气氛调动了起来。</p>
+      		<p>通过这次公益活动我们了解到在老人们的生活当中，每个人都曾为社会、家庭作过贡献，而现在，他们已值暮年，恰恰是需要社会、家庭对他们给予关爱的时候。在这寒冷的冬季里，能有这么多志愿者看望他们，他们表示非常开心。集团多年来一直坚持参与各种慈善公益活动，旨在孝敬孤寡老人、关爱社会弱势群体。希望此次捐献的物资能够给老人们带来温暖，让这个冬天不再寒冷。</p>
+		-->
+		</div>
+	</div>
+	
+	
+	
+	<!--底部-->
+	<div class="foot">
+		<div class="main">
+			<div class="fl leftTxt">
+				<div class="fotnav">
+					<a href="">首页</a>
+					<a href="">联系我们</a>
+					<a href="">投诉意见</a>
+					<a href="">免费培训</a>
+					<a href="">人才招聘</a>
+					<a href="">连锁加盟</a>
+					<a href="">寻求帮助</a>
+				</div>
+				<p>地址：山东省德州市禹城建设路中段633号（人社局沿街一楼）</p>
+			</div>
+			<div class="fr rightTxt">
+				<img src="images/laifang.png" alt=""/>
+				<div class="link">
+					<p>友情链接：</p>
+					<div class="friend">
+						<a href="">中国家庭服务业协会</a>
+						<a href="">山东妇女网</a>
+						<a href="">德州市人社局</a>
+						<a href="">德州市人社局</a>
+						<a href="">德州市人社局</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div th:include="include::footer"></div>
+</body>
+</html>
+<script type="text/javascript">
+	jQuery(".RYtableBox").slide({trigger:"click"});
+
+    $(function () {
+        var companyContent = $("#companyContent").text();
+        $('#content_sn').summernote('code', companyContent);
+        $('#content_sn').summernote('destroy');
+    })
+</script>

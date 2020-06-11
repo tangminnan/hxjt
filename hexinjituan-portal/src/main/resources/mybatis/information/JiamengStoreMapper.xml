@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hexinjituan.information.dao.JiamengStoreDao">
+
+	<select id="get" resultType="com.hexinjituan.information.domain.JiamengStoreDO">
+		select `id`,weixin,QQ,`jiameng_name`,`jiameng_type`,`jiameng_phone`,`jiameng_address`,`url`,`deleted`,`update_time`,`create_time` from jiameng_store where id = #{value}
+	</select>
+
+	<select id="list" resultType="com.hexinjituan.information.domain.JiamengStoreDO">
+		select `id`,`jiameng_name`,weixin,QQ,`jiameng_type`,`jiameng_phone`,`jiameng_address`,`url`,`deleted`,`update_time`,`create_time` from jiameng_store
+        where deleted=0
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="jiamengName != null and jiamengName != ''"> and jiameng_name = #{jiamengName} </if>
+		  		  <if test="jiamengType != null and jiamengType != ''"> and jiameng_type = #{jiamengType} </if>
+		  		  <if test="jiamengPhone != null and jiamengPhone != ''"> and jiameng_phone = #{jiamengPhone} </if>
+		  		  <if test="jiamengAddress != null and jiamengAddress != ''"> and jiameng_address = #{jiamengAddress} </if>
+		  		  <if test="url != null and url != ''"> and url = #{url} </if>
+		  		  <if test="deleted != null and deleted != ''"> and deleted = #{deleted} </if>
+		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from jiameng_store
+		where deleted=0
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="jiamengName != null and jiamengName != ''"> and jiameng_name = #{jiamengName} </if>
+		  		  <if test="jiamengType != null and jiamengType != ''"> and jiameng_type = #{jiamengType} </if>
+		  		  <if test="jiamengPhone != null and jiamengPhone != ''"> and jiameng_phone = #{jiamengPhone} </if>
+		  		  <if test="jiamengAddress != null and jiamengAddress != ''"> and jiameng_address = #{jiamengAddress} </if>
+		  		  <if test="url != null and url != ''"> and url = #{url} </if>
+		  		  <if test="deleted != null and deleted != ''"> and deleted = #{deleted} </if>
+		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+
+	</select>
+	 
+	<insert id="save" parameterType="com.hexinjituan.information.domain.JiamengStoreDO" useGeneratedKeys="true" keyProperty="id">
+		insert into jiameng_store
+		(
+			`jiameng_name`, 
+			`jiameng_type`, 
+			`jiameng_phone`, 
+			`jiameng_address`, 
+			`url`, 
+			`deleted`, 
+			`update_time`, 
+			`create_time`,
+			weixin,
+			QQ
+		)
+		values
+		(
+			#{jiamengName}, 
+			#{jiamengType}, 
+			#{jiamengPhone}, 
+			#{jiamengAddress}, 
+			#{url}, 
+			#{deleted}, 
+			#{updateTime}, 
+			#{createTime},
+			#{weixin},
+			#{QQ}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.hexinjituan.information.domain.JiamengStoreDO">
+		update jiameng_store 
+		<set>
+			<if test="jiamengName != null">`jiameng_name` = #{jiamengName}, </if>
+			<if test="jiamengType != null">`jiameng_type` = #{jiamengType}, </if>
+			<if test="jiamengPhone != null">`jiameng_phone` = #{jiamengPhone}, </if>
+			<if test="jiamengAddress != null">`jiameng_address` = #{jiamengAddress}, </if>
+			<if test="url != null">`url` = #{url}, </if>
+			<if test="deleted != null">`deleted` = #{deleted}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
+			<if test="createTime != null">`create_time` = #{createTime},</if>
+			<if test="weixin != null">`weixin` = #{weixin},</if>
+			<if test="QQ != null">`QQ` = #{QQ}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from jiameng_store where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from jiameng_store where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

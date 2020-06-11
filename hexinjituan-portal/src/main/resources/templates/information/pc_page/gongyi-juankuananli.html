@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head th:include="include :: header">
+<meta charset="utf-8">
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>慈善捐款案例</title>
+</head>
+<body>
+    <div class="top">
+    	<div class="main">
+			<p class="fl"><img src="images/logo.png" alt=""/>一人就业 全家安心</p>
+   			<span class="fr"><img src="images/zxrx.png" alt=""/></span>
+    	</div>
+	</div>
+   	<div class="topnav">
+    	<ul class="main">
+    		<li><a href="/index.html">首页</a></li>
+    		<li><a href="/rongyu">企业荣誉</a></li>
+    		<li class="on"><a href="/jianjie.html">集团简介</a></li>
+    		<li><a href="/fuwu.html">家政服务</a></li>
+    		<li><a href="/xiaxiang.html">送技术下乡</a></li>
+    		<li><a href="/peixun.html">技能培训</a></li>
+    		<li><a href="/hezuo.html">劳务合作社</a></li>
+    		<li><a href="/renli.html">人力资源</a></li>
+    		<li><a href="/zhaoxian.html">招贤纳士</a></li>
+    		<li><a href="/lianxi.html">联系我们</a></li>
+    		<li><a href="/jiameng.html">合作加盟</a></li>
+    	</ul>
+    </div>
+	<!--公益在行动-->
+	<div class="main jiuYe">
+		<div class="breadNav">集团简介>慈善公益>慈善捐款案例>详情页</div>
+		<div class="gongyiTxt">
+			<h3 th:text="${gongyiDO.gongchengName}" style="margin: 10px 0"></h3>
+			<span th:text="时间：+${#dates.format(gongyiDO.createTime, 'yyyy.MM.dd')}" style="display: block;font-size: 14px;color: #333;text-align: center;margin: 10px;"></span>
+			<div id="companyContent" style="display: none" th:text="${gongyiDO.gongchengContent}"></div>
+			<div class="ibox-content no-padding" style="border-color: #fff;">
+				<div id="content_sn" class="summernote"></div>
+			</div>
+			<!--
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
+     		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
+     		<img src="images/ertong.jpg" alt=""/>
+      		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
+		-->
+		</div>
+	</div>
+
+	<!--底部-->
+	<div class="foot">
+		<div class="main">
+			<div class="fl leftTxt">
+				<div class="fotnav">
+					<a href="">首页</a>
+					<a href="">联系我们</a>
+					<a href="">投诉意见</a>
+					<a href="">免费培训</a>
+					<a href="">人才招聘</a>
+					<a href="">连锁加盟</a>
+					<a href="">寻求帮助</a>
+				</div>
+				<p>地址：山东省德州市禹城建设路中段633号（人社局沿街一楼）</p>
+			</div>
+			<div class="fr rightTxt">
+				<img src="images/laifang.png" alt=""/>
+				<div class="link">
+					<p>友情链接：</p>
+					<div class="friend">
+						<a href="">中国家庭服务业协会</a>
+						<a href="">山东妇女网</a>
+						<a href="">德州市人社局</a>
+						<a href="">德州市人社局</a>
+						<a href="">德州市人社局</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div th:include="include::footer"></div>
+</body>
+</html>
+<script type="text/javascript">
+	jQuery(".RYtableBox").slide({trigger:"click"});
+
+    $(function () {
+        var companyContent = $("#companyContent").text();
+        $('#content_sn').summernote('code', companyContent);
+        $('#content_sn').summernote('destroy');
+    })
+
+</script>

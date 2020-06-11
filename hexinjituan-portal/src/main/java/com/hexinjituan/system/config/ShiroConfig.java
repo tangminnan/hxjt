@@ -71,25 +71,21 @@ public class ShiroConfig {
 		filterChainDefinitionMap.put("/css/**", "anon");
 		filterChainDefinitionMap.put("/js/**", "anon");
 		filterChainDefinitionMap.put("/fonts/**", "anon");
-		filterChainDefinitionMap.put("/img/**", "anon");
+		filterChainDefinitionMap.put("/images/**", "anon");
 		filterChainDefinitionMap.put("/docs/**", "anon");
 		filterChainDefinitionMap.put("/druid/**", "anon");
 		filterChainDefinitionMap.put("/upload/**", "anon");
 		filterChainDefinitionMap.put("/files/**", "anon");
 /*		filterChainDefinitionMap.put("/logout", "logout");*/
 		filterChainDefinitionMap.put("/index", "anon");
-		filterChainDefinitionMap.put("/information/consult/queryMsgDetails", "anon");
-		filterChainDefinitionMap.put("/information/notice", "anon");
-		filterChainDefinitionMap.put("/information/consult", "anon");
 		filterChainDefinitionMap.put("/register", "anon");
 		filterChainDefinitionMap.put("/captcha", "anon");
 		filterChainDefinitionMap.put("/retpwd", "anon");
 		filterChainDefinitionMap.put("/wangjimima", "anon");
-		filterChainDefinitionMap.put("/jiaofei/wuye/notifycallback", "anon");
 		filterChainDefinitionMap.put("/", "anon");
 		filterChainDefinitionMap.put("/blog", "anon");
 		filterChainDefinitionMap.put("/blog/open/**", "anon");
-		filterChainDefinitionMap.put("/**", "authc");
+		filterChainDefinitionMap.put("/**", "anon");
 		shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
 		return shiroFilterFactoryBean;
 	}

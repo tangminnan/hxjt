@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hexinjituan.information.dao.SkillTrainingDao">
+
+	<select id="get" resultType="com.hexinjituan.information.domain.SkillTrainingDO">
+		select `id`,`training_class`,`deleted`,`update_time`,`create_time`,`training_name`,`training_content`,`url` from skill_training where id = #{value}
+	</select>
+
+	<select id="list" resultType="com.hexinjituan.information.domain.SkillTrainingDO">
+		select `id`,`training_class`,`deleted`,`update_time`,`create_time`,`training_name`,`training_content`,`url` from skill_training
+        where deleted=0
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="trainingClass != null and trainingClass != ''"> and training_class = #{trainingClass} </if>
+		  		  <if test="deleted != null and deleted != ''"> and deleted = #{deleted} </if>
+		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+		  		  <if test="trainingName != null and trainingName != ''"> and training_name = #{trainingName} </if>
+		  		  <if test="trainingContent != null and trainingContent != ''"> and training_content = #{trainingContent} </if>
+		  		  <if test="url != null and url != ''"> and url = #{url} </if>
+
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from skill_training
+		where deleted=0
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="trainingClass != null and trainingClass != ''"> and training_class = #{trainingClass} </if>
+		  		  <if test="deleted != null and deleted != ''"> and deleted = #{deleted} </if>
+		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+		  		  <if test="trainingName != null and trainingName != ''"> and training_name = #{trainingName} </if>
+		  		  <if test="trainingContent != null and trainingContent != ''"> and training_content = #{trainingContent} </if>
+		  		  <if test="url != null and url != ''"> and url = #{url} </if>
+
+	</select>
+	 
+	<insert id="save" parameterType="com.hexinjituan.information.domain.SkillTrainingDO" useGeneratedKeys="true" keyProperty="id">
+		insert into skill_training
+		(
+			`training_class`, 
+			`deleted`, 
+			`update_time`, 
+			`create_time`, 
+			`training_name`, 
+			`training_content`, 
+			`url`
+		)
+		values
+		(
+			#{trainingClass}, 
+			#{deleted}, 
+			#{updateTime}, 
+			#{createTime}, 
+			#{trainingName}, 
+			#{trainingContent}, 
+			#{url}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.hexinjituan.information.domain.SkillTrainingDO">
+		update skill_training 
+		<set>
+			<if test="trainingClass != null">`training_class` = #{trainingClass}, </if>
+			<if test="deleted != null">`deleted` = #{deleted}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
+			<if test="createTime != null">`create_time` = #{createTime}, </if>
+			<if test="trainingName != null">`training_name` = #{trainingName}, </if>
+			<if test="trainingContent != null">`training_content` = #{trainingContent}, </if>
+			<if test="url != null">`url` = #{url}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from skill_training where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from skill_training where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>
