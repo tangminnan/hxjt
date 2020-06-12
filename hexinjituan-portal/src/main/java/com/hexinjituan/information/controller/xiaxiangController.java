@@ -57,4 +57,19 @@ public class xiaxiangController {
         model.addAttribute("list",list);
         return "information/pc_page/peixun";
     }
+
+    @GetMapping("/peixunxiangqing")
+    String peixunxiangqing(Model model,String name){
+        System.out.println(name);
+        Map<String , Object> map = new HashMap<>();
+        map.put("trainingName",name);
+        List<SkillTrainingDO> list = skillTrainingService.list(map);
+        if(list.size()<=0){
+            return "information/pc_page/peixun";
+        }
+        if(list.size()>0){
+            model.addAttribute("list",list.get(0));
+        }
+        return "information/pc_page/xiaxiangXQ";
+    }
 }

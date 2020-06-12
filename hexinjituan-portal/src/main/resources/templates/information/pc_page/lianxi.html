@@ -19,15 +19,15 @@
 	</div>
    	<div class="topnav">
     	<ul class="main">
-    		<li><a href="index.html">首页</a></li>
-    		<li><a href="">企业荣誉</a></li>
-    		<li><a href="jianjie.html">集团简介</a></li>
-    		<li><a href="fuwu.html">家政服务</a></li>
-    		<li><a href="xiaxiang.html">送技术下乡</a></li>
-    		<li><a href="hezuo.html">劳务合作社</a></li>
-    		<li><a href="zhaoxian.html">招贤纳士</a></li>
-    		<li class="on"><a href="lianxi.html">联系我们</a></li>
-    		<li><a href="jiameng.html">合作加盟</a></li>
+    		<li><a href="/index.html">首页</a></li>
+    		<li><a href="/rongyu.html">企业荣誉</a></li>
+    		<li><a href="/jianjie.html">集团简介</a></li>
+    		<li><a href="/fuwu.html">家政服务</a></li>
+    		<li><a href="/xiaxiang.html">送技术下乡</a></li>
+    		<li><a href="/hezuo.html">劳务合作社</a></li>
+    		<li><a href="/zhaoxian.html">招贤纳士</a></li>
+    		<li class="on"><a href="/lianxi.html">联系我们</a></li>
+    		<li><a href="/jiameng.html">合作加盟</a></li>
     	</ul>
     </div>
 	<!--联系我们-->
@@ -37,15 +37,15 @@
 			<p>尊敬的朋友，您有什么需求，可以留下联系方式，我们的工作人员会第一时间给予你回复！</p>
 			<div class="txt">
 				<span><em>*</em>姓名</span>
-				<input type="text"/>
+				<input id="leaveName" type="text"/>
 			</div>
 			<div class="txt">
 				<span><em>*</em>手机号</span>
-				<input type="text"/>
+				<input id="phone" type="text"/>
 			</div>
 			<div class="txt">
 				<span style="vertical-align:top;">留言内容</span>
-				<textarea name="" id="" cols="30" rows="10"></textarea>
+				<textarea name="" id="content" cols="30" rows="10"></textarea>
 			</div>
 			<input type="button" value="提交留言" class="tijiao"/>
 		</div>
@@ -126,4 +126,51 @@
 	}
 	var infoWindow = new BMap.InfoWindow("山东省德州市禹城市建设路中段633号（人社局沿街一楼）",opts);
 	map.openInfoWindow(infoWindow, map.getCenter());
+
+	$("input[class='tijiao']").click(function () {
+		var leaveName = $("#leaveName").val();
+        var phone = $("#phone").val();
+        var content = $("#content").val();
+        if (leaveName.length<=0 || leaveName=="") {
+            alert("姓名不能为空！！！");
+            return false;
+		}
+        if (phone.length<=0 || phone=="" || !(/^1[3456789]\d{9}$/.test(phone))) {
+            alert("手机号格式不正确！！！");
+            return false;
+        }
+        if (content.length<=0 || content=="") {
+            alert("留言内容不能为空！！！");
+            return false;
+        }
+        $.ajax({
+			cache:true,
+			type:"post",
+			url:"/save/leaveMsg",
+            async : false,
+			data:{
+                leaveName : leaveName,
+                phone: phone,
+                content:content
+			},
+			error:function(res){
+
+			},
+			success:function (data) {
+				if (data.code == 0){
+				    alert(data.msg);
+					$("#leaveName").val("");
+                    $("#phone").val("");
+                    $("#content").val("");
+				}else {
+                    alert(data.msg)
+                    $("#leaveName").val("");
+                    $("#phone").val("");
+                    $("#content").val("");
+                }
+            }
+		})
+    })
+
+
 </script>

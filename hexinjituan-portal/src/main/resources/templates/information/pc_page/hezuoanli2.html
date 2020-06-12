@@ -1,82 +1,92 @@
 <!doctype html>
 <html>
-<head>
-<meta charset="utf-8">
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<title>劳务合作社案例</title>
-<link rel="stylesheet" href="css/css.css" type="text/css">
-<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
+<head th:include="include :: header">
+	<meta charset="utf-8">
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>合作分社</title>
 </head>
 <body>
-    <div class="top">
-    	<div class="main">
-			<p class="fl"><img src="images/logo.png" alt=""/>一人就业 全家安心</p>
-   			<span class="fr"><img src="images/zxrx.png" alt=""/></span>
-    	</div>
+<div class="top">
+	<div class="main">
+		<p class="fl"><img src="images/logo.png" alt=""/>一人就业 全家安心</p>
+		<span class="fr"><img src="images/zxrx.png" alt=""/></span>
 	</div>
-   	<div class="topnav">
-    	<ul class="main">
-    		<li><a href="index.html">首页</a></li>
-    		<li><a href="">企业荣誉</a></li>
-    		<li><a href="jianjie.html">集团简介</a></li>
-    		<li><a href="fuwu.html">家政服务</a></li>
-    		<li><a href="xiaxiang.html">送技术下乡</a></li>
-    		<li><a href="peixun.html">技能培训</a></li>
-    		<li class="on"><a href="hezuo.html">劳务合作社</a></li>
-    		<li><a href="renli.html">人力资源</a></li>
-    		<li><a href="zhaoxian.html">招贤纳士</a></li>
-    		<li><a href="lianxi.html">联系我们</a></li>
-    		<li><a href="jiameng.html">合作加盟</a></li>
-    	</ul>
-    </div>
-	<!--公益在行动-->
-	<div class="main jiuYe">
-		<div class="breadNav">首页>劳务合作社>合作社分社>详情页</div>
-		<div class="gongyiTxt">
-			<h3>房寺镇分社</h3>
-			<p>我们的一切努力都是为了社员有个更好的未来。   </p>
-     		<p>房寺镇劳务合作社分社始终坚持“民办、民管、民受益”原则，突出公益性，重点解决本镇农村劳动力转移就业。劳务合作社主要针对农村富余闲置的劳动力，尤其是农村就业困难人员实现就业再就业，吸收农民入社，组织社员开展劳动法律法规、劳动知识、劳动保护等劳动基本技能培训，提高社员整体劳动素质。房寺镇劳务合作社分社为例。在2020年工商部门的指导和协调下，房寺镇劳务合作社分社完成了正式注册，社员已达到568名。</p>
-      		<p>2020年4月份，房寺劳务合作社分社已经完成对房寺镇162个行政村闲置富余劳动力的登记。 数据显示，该乡镇总人口为74330人，有劳动能力的为5.8万人，其中外出务工人数达到4万人，占全镇总人口的42.78%。在外出务工的4万人中，大专、本科学历的占外出人数的8.23%；高中、中专文化的占外出人数的75%；初中文化的占外出人数的15%；外出务工人员的年龄大多在20—50之间，其中最多的是20—30岁的，20岁以下、50岁以上的只占外出人数的26.8%。由此可见，外出务工农民中，初中文化的居多，小学文化次之，而这些人中，20—30岁的居多，30—50的次之。 </p>
-      		<p>通过此次调查，劳务合作社决定对他们进行统一的免费技能培训，培训项目有育婴师、中式烹调、养老护理、中式面点、电工电焊，美容美发等，提升了农民工朋友们的再就业能力。劳务合作社将通过搭建平台，承接劳务服务，如为企业、业主开展定向、订单式用工服务；承接土地规模经营企业、业主的农业代耕、代种、代管、代收等全程农业劳务用工服务；向物业公司、农业基地、公路、水利部门等单位，承接绿化养护、河道保洁、道路养护与保洁等劳务用工服务等，为农民工朋友提供良好的就业渠道。据社员反应有时候单个农民外出找活，或因为人数少或因为技术达不到要求，或因为经验不足等被用工单位拒之门外，房寺镇劳务合作社分社成立后，已经实现“找”与“招”信息的畅通，破解信息闭塞制约，快速、高效地帮助农民再就业，帮助用人单位招到人。而且由合作社作为中间对接机构，有多种保障措施，双方都可放心大胆地进行合作，实现双赢。劳务合作社的组建不仅有助于解决大龄农民的就业问题，而且能缓解部分农业龙头企业的季节性缺工问题，具有较大的社会效益。同时，通过就业岗位的提供与就业方式的转变，积极引导农村居民改变传统的生产和生活方式，将有效地加快实现农民向市民的身份转换，促进安仁镇城乡一体化发展。</p>
-      		<img src="images/fenshe.jpg" alt="">
+</div>
+<div class="topnav">
+	<ul class="main">
+		<li><a href="/index.html">首页</a></li>
+		<li><a href="/rongyu">企业荣誉</a></li>
+		<li><a href="/jianjie.html">集团简介</a></li>
+		<li><a href="/fuwu.html">家政服务</a></li>
+		<li class="on"><a href="/xiaxiang.html">送技术下乡</a></li>
+		<!--<li><a href="/peixun.html">技能培训</a></li>-->
+		<li><a href="/hezuo.html">劳务合作社</a></li>
+		<!--<li><a href="/renli.html">人力资源</a></li>-->
+		<li><a href="/zhaoxian.html">招贤纳士</a></li>
+		<li><a href="/lianxi.html">联系我们</a></li>
+		<li><a href="/jiameng.html">合作加盟</a></li>
+	</ul>
+</div>
+<!--公益在行动-->
+<div class="main jiuYe">
+	<div class="breadNav">劳务合作社>合作社分社>详情页</div>
+	<div class="gongyiTxt">
+		<h3 th:text="${hezuosheDO.title}" style="margin: 10px 0"></h3>
+		<div id="companyContent" style="display: none" th:text="${hezuosheDO.gongchengDetail}"></div>
+		<div class="ibox-content no-padding" style="border-color: #fff;">
+			<div id="content_sn" class="summernote"></div>
 		</div>
+		<!--
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
+         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
+         <img src="images/ertong.jpg" alt=""/>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
+    -->
 	</div>
+</div>
 
-	<!--底部-->
-	<div class="foot">
-		<div class="main">
-			<div class="fl leftTxt">
-				<div class="fotnav">
-					<a href="">首页</a>
-					<a href="">联系我们</a>
-					<a href="">投诉意见</a>
-					<a href="">免费培训</a>
-					<a href="">人才招聘</a>
-					<a href="">连锁加盟</a>
-					<a href="">寻求帮助</a>
-				</div>
-				<p>地址：山东省德州市禹城建设路中段633号（人社局沿街一楼）</p>
+<!--底部-->
+<div class="foot">
+	<div class="main">
+		<div class="fl leftTxt">
+			<div class="fotnav">
+				<a href="">首页</a>
+				<a href="">联系我们</a>
+				<a href="">投诉意见</a>
+				<a href="">免费培训</a>
+				<a href="">人才招聘</a>
+				<a href="">连锁加盟</a>
+				<a href="">寻求帮助</a>
 			</div>
-			<div class="fr rightTxt">
-				<img src="images/laifang.png" alt=""/>
-				<div class="link">
-					<p>友情链接：</p>
-					<div class="friend">
-						<a href="">中国家庭服务业协会</a>
-						<a href="">山东妇女网</a>
-						<a href="">德州市人社局</a>
-						<a href="">德州市人社局</a>
-						<a href="">德州市人社局</a>
-					</div>
+			<p>地址：山东省德州市禹城建设路中段633号（人社局沿街一楼）</p>
+		</div>
+		<div class="fr rightTxt">
+			<img src="images/laifang.png" alt=""/>
+			<div class="link">
+				<p>友情链接：</p>
+				<div class="friend">
+					<a href="">中国家庭服务业协会</a>
+					<a href="">山东妇女网</a>
+					<a href="">德州市人社局</a>
+					<a href="">德州市人社局</a>
+					<a href="">德州市人社局</a>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
+<div th:include="include::footer"></div>
 </body>
 </html>
 <script type="text/javascript">
-	jQuery(".RYtableBox").slide({trigger:"click"});
+    jQuery(".RYtableBox").slide({trigger:"click"});
+
+    $(function () {
+        var companyContent = $("#companyContent").text();
+        $('#content_sn').summernote('code', companyContent);
+        $('#content_sn').summernote('destroy');
+    })
+
 </script>

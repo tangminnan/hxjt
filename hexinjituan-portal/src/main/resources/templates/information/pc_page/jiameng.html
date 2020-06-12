@@ -19,15 +19,15 @@
 	</div>
    	<div class="topnav">
     	<ul class="main">
-    		<li><a href="index.html">首页</a></li>
-    		<li><a href="">企业荣誉</a></li>
-    		<li><a href="jianjie.html">集团简介</a></li>
-    		<li><a href="fuwu.html">家政服务</a></li>
-    		<li><a href="xiaxiang.html">送技术下乡</a></li>
-    		<li><a href="hezuo.html">劳务合作社</a></li>
-    		<li><a href="zhaoxian.html">招贤纳士</a></li>
-    		<li><a href="lianxi.html">联系我们</a></li>
-    		<li class="on"><a href="jiameng.html">合作加盟</a></li>
+    		<li><a href="/index.html">首页</a></li>
+    		<li><a href="/rongyu">企业荣誉</a></li>
+    		<li><a href="/jianjie.html">集团简介</a></li>
+    		<li><a href="/fuwu.html">家政服务</a></li>
+    		<li><a href="/xiaxiang.html">送技术下乡</a></li>
+    		<li><a href="/hezuo.html">劳务合作社</a></li>
+    		<li><a href="/zhaoxian.html">招贤纳士</a></li>
+    		<li><a href="/lianxi.html">联系我们</a></li>
+    		<li class="on"><a href="/jiameng.html">合作加盟</a></li>
     	</ul>
     </div>
 	<!--合作加盟-->
@@ -38,7 +38,20 @@
 	<div class="titbreak"><span>公司直营店</span></div>
 	<div class="main zhiying">
 		<ul>
-			<li>
+			<li th:each="ls:${list}">
+				<img th:src="${ls.url}" alt=""/>
+				<h3 th:text="${ls.jiamengName}">糖城广场分店</h3>
+				<p>
+					<span>电话：</span>
+					<em th:text="${ls.jiamengPhone}">17653434569</em>
+				</p>
+				<p>
+					<span>地址：</span>
+					<em th:text="${ls.jiamengAddress}">山东省德州市禹城市盛雅依水苑商业街108铺</em>
+				</p>
+			</li>
+
+			<!--<li>
 				<img src="images/jiameng-1.jpg" alt=""/>
 				<h3>糖城广场分店</h3>
 				<p>
@@ -157,7 +170,7 @@
 					<span>地址：</span>
 					<em>济南市平阴县府前街文鼎嘉苑南门梓皙专卖店</em>
 				</p>
-			</li>
+			</li>-->
 		</ul>
 	</div>
 	<div class="titbreak"><span>加盟店</span></div>
