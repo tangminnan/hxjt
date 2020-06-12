@@ -21,10 +21,10 @@
     		<li><a href="/jianjie.html">集团简介</a></li>
     		<li><a href="/fuwu.html">家政服务</a></li>
     		<li class="on"><a href="/xiaxiang.html">送技术下乡</a></li>
-    		<li><a href="/peixun.html">技能培训</a></li>
+    		<!--<li><a href="/peixun.html">技能培训</a></li>-->
     		<li><a href="/hezuo.html">劳务合作社</a></li>
-    		<li><a href="/renli.html">人力资源</a></li>
-    		<li><a href="/zhaoxian.html">招贤纳士</a></li>
+    		<!--<li><a href="/renli.html">人力资源</a></li>
+    		<li><a href="/zhaoxian.html">招贤纳士</a></li>-->
     		<li><a href="/lianxi.html">联系我们</a></li>
     		<li><a href="/jiameng.html">合作加盟</a></li>
     	</ul>
@@ -33,14 +33,20 @@
 	<div class="main">
 		<div class="breadNav">首页>送技术下乡>免费技能培训>项目详情页</div>
 		<div class="yuying">		
-			<h3>育婴员</h3>
+			<h3 th:text="${list.trainingName}">育婴员</h3>
 			<dl>
+				<div id="companyContent" style="display: none" th:text="${list.trainingContent}"></div>
+				<div class="ibox-content no-padding" style="border-color: #fff;">
+					<div id="content_sn" class="summernote"></div>
+				</div>
+				<!--
 				<dt>育婴师培训内容：</dt>
 				<dd>1、0—3岁婴儿解剖及生理发育特点：呼吸系统、心血管系统、消化系统、泌尿系统、内分泌系统、运动系统、神经系统、感觉系统。</dd>
 				<dd>2、0—3岁婴儿心理发展特点：感知觉能力、记忆能力、思维能力、想象能力、注意特性、人际交往能力、自我意识、情绪与情感、意志力、气质特征、言语能力。</dd>
 				<dd>3、0—3岁婴儿营养：热能、营养素的基本知识、营养需要、膳食评价与营养行为。</dd>
 				<dd>4、0—3岁婴儿教育：教育意义、教育特点与内容、教育原则与方法。</dd>
 				<dd>5、相关法律、法规知识：宪法的相关知识、母婴保健法的相关知识、未成年人保护法的相关知识、儿童权利公约的相关知识、中国儿童发展纲要的相关知识、食品卫生法的相关知识、劳动法的相关知识。</dd>
+			-->
 			</dl>
 			<input type="button" value="我要报名"/>
 		</div>
@@ -93,4 +99,11 @@
 	//弹框
 	$(".yuying input").click(function(){$(".pop").show();});
 	$(".pop em").click(function(){$(".pop").hide();});
+
+    $(function () {
+        var companyContent = $("#companyContent").text();
+        $('#content_sn').summernote('code', companyContent);
+        $('#content_sn').summernote('destroy');
+    })
+
 </script>
