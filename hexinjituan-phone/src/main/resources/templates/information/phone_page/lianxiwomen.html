@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="css/base.css" type="text/css">
+<title>联系我们</title>
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="js/TouchSlide.1.1.js"></script>
+<script type="text/javascript" src="js/Font.js"></script>
+</head>
+<body>
+<!--头部-->
+<div class="top">
+	<p class="fl font-26">一人就业 全家安心</p>
+	<img class="fr" src="images/Tel.png" alt=""/>
+</div>
+
+<div class="topNav font-20 bgW p20 m6">
+	<ul>
+		<li><a href="">首页</a></li>
+		<li><a href="">企业荣誉</a></li>
+		<li><a href="">集团简介</a></li>
+		<li><a href="">家政服务</a></li>
+		<li><a href="">送技术下乡</a></li>
+		<li><a href="">技能培训</a></li>
+		<li><a href="">劳务合作社</a></li>
+		<li><a href="">人力资源</a></li>
+		<li><a href="">装饰工程</a></li>
+		<li><a href="">招贤纳士</a></li>
+		<li><a href="">联系我们</a></li>
+		<li><a href="">合作加盟</a></li>
+	</ul>
+</div>
+
+<div class="jianjie font-28 bgW m6 p20">
+	<div class="SMtit">联系我们</div>
+</div>
+
+<div class="liuyan p20 m6 bgW">
+	<h3>我要留言</h3>
+	<p>尊敬的朋友，您有什么需求，可以留下联系方式，我们的工作人员会第一时间给予你回复！</p>
+	<div class="lyBox">
+		<input type="text" placeholder="输入姓名"/>
+		<input type="text" placeholder="输入手机号"/>
+		<textarea name="" id="" cols="30" rows="10" placeholder="输入留言内容..."></textarea>
+	</div>
+	<input class="tijiao" type="button" value="提交留言"/>
+</div>
+
+<div class="lxFS font-30">
+	<h3>联系方式</h3>
+	<div class="m6">
+		<p>企业微信</p>
+		<ul>
+			<li>糖城广场分店微信：hexin17653434569</li>
+			<li>禹王大市场分店微信：18953451938</li>
+			<li>山东国际商贸港分店：15621237198</li>
+		</ul>
+	</div>
+	<div class="m6">
+		<p id="QQ">企业QQ</p>
+		<ul>
+			<li>糖城广场店QQ：2785570045</li>
+			<li>禹王大市场店QQ：3186523972</li>
+		</ul>
+	</div>
+</div>
+
+<div class="jituandizhi m6 p20 bgW font-28">
+	<h3>集团地址</h3>
+	<img class="map" src="images/map.jpg" alt=""/>
+	<ul>
+		<li><span>集团网址:</span>sdhexinjituan.com</li>
+		<li><span>全国统一免费热线:</span>400-7169-518</li>
+		<li><span>微信二维码:</span> <img src="images/erweima.jpg" alt=""/></li>
+	</ul>
+</div>
+
+<div class="fotNav font-24 p20">
+	<ul>
+		<li><a href="">首页</a></li>
+		<li><a href="">联系我们</a></li>
+		<li><a href="">投诉意见</a></li>
+		<li><a href="">免费培训</a></li>
+		<li><a href="">人才招聘</a></li>
+		<li><a href="">合作加盟</a></li>
+		<li><a href="">寻求帮助</a></li>
+	</ul>
+	<p>最近访客</p>
+	<dl>
+		<dt>友情链接：</dt>
+		<dd>中国家庭服务业协会</dd>
+		<dd>山东妇女网</dd>
+		<dd>德州市人社局</dd>
+		<dd>德州市人力资源部</dd>
+	</dl>
+	<div class="address">地址：山东省德州市禹城建设路中段633号（人社局沿街一楼）</div>
+</div>
+
+<div id="back-to-top"></div>
+
+</body>
+</html>
+<script type="text/javascript">
+	$("#show").click(function(){
+		$(".jianjie .txt .none").show();
+	});
+	
+	//-------一键回顶部----------
+	 $(document).ready(function(){
+	  //首先将#back-to-top隐藏
+	  $("#back-to-top").hide();
+	  //当滚动条的位置处于距顶部100像素以下时，跳转链接出现，否则消失
+	  $(function () {
+		$(window).scroll(function(){
+		if ($(window).scrollTop()>100){
+		$("#back-to-top").fadeIn(100);
+		}
+		else
+		{
+		$("#back-to-top").fadeOut(100);
+		}
+		});
+		//当点击跳转链接后，回到页面顶部位置
+		$("#back-to-top").click(function(){
+		$('body,html').animate({scrollTop:0},"speed");
+		return false;
+		});
+		});
+		});
+ </script>
+
+

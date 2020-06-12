@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hexinjituan.information.dao.ZhaoxianDao">
+
+	<select id="get" resultType="com.hexinjituan.information.domain.ZhaoxianDO">
+		select `id`,`deleted`,`update_time`,`create_time`,`title`,`content`,`phone_f`,`phone_s` from zhaoxian where id = #{value}
+	</select>
+
+	<select id="list" resultType="com.hexinjituan.information.domain.ZhaoxianDO">
+		select `id`,`deleted`,`update_time`,`create_time`,`title`,`content`,`phone_f`,`phone_s` from zhaoxian
+		where deleted=0
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="deleted != null and deleted != ''"> and deleted = #{deleted} </if>
+		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+		  		  <if test="title != null and title != ''"> and title = #{title} </if>
+		  		  <if test="content != null and content != ''"> and content = #{content} </if>
+		  		  <if test="phoneF != null and phoneF != ''"> and phone_f = #{phoneF} </if>
+		  		  <if test="phoneS != null and phoneS != ''"> and phone_s = #{phoneS} </if>
+
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from zhaoxian
+		 where deleted=0
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="deleted != null and deleted != ''"> and deleted = #{deleted} </if>
+		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+		  		  <if test="title != null and title != ''"> and title = #{title} </if>
+		  		  <if test="content != null and content != ''"> and content = #{content} </if>
+		  		  <if test="phoneF != null and phoneF != ''"> and phone_f = #{phoneF} </if>
+		  		  <if test="phoneS != null and phoneS != ''"> and phone_s = #{phoneS} </if>
+
+	</select>
+	 
+	<insert id="save" parameterType="com.hexinjituan.information.domain.ZhaoxianDO" useGeneratedKeys="true" keyProperty="id">
+		insert into zhaoxian
+		(
+			`deleted`, 
+			`update_time`, 
+			`create_time`, 
+			`title`, 
+			`content`, 
+			`phone_f`, 
+			`phone_s`
+		)
+		values
+		(
+			#{deleted}, 
+			#{updateTime}, 
+			#{createTime}, 
+			#{title}, 
+			#{content}, 
+			#{phoneF}, 
+			#{phoneS}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.hexinjituan.information.domain.ZhaoxianDO">
+		update zhaoxian 
+		<set>
+			<if test="deleted != null">`deleted` = #{deleted}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
+			<if test="createTime != null">`create_time` = #{createTime}, </if>
+			<if test="title != null">`title` = #{title}, </if>
+			<if test="content != null">`content` = #{content}, </if>
+			<if test="phoneF != null">`phone_f` = #{phoneF}, </if>
+			<if test="phoneS != null">`phone_s` = #{phoneS}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from zhaoxian where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from zhaoxian where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

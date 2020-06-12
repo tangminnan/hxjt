@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="css/base.css" type="text/css">
+<title>展示详情</title>
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="js/TouchSlide.1.1.js"></script>
+<script type="text/javascript" src="js/Font.js"></script>
+</head>
+<body>
+<!--头部-->
+<div class="top">
+	<p class="fl font-26">一人就业 全家安心</p>
+	<img class="fr" src="images/Tel.png" alt=""/>
+</div>
+
+<div class="zhanshiXQ font-24 bgW p20 lp2">
+	<h3>禹城宏博职业技能培训学校</h3>
+	<p>合心集团旗下春来顺工程有限公司是一家集多方面发展的工程公司，主营：室内外装饰装修、铁路、公路、土石方桥涵工程、园林绿化、防腐保温、给排水、市政、环保、“防水”农村改造、亮化、水暖安装、农田水利工程施工；工程机械设备租赁；建筑劳务分包；五金电料、建材销售等等。</p>
+</div>
+<div class="zhuangshiT bgW m6"><img src="images/zhuangshi.jpg" alt=""/></div>
+
+<div class="zhuangshiX m6 bgW font-24 p20">
+	<dl>
+		<dt>装饰工程项目</dt>
+		<dd>负责人:范经理 <span> 微信:15705348488 </span>  <span>电话:15705348488</span></dd>
+	</dl>
+</div>
+
+<div class="zhuangshiB p20 font-30">
+	<div class="box">
+		<em></em>
+		<img src="images/zhuangshi-1.jpg" alt=""/>
+		<dl>
+			<dt>全屋私人定制设计出图</dt>
+			<dd>集团分公司山东春来顺装饰工程有限公司面对济南及德州地区（含各县乡镇）承接上门量房私人定制设计出图。</dd>
+		</dl>
+	</div>
+	<div class="box">
+		<em></em>
+		<img src="images/zhuangshi-2.jpg" alt=""/>
+		<dl>
+			<dt>瓷砖美缝业务</dt>
+			<dd>集团分公司山东春来顺装饰工程有限公司面对济南及德州地区（含各县乡镇）承接瓷砖美缝施工及面对全国出售品牌美缝剂。</dd>
+		</dl>
+	</div>
+	<div class="box">
+		<em></em>
+		<img src="images/zhuangshi-3.jpg" alt=""/>
+		<dl>
+			<dt>智能家居系统</dt>
+			<dd>集团分公司山东春来顺装饰工程有限公司面对济南及德州地区（含各县乡镇）承接家居智能家居策划及施工。</dd>
+		</dl>
+	</div>
+	<div class="box">
+		<em></em>
+		<img src="images/zhuangshi-4.jpg" alt=""/>
+		<dl>
+			<dt>3D打印背景墙</dt>
+			<dd>集团分公司山东春来顺装饰工程有限公司面对济南及德州地区（含各县乡镇）承接3D打印背景墙的上门测量报价及施工。</dd>
+		</dl>
+	</div>
+	<div class="box">
+		<em></em>
+		<img src="images/zhuangshi-5.jpg" alt=""/>
+		<dl>
+			<dt>工程装修</dt>
+			<dd>集团分公司山东春来顺装饰工程有限公司面对济南及德州地区（含各县乡镇）承接工程装修。</dd>
+		</dl>
+	</div>
+</div>
+
+<div class="fotNav font-24 p20">
+	<ul>
+		<li><a href="">首页</a></li>
+		<li><a href="">联系我们</a></li>
+		<li><a href="">投诉意见</a></li>
+		<li><a href="">免费培训</a></li>
+		<li><a href="">人才招聘</a></li>
+		<li><a href="">合作加盟</a></li>
+		<li><a href="">寻求帮助</a></li>
+	</ul>
+	<p>最近访客</p>
+	<dl>
+		<dt>友情链接：</dt>
+		<dd>中国家庭服务业协会</dd>
+		<dd>山东妇女网</dd>
+		<dd>德州市人社局</dd>
+		<dd>德州市人力资源部</dd>
+	</dl>
+	<div class="address">地址：山东省德州市禹城建设路中段633号（人社局沿街一楼）</div>
+</div>
+
+<div id="back-to-top"></div>
+
+</body>
+</html>
+<script type="text/javascript">
+
+	jQuery(".RYtableBox").slide({trigger:"click"});
+	//-------一键回顶部----------
+	 $(document).ready(function(){
+	  //首先将#back-to-top隐藏
+	  $("#back-to-top").hide();
+	  //当滚动条的位置处于距顶部100像素以下时，跳转链接出现，否则消失
+	  $(function () {
+		$(window).scroll(function(){
+		if ($(window).scrollTop()>100){
+		$("#back-to-top").fadeIn(100);
+		}
+		else
+		{
+		$("#back-to-top").fadeOut(100);
+		}
+		});
+		//当点击跳转链接后，回到页面顶部位置
+		$("#back-to-top").click(function(){
+		$('body,html').animate({scrollTop:0},"speed");
+		return false;
+		});
+		});
+		});
+ </script>
+
+

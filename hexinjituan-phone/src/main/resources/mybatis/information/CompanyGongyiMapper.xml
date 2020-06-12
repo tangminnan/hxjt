@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hexinjituan.information.dao.CompanyGongyiDao">
+
+	<select id="get" resultType="com.hexinjituan.information.domain.CompanyGongyiDO">
+		select `id`,gongchengJ,`gongyi_class`,`deleted`,`update_time`,`create_time`,`gongcheng_name`,`gongcheng_content`,`url` from company_gongyi where id = #{value}
+	</select>
+
+	<select id="list" resultType="com.hexinjituan.information.domain.CompanyGongyiDO">
+		select `id`,`gongyi_class`,gongchengJ,`deleted`,`update_time`,`create_time`,`gongcheng_name`,`gongcheng_content`,`url` from company_gongyi
+        where deleted=0
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="gongyiClass != null and gongyiClass != ''"> and gongyi_class = #{gongyiClass} </if>
+		  		  <if test="deleted != null and deleted != ''"> and deleted = #{deleted} </if>
+		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+		  		  <if test="gongchengName != null and gongchengName != ''"> and gongcheng_name = #{gongchengName} </if>
+		  		  <if test="gongchengContent != null and gongchengContent != ''"> and gongcheng_content = #{gongchengContent} </if>
+		  		  <if test="url != null and url != ''"> and url = #{url} </if>
+		          <if test="gongchengJ != null and gongchengJ != ''"> and gongchengJ = #{gongchengJ} </if>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from company_gongyi
+		where deleted=0
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="gongyiClass != null and gongyiClass != ''"> and gongyi_class = #{gongyiClass} </if>
+		  		  <if test="deleted != null and deleted != ''"> and deleted = #{deleted} </if>
+		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+		  		  <if test="gongchengName != null and gongchengName != ''"> and gongcheng_name = #{gongchengName} </if>
+		  		  <if test="gongchengContent != null and gongchengContent != ''"> and gongcheng_content = #{gongchengContent} </if>
+		  		  <if test="url != null and url != ''"> and url = #{url} </if>
+
+	</select>
+	 
+	<insert id="save" parameterType="com.hexinjituan.information.domain.CompanyGongyiDO" useGeneratedKeys="true" keyProperty="id">
+		insert into company_gongyi
+		(
+			`gongyi_class`, 
+			`deleted`, 
+			`update_time`, 
+			`create_time`, 
+			`gongcheng_name`, 
+			`gongcheng_content`, 
+			`url`,
+			gongchengJ
+		)
+		values
+		(
+			#{gongyiClass}, 
+			#{deleted}, 
+			#{updateTime}, 
+			#{createTime}, 
+			#{gongchengName}, 
+			#{gongchengContent}, 
+			#{url},
+			#{gongchengJ}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.hexinjituan.information.domain.CompanyGongyiDO">
+		update company_gongyi 
+		<set>
+			<if test="gongyiClass != null">`gongyi_class` = #{gongyiClass}, </if>
+			<if test="deleted != null">`deleted` = #{deleted}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
+			<if test="createTime != null">`create_time` = #{createTime}, </if>
+			<if test="gongchengName != null">`gongcheng_name` = #{gongchengName}, </if>
+			<if test="gongchengContent != null">`gongcheng_content` = #{gongchengContent}, </if>
+			<if test="url != null">`url` = #{url},</if>
+			<if test="gongchengJ != null">`gongchengJ` = #{gongchengJ}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from company_gongyi where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from company_gongyi where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+	<select id="getNewGongyi" resultType="com.hexinjituan.information.domain.CompanyGongyiDO">
+		SELECT `id`,gongchengJ,`gongyi_class`,`deleted`,`update_time`,`create_time`,`gongcheng_name`,`gongcheng_content`,`url` from company_gongyi c,(
+		SELECT max(create_time) createTime FROM `company_gongyi` where gongyi_class = '公益在行动' and deleted=0) a
+		where c.gongyi_class = '公益在行动' and c.deleted=0  and c.create_time = a.createTime
+	</select>
+
+</mapper>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="css/base.css" type="text/css">
+<title>母婴生活护理</title>
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="js/TouchSlide.1.1.js"></script>
+<script type="text/javascript" src="js/Font.js"></script>
+</head>
+<body>
+<!--头部-->
+<div class="top">
+	<p class="fl font-26">一人就业 全家安心</p>
+	<img class="fr" src="images/Tel.png" alt=""/>
+</div>
+
+<div class="fuwuZL font-28">
+	<h3>母婴生活护理</h3>
+	<div class="txt m6 bgW">
+		<p>一、照料宝宝的日常起居包括喂奶，喂水，换尿布，洗澡，每天指导宝宝游泳锻炼身体。</p>
+		<p>二、具有专业的护理知识，洗涤并消毒宝宝的奶瓶衣物尿布等。</p>
+		<p>三、具有常见病的观察和护理能力，判定宝宝是否患有尿布疹，新生儿黄疸等，并对一些常见的新生儿疾病采取预防措施。</p>
+		<p>四、针对产妇的生活护理，帮产妇擦身观察恶露，洗涤产妇大部分衣物。</p>
+		<p>五、帮助产妇通乳解决乳房胀痛，交会产妇如何清洁乳房和双手后挤奶或进行乳房按摩。教会产妇正确的哺味姿势。</p>
+		<p>六、制作产妇的营养餐和催乳汤水。保证母乳的产量和质量的同时，指导产妇做产后恢复操，促进子宫复原体形复原。</p>
+		<p>七、经常与产妇交流育儿心得，及时安抚产妇，避免产妇出现产后抑郁症。</p>
+	</div>
+	<div class="txt1 bgW">
+		<dl>
+			<dt>服务标准:</dt>
+			<dd>合心阿姨</dd> 
+			<dd>十个一点微笑多一点，服务好一点，仪表美一点，操作稳一点，语言甜一点，要求严一点，爱心多一点，能力强一点，观察细一点，效率高一点。</dd>
+		</dl>
+		<dl>
+			<dt>职业道德:</dt>
+			<dd>合心阿姨   职业道德</dd>
+			<dd>1.遵守时间，信守承诺。</dd>
+			<dd>2.努力好学，技术精益求精。</dd>
+			<dd>3.尊重雇主，诚实厚道，善解人意，热情服务，提高公司信誉。</dd>
+			<dd>4.保护隐私，不参于雇主家内事物，促进家庭和谐。</dd>
+			<dd>5.善于交流，善于倾听，主动征求雇主意见。</dd>
+			<dd>6.产生矛盾，及时解决，以理服人。</dd>
+			<dd>7.遵纪守法，维护社会公德，提高公司形象。</dd>
+		</dl>
+	</div>
+	<div class="anniuS bgW">
+		<input type="button" value="立即预约"/>
+		<input type="button" value="立即参与"/>
+	</div>
+	<ul>
+		<li><img src="images/ayi.jpg" alt=""/></li>
+		<li><img src="images/ayi.jpg" alt=""/></li>
+		<li><img src="images/ayi.jpg" alt=""/></li>
+		<li><img src="images/ayi.jpg" alt=""/></li>
+	</ul>
+</div>
+
+<!--预约弹框-->
+<div class="pop font-24">
+	<div class="txt">
+		<em>×</em>
+		<h3>立即预约</h3>
+		<div class="ewm"><img src="images/erweima.jpg" alt=""/>微信二维码</div>
+		<p><span>手机号：13053434274</span><span>电话：0534-7296999</span></p>
+	</div>
+</div>
+
+<div class="fotNav font-24 p20">
+	<ul>
+		<li><a href="">首页</a></li>
+		<li><a href="">联系我们</a></li>
+		<li><a href="">投诉意见</a></li>
+		<li><a href="">免费培训</a></li>
+		<li><a href="">人才招聘</a></li>
+		<li><a href="">合作加盟</a></li>
+		<li><a href="">寻求帮助</a></li>
+	</ul>
+	<p>最近访客</p>
+	<dl>
+		<dt>友情链接：</dt>
+		<dd>中国家庭服务业协会</dd>
+		<dd>山东妇女网</dd>
+		<dd>德州市人社局</dd>
+		<dd>德州市人力资源部</dd>
+	</dl>
+	<div class="address">地址：山东省德州市禹城建设路中段633号（人社局沿街一楼）</div>
+</div>
+
+<div id="back-to-top"></div>
+
+</body>
+</html>
+<script type="text/javascript">
+	//弹框
+	$(".anniuS input").click(function(){$(".pop").show();});
+	$(".pop em").click(function(){$(".pop").hide();});
+	
+	//-------一键回顶部----------
+	 $(document).ready(function(){
+	  //首先将#back-to-top隐藏
+	  $("#back-to-top").hide();
+	  //当滚动条的位置处于距顶部100像素以下时，跳转链接出现，否则消失
+	  $(function () {
+		$(window).scroll(function(){
+		if ($(window).scrollTop()>100){
+		$("#back-to-top").fadeIn(100);
+		}
+		else
+		{
+		$("#back-to-top").fadeOut(100);
+		}
+		});
+		//当点击跳转链接后，回到页面顶部位置
+		$("#back-to-top").click(function(){
+		$('body,html').animate({scrollTop:0},"speed");
+		return false;
+		});
+		});
+		});
+ </script>
+
+

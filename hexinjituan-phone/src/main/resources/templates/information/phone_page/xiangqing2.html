@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="css/base.css" type="text/css">
+<title>展示详情</title>
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="js/TouchSlide.1.1.js"></script>
+<script type="text/javascript" src="js/Font.js"></script>
+</head>
+<body>
+<!--头部-->
+<div class="top">
+	<p class="fl font-26">一人就业 全家安心</p>
+	<img class="fr" src="images/Tel.png" alt=""/>
+</div>
+
+<div class="zhanshiXQ font-24 bgW p20 lp2">
+	<h3>禹城宏博职业技能培训学校</h3>
+	<p>山东禹城智赢人力资源有限公司，始终“以服务为宗旨、以就业为导向、以技能为核心、以综合素质为根本”的指导思想，突出为经济社会发展服务，为就业和再就业工作服务。因为我们用心所以专业。以优质的服务赢得了客户的好评，先后与多家大型企业开展合作。企业与本市农业农村局，禹城市税务局，禹城市总工会，禹城市农商银行，禹城市禹泽水利工程公司等10余家单位达成劳务派遣合作，派遣人数300余人，社会保险参保率达90%以上。</p>
+	<p>地址：山东省禹城市群贤居北门沿街<br/>电话：15965961217</p>
+	<img src="images/yucheng.jpg" alt=""/>
+	<dl>
+		<dt>公司招聘：</dt>
+		<dd>公司全程为用人单位提供，高层、中层、底层及保安保洁的招聘</dd>
+	</dl>
+	<dl>
+		<dt>公司简介：</dt>
+		<dd>山东禹城智赢人力资源有限公司，成立于2012年，专职为用人单位提供人力资源配置服务，业务涉及劳务派遣、用工招聘、劳务分包、技能培训、人事代理、猎头服务等方面，形成了人才培养、就业安置、劳动关系管理、跟踪服务的一站式服务模式。</dd>
+	</dl>
+	<dl>
+		<dt>公司委培：</dt>
+		<dd>公司将根据委托企业的行业特点和人才需求状况而“量身定制“进行人力资源培训。培训课程以企业所招聘人员的技术需求为出发点，从而保证学员适应企业相应岗位的职能要求</dd>
+	</dl>
+	<dl>
+		<dt>岗前培训：</dt>
+		<dd>公司将一对一进行企业所有者以及部门主管进行严格专业的岗前培训</dd>
+	</dl>
+	<dl>
+		<dt>业务介绍：</dt>
+		<dd>劳务派遣</dd>
+		<dd>由智赢人力与派遣员工签订劳动合同，建立劳动关系，派向用工单位，实现员工、用工单位双福利 精准岗位匹配。</dd>
+		<dd>1.全用工流程员工关系服务</dd>
+		<dd>2.组织弹性化</dd>
+		<dd>3.用工风险防控</dd>
+		<dd>4.全员岗满足用工需求</dd>
+		<dd>5.员工退派遣善后处理，实现单位用工零风险</dd>
+	</dl>
+</div>
+
+<div class="fotNav font-24 p20">
+	<ul>
+		<li><a href="">首页</a></li>
+		<li><a href="">联系我们</a></li>
+		<li><a href="">投诉意见</a></li>
+		<li><a href="">免费培训</a></li>
+		<li><a href="">人才招聘</a></li>
+		<li><a href="">合作加盟</a></li>
+		<li><a href="">寻求帮助</a></li>
+	</ul>
+	<p>最近访客</p>
+	<dl>
+		<dt>友情链接：</dt>
+		<dd>中国家庭服务业协会</dd>
+		<dd>山东妇女网</dd>
+		<dd>德州市人社局</dd>
+		<dd>德州市人力资源部</dd>
+	</dl>
+	<div class="address">地址：山东省德州市禹城建设路中段633号（人社局沿街一楼）</div>
+</div>
+
+<div id="back-to-top"></div>
+
+</body>
+</html>
+<script type="text/javascript">
+
+	jQuery(".RYtableBox").slide({trigger:"click"});
+	//-------一键回顶部----------
+	 $(document).ready(function(){
+	  //首先将#back-to-top隐藏
+	  $("#back-to-top").hide();
+	  //当滚动条的位置处于距顶部100像素以下时，跳转链接出现，否则消失
+	  $(function () {
+		$(window).scroll(function(){
+		if ($(window).scrollTop()>100){
+		$("#back-to-top").fadeIn(100);
+		}
+		else
+		{
+		$("#back-to-top").fadeOut(100);
+		}
+		});
+		//当点击跳转链接后，回到页面顶部位置
+		$("#back-to-top").click(function(){
+		$('body,html').animate({scrollTop:0},"speed");
+		return false;
+		});
+		});
+		});
+ </script>
+
+

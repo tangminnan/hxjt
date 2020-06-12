@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="css/base.css" type="text/css">
+<title>居家养老</title>
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="js/TouchSlide.1.1.js"></script>
+<script type="text/javascript" src="js/Font.js"></script>
+</head>
+<body>
+<!--头部-->
+<div class="top">
+	<p class="fl font-26">一人就业 全家安心</p>
+	<img class="fr" src="images/Tel.png" alt=""/>
+</div>
+
+<div class="fuwuZL font-28">
+	<h3>钟点工</h3>
+	<div class="txt bgW">
+		<p>随着人口老龄化程度不断加深，养老服务人才的紧缺日益凸显，我们积极响应李克强总理的会议精神。积极培养养老护理专业人员，对接养老机构，提高了合心阿姨的就业能力，得到了养老机构的认可。</p>
+	</div>
+	<div class="txt1 bgW">
+		<dl>
+			<dt>工作内容</dt>
+			<dd>居家养老服务对象分为两种:能自理和不能自理。据此确定居家养老服务的内容。</dd>
+			<dd>1、生活护理</dd>
+			<dd>1)对于能自理的客户，提供洗衣、做饭、整理卫生、居室保洁、衣服熨烫、陪同看病、取药、代为购物服务。</dd>
+			<dd>2)对于不能自理的客户，除以上服务外，增加提供帮助清理个人卫生及大小便，照顾睡眠、饮食、给药。</dd>
+			<dd>2、保健护理</dd>
+			<dd>提供按摩、测血压、测体温、提醒吃药、肢体康复服务。</dd>
+			<dd>3、心理疏导</dd>
+			<dd>提供读报、聊天、倾听、沟通、交流等服务。</dd>
+		</dl>
+		<dl>
+			<dt>工作时间</dt>
+			<dd>1、八小时: 上午8:00~11：30  下午1：30~18:00， 可分为每周单休或双休</dd>
+			<dd>2、全日制:每月休息四天</dd>
+		</dl>
+		<dl>
+			<dt>服务等级</dt>
+			<dd>一星级、二星级、三星级</dd>
+		</dl>
+		<dl>
+			<dt>服务流程</dt>
+			<dd>电话或现场登记需求信息→安排客户(家属)和服务员见面→洽谈→签约(有异议重新约见、洽谈)→办理相关手续→服务员上岗服务→公司双向回访→合同续签(不满意协商调换)→合同终止→满意测评</dd>
+		</dl>
+	</div>
+	<div class="anniuS bgW">
+		<input type="button" value="立即预约"/>
+		<input type="button" value="立即参与"/>
+	</div>
+	<ul>
+		<li><img src="images/ayi.jpg" alt=""/></li>
+		<li><img src="images/ayi.jpg" alt=""/></li>
+		<li><img src="images/ayi.jpg" alt=""/></li>
+		<li><img src="images/ayi.jpg" alt=""/></li>
+	</ul>
+</div>
+
+<!--预约弹框-->
+<div class="pop font-24">
+	<div class="txt">
+		<em>×</em>
+		<h3>立即预约</h3>
+		<div class="ewm"><img src="images/erweima.jpg" alt=""/>微信二维码</div>
+		<p><span>手机号：13053434274</span><span>电话：0534-7296999</span></p>
+	</div>
+</div>
+
+<div class="fotNav font-24 p20">
+	<ul>
+		<li><a href="">首页</a></li>
+		<li><a href="">联系我们</a></li>
+		<li><a href="">投诉意见</a></li>
+		<li><a href="">免费培训</a></li>
+		<li><a href="">人才招聘</a></li>
+		<li><a href="">合作加盟</a></li>
+		<li><a href="">寻求帮助</a></li>
+	</ul>
+	<p>最近访客</p>
+	<dl>
+		<dt>友情链接：</dt>
+		<dd>中国家庭服务业协会</dd>
+		<dd>山东妇女网</dd>
+		<dd>德州市人社局</dd>
+		<dd>德州市人力资源部</dd>
+	</dl>
+	<div class="address">地址：山东省德州市禹城建设路中段633号（人社局沿街一楼）</div>
+</div>
+
+<div id="back-to-top"></div>
+
+</body>
+</html>
+<script type="text/javascript">
+	//弹框
+	$(".anniuS input").click(function(){$(".pop").show();});
+	$(".pop em").click(function(){$(".pop").hide();});
+	
+	//-------一键回顶部----------
+	 $(document).ready(function(){
+	  //首先将#back-to-top隐藏
+	  $("#back-to-top").hide();
+	  //当滚动条的位置处于距顶部100像素以下时，跳转链接出现，否则消失
+	  $(function () {
+		$(window).scroll(function(){
+		if ($(window).scrollTop()>100){
+		$("#back-to-top").fadeIn(100);
+		}
+		else
+		{
+		$("#back-to-top").fadeOut(100);
+		}
+		});
+		//当点击跳转链接后，回到页面顶部位置
+		$("#back-to-top").click(function(){
+		$('body,html').animate({scrollTop:0},"speed");
+		return false;
+		});
+		});
+		});
+ </script>
+
+

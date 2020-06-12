@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="css/base.css" type="text/css">
+<title>展示详情</title>
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="js/TouchSlide.1.1.js"></script>
+<script type="text/javascript" src="js/Font.js"></script>
+</head>
+<body>
+<!--头部-->
+<div class="top">
+	<p class="fl font-26">一人就业 全家安心</p>
+	<img class="fr" src="images/Tel.png" alt=""/>
+</div>
+
+<div class="zhanshiXQ font-24 bgW p20 lp2 m6">
+	<img src="images/dingzhi.jpg" alt=""/>
+	<p>山东合心集团旗下的禹城市宏博职业技能培训学校，人社局定点培训机构，现有培训营业面积3000余平方米，为方便农民工培训、就业，新成立四家分公司。本单位积极开展送技术下乡活动，使广大农民工朋友在家门口学到技术，找到满意的工作。</p>
+	<p>集团分公司山东春来顺装饰工程有限公司面对济南及德州地区（含各县乡镇）承接上门量房私人定制设计出图。</p>
+	<p>家装私人定制能够把家装和家具融合起来，更好的打造一个完美的家！室内设计效果图是室内设计师表达创意构思，并通过3D效果图制作软件，将创意构思进行形象化再现的形式。它通过对物体的造型、结构、色彩、质感等诸多因素的忠实表现，真实地再现设计师的创意，从而沟通设计师与观者之间视觉语言的联系，使人们更清楚地了解设计的各项性能、构造、材料。效果图使用户在装修起初直观的了解到装饰的效果，施工图使装修施工人员有据可依。</p>
+	<p>1993年出现了3DMAX的前身3DS，后来逐渐发展为3dmax，同期出现了photoshop的前身photostyler，使后期图片处理成为可能。从此室内设计效果图逐渐走向电脑化，由于技巧的不断成熟，绘制效果图的任务逐渐从设计师转移到绘图员，大多数绘图员变成了匠人。 室内设计效果图已经不是原来那种只把房子建起，东西摆放就可以的时代了，随着三维技术软件的成熟，从业务人员的水平越来越高，室内设计效果图基本可以与装修实景图媲美。室内设计效果图以及建筑设计效果图对美感的要求越来越高。色彩的搭配以及对材质的真实反映都上了一个台阶。</p>	
+</div>
+
+<div class="anliT"><h3>案例图</h3></div>
+<div class="anliPic p20 bgW">
+	<div class="picS">
+		<em></em>
+		<img src="images/zhuangshi-1.jpg" alt=""/>
+	</div>
+	<div class="picS">
+		<em></em>
+		<img src="images/zhuangshi-2.jpg" alt=""/>
+	</div>
+	<div class="picS">
+		<em></em>
+		<img src="images/zhuangshi-3.jpg" alt=""/>
+	</div>
+	<div class="picS">
+		<em></em>
+		<img src="images/zhuangshi-4.jpg" alt=""/>
+	</div>
+	<div class="picS">
+		<em></em>
+		<img src="images/zhuangshi-5.jpg" alt=""/>
+	</div>
+</div>
+
+<div class="fotNav font-24 p20">
+	<ul>
+		<li><a href="">首页</a></li>
+		<li><a href="">联系我们</a></li>
+		<li><a href="">投诉意见</a></li>
+		<li><a href="">免费培训</a></li>
+		<li><a href="">人才招聘</a></li>
+		<li><a href="">合作加盟</a></li>
+		<li><a href="">寻求帮助</a></li>
+	</ul>
+	<p>最近访客</p>
+	<dl>
+		<dt>友情链接：</dt>
+		<dd>中国家庭服务业协会</dd>
+		<dd>山东妇女网</dd>
+		<dd>德州市人社局</dd>
+		<dd>德州市人力资源部</dd>
+	</dl>
+	<div class="address">地址：山东省德州市禹城建设路中段633号（人社局沿街一楼）</div>
+</div>
+
+<div id="back-to-top"></div>
+
+</body>
+</html>
+<script type="text/javascript">
+
+	jQuery(".RYtableBox").slide({trigger:"click"});
+	//-------一键回顶部----------
+	 $(document).ready(function(){
+	  //首先将#back-to-top隐藏
+	  $("#back-to-top").hide();
+	  //当滚动条的位置处于距顶部100像素以下时，跳转链接出现，否则消失
+	  $(function () {
+		$(window).scroll(function(){
+		if ($(window).scrollTop()>100){
+		$("#back-to-top").fadeIn(100);
+		}
+		else
+		{
+		$("#back-to-top").fadeOut(100);
+		}
+		});
+		//当点击跳转链接后，回到页面顶部位置
+		$("#back-to-top").click(function(){
+		$('body,html').animate({scrollTop:0},"speed");
+		return false;
+		});
+		});
+		});
+ </script>
+
+

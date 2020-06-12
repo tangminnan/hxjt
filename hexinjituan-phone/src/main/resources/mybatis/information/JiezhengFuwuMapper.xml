@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hexinjituan.information.dao.JiezhengFuwuDao">
+
+	<select id="get" resultType="com.hexinjituan.information.domain.JiezhengFuwuDO">
+		select `id`,`deleted`,`update_time`,`create_time`,`fuwu_name`,`gongcheng_content`,`url`,`gongcheng_detail`,`iurl`,`leixing` from jiezheng_fuwu where id = #{value}
+	</select>
+
+	<select id="fuwulist" resultType="com.hexinjituan.information.domain.JiezhengFuwuDO">
+		  select `id`,`deleted`,`update_time`,`create_time`,`fuwu_name`,`gongcheng_content`,`url`,`gongcheng_detail`,`iurl`,`leixing`
+		  from jiezheng_fuwu where deleted = 0 and ifnull(leixing,'') != 'SHOUYE'
+	</select>
+
+	<select id="list" resultType="com.hexinjituan.information.domain.JiezhengFuwuDO">
+		select `id`,`deleted`,`update_time`,`create_time`,`fuwu_name`,`gongcheng_content`,`url`,`gongcheng_detail`,`iurl`,`leixing` from jiezheng_fuwu
+        <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="deleted != null and deleted != ''"> and deleted = #{deleted} </if>
+		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+		  		  <if test="fuwuName != null and fuwuName != ''"> and fuwu_name = #{fuwuName} </if>
+		  		  <if test="gongchengContent != null and gongchengContent != ''"> and gongcheng_content = #{gongchengContent} </if>
+		  		  <if test="url != null and url != ''"> and url = #{url} </if>
+		  		  <if test="gongchengDetail != null and gongchengDetail != ''"> and gongcheng_detail = #{gongchengDetail} </if>
+		  		  <if test="iurl != null and iurl != ''"> and iurl = #{iurl} </if>
+		  		  <if test="leixing != null and leixing != ''"> and leixing = #{leixing} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from jiezheng_fuwu
+		 <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="deleted != null and deleted != ''"> and deleted = #{deleted} </if>
+		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+		  		  <if test="fuwuName != null and fuwuName != ''"> and fuwu_name = #{fuwuName} </if>
+		  		  <if test="gongchengContent != null and gongchengContent != ''"> and gongcheng_content = #{gongchengContent} </if>
+		  		  <if test="url != null and url != ''"> and url = #{url} </if>
+		  		  <if test="gongchengDetail != null and gongchengDetail != ''"> and gongcheng_detail = #{gongchengDetail} </if>
+		  		  <if test="iurl != null and iurl != ''"> and iurl = #{iurl} </if>
+		  		  <if test="leixing != null and type != ''"> and leixing = #{leixing} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.hexinjituan.information.domain.JiezhengFuwuDO" useGeneratedKeys="true" keyProperty="id">
+		insert into jiezheng_fuwu
+		(
+			`deleted`, 
+			`update_time`, 
+			`create_time`, 
+			`fuwu_name`, 
+			`gongcheng_content`, 
+			`url`, 
+			`gongcheng_detail`, 
+			`iurl`, 
+			`leixing`
+		)
+		values
+		(
+			#{deleted}, 
+			#{updateTime}, 
+			#{createTime}, 
+			#{fuwuName}, 
+			#{gongchengContent}, 
+			#{url}, 
+			#{gongchengDetail}, 
+			#{iurl}, 
+			#{leixing}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.hexinjituan.information.domain.JiezhengFuwuDO">
+		update jiezheng_fuwu 
+		<set>
+			<if test="deleted != null">`deleted` = #{deleted}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
+			<if test="createTime != null">`create_time` = #{createTime}, </if>
+			<if test="fuwuName != null">`fuwu_name` = #{fuwuName}, </if>
+			<if test="gongchengContent != null">`gongcheng_content` = #{gongchengContent}, </if>
+			<if test="url != null">`url` = #{url}, </if>
+			<if test="gongchengDetail != null">`gongcheng_detail` = #{gongchengDetail}, </if>
+			<if test="iurl != null">`iurl` = #{iurl}, </if>
+			<if test="leixing != null">`leixing` = #{leixing}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from jiezheng_fuwu where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from jiezheng_fuwu where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>
