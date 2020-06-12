@@ -1,6 +1,7 @@
 package com.hexinjituan.information.controller;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -42,7 +43,14 @@ public class CompanyGongyiController {
 	
 	@GetMapping()
 	@RequiresPermissions("information:companyGongyi:companyGongyi")
-	String CompanyGongyi(){
+	String CompanyGongyi(Model model){
+	    CompanyGongyiDO companyGongyiDO = new CompanyGongyiDO();
+        Map<String,Object> map = new HashMap<String,Object>();
+        map.put("gongyiClass","GONGYI_XINGDONG");
+        List<CompanyGongyiDO> list = companyGongyiService.list(map);
+        if(list.size()>0)
+            companyGongyiDO=list.get(0);
+        model.addAttribute("data",companyGongyiDO);
 	    return "information/companyGongyi/companyGongyi";
 	}
 	
@@ -88,7 +96,22 @@ public class CompanyGongyiController {
 	@ResponseBody
 	@PostMapping("/save")
 	public R save( CompanyGongyiDO companyGongyi){
-		try {
+        if("GONGYI_XINGDONG".equals(companyGongyi.getGongyiClass())){//公益在行动
+            Map<String,Object> map = new HashMap<String,Object>();
+                map.put("gongyiClass","GONGYI_XINGDONG");
+                List<CompanyGongyiDO> list = companyGongyiService.list(map);
+                if(list.size()>0){
+                companyGongyi.setId(list.get(0).getId());
+                if(companyGongyiService.update(companyGongyi)>0)
+                    return R.ok();
+            }else{
+                companyGongyi.setDeleted(0);
+                if(companyGongyiService.save(companyGongyi)>0)
+                    return R.ok();
+            }
+            return R.error();
+        }
+        try {
 			if(companyGongyi.getImgFile()!=null && !companyGongyi.getImgFile().isEmpty()) {
 				String fileName = companyGongyi.getImgFile().getOriginalFilename();
 				fileName = FileUtil.renameToUUID(fileName);

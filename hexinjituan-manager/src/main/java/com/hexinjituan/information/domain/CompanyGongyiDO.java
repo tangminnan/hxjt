@@ -19,7 +19,7 @@ public class CompanyGongyiDO implements Serializable {
 	
 	//主键
 	private Integer id;
-	//名称
+	//名称  GONGYI_XINGDONG=公益在行动   JUANKUAN_ANLI=慈善捐款案例
 	private String gongyiClass;
 	//0  未删除     1  已删除
 	private Integer deleted;

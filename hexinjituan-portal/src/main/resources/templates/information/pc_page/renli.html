@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+<head th:include="include :: header">
 <head>
 <meta charset="utf-8">
 <meta name="keywords" content="" />
@@ -33,20 +34,22 @@
     	</ul>
     </div>
 	<!--公益在行动-->
-	<img src="images/Hr.jpg" alt=""/>
+	<img th:src="${data.url}" alt=""/>
 	<div class="main jiuYe">
 		<div class="titbreak"><span>人力资源规划</span></div>
 		<div class="gongyiTxt">
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-			<ul>
-				<li><img src="images/hr-1.jpg" alt=""/></li>
-				<li><img src="images/hr-1.jpg" alt=""/></li>
-				<li><img src="images/hr-1.jpg" alt=""/></li>
-				<li><img src="images/hr-1.jpg" alt=""/></li>
+			<input type="hidden" id="renliGuihua" th:value="${data.renliGuihua}">
+			<div class="ibox-content no-padding" style="border-color: #fff;">
+				<p id="content_snrenliGuihua"></p>
+			</div>
+			<ul class="ant">
 			</ul>
 			<div class="titbreak"><span>劳务派遣</span></div>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-			<img src="images/hr-2.jpg" alt="">
+			<input type="hidden" id="laowuPaiquan" th:value="${data.laowuPaiquan}">
+			<div class="ibox-content no-padding" style="border-color: #fff;">
+				<p id="content_snlaowuPaiquan"></p>
+			</div>
+		<!--	<img src="images/hr-2.jpg" alt="">-->
 		</div>
 	</div>
 	
@@ -82,6 +85,29 @@
 	</div>
 </body>
 </html>
+<div th:include="include::footer"></div>
 <script type="text/javascript">
 	jQuery(".RYtableBox").slide({trigger:"click"});
+    $(function () {
+        var renliGuihua = $("#renliGuihua").val();
+        $('#content_snrenliGuihua').summernote('code', renliGuihua);
+        $('#content_snrenliGuihua').summernote('destroy');
+        var laowuPaiquan = $("#laowuPaiquan").val();
+        $('#content_snlaowuPaiquan').summernote('code', laowuPaiquan);
+        $('#content_snlaowuPaiquan').summernote('destroy');
+        $("img").css("width","");
+    })
+</script>
+
+<script th:inline="javascript">
+    var iurl=[[${data.iurl}]];console.info(iurl);
+    var url=iurl.split("::");
+    console.info(url);
+    var inla="";
+    for(var i=0;i<url.length;i++){
+        if(url[i]!="") {
+            inla+='<li><img src="'+url[i]+'" alt=""/></li>';
+        }
+    }
+    $("ul.ant").append(inla);
 </script>
