@@ -24,12 +24,9 @@
     <div class="hd"><ul></ul></div>
     <div class="bd">
         <ul>
-            <li><a href=""><img src="images/banner.jpg"/></a></li>
-            <li><a href=""><img src="images/banner.jpg"/></a></li>
-            <li><a href=""><img src="images/banner.jpg"/></a></li>
-            <li><a href=""><img src="images/banner.jpg"/></a></li>
-            <li><a href=""><img src="images/banner.jpg"/></a></li>
-            <li><a href=""><img src="images/banner.jpg"/></a></li>
+			<li th:each="ba:${banner}">
+				<a href=""><img th:src="${ba.url}" alt=""/></a>
+			</li>
         </ul>
     </div>
 </div>
@@ -72,24 +69,14 @@
 <div class="hezuoshe bgW p20 m6 ov">
 	<div class="title font-30"><span>劳务合作社</span></div>
 	<ul>
-		<li><a href=""><img src="images/xueYuan-1.jpg" alt=""/></a></li>
-		<li><a href=""><img src="images/xueYuan-2.jpg" alt=""/></a></li>
-		<li><a href=""><img src="images/xueYuan-3.jpg" alt=""/></a></li>
-		<li><a href=""><img src="images/xueYuan-4.jpg" alt=""/></a></li>
+		<li th:each="hz:${hezuo}"><a href=""><img th:src="${hz.url}" alt=""/></a></li>
 	</ul>
 </div>
 
 <div class="fuwu bgW p20 m6 ov">
 	<div class="title font-30"><span>家政服务</span></div>
 	<ul>
-		<li><img src="images/fuW-1.png" alt=""/><span>居家养老服务</span></li>
-		<li><img src="images/fuW-2.png" alt=""/><span>母婴生活护理</span></li>
-		<li><img src="images/fuW-3.png" alt=""/><span>育婴服务</span></li>
-		<li><img src="images/fuW-4.png" alt=""/><span>医院陪护服务</span></li>
-		<li><img src="images/fuW-5.png" alt=""/><span>专业保洁服务</span></li>
-		<li><img src="images/fuW-6.png" alt=""/><span>家政服务</span></li>
-		<li><img src="images/fuW-7.png" alt=""/><span>钟点工</span></li>
-		<li><img src="images/fuW-8.png" alt=""/><span>空调清洗维修</span></li>
+		<li th:each="jia:${jiazheng}"><img th:src="${jia.url}" alt=""/><span th:text="${jia.fuwuName}"></span></li>
 	</ul>
 </div>
 
@@ -102,10 +89,7 @@
 <div class="hezuoshe bgW p20 m6 ov">
 	<div class="title font-30"><span>企业荣誉</span></div>
 	<ul>
-		<li><img src="images/ryzs.png" alt=""/></li>
-		<li><img src="images/ryzs.png" alt=""/></li>
-		<li><img src="images/ryzs.png" alt=""/></li>
-		<li><img src="images/ryzs.png" alt=""/></li>
+		<li th:each="ry:${rongyu}"><img  th:src="${ry.url}" alt=""/></li>
 	</ul>
 </div>
 
