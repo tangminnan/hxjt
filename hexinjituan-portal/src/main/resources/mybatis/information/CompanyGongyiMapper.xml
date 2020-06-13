@@ -98,9 +98,7 @@
 	</delete>
 
 	<select id="getNewGongyi" resultType="com.hexinjituan.information.domain.CompanyGongyiDO">
-		SELECT `id`,gongchengJ,`gongyi_class`,`deleted`,`update_time`,`create_time`,`gongcheng_name`,`gongcheng_content`,`url` from company_gongyi c,(
-		SELECT max(create_time) createTime FROM `company_gongyi` where gongyi_class = '公益在行动' and deleted=0) a
-		where c.gongyi_class = '公益在行动' and c.deleted=0  and c.create_time = a.createTime
+			select * from company_gongyi where  gongyi_class="GONGYI_XINGDONG" limit 1
 	</select>
 
 </mapper>

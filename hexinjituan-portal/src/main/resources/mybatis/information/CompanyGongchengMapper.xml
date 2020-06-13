@@ -8,7 +8,7 @@
 	</select>
 
 	<select id="list" resultType="com.hexinjituan.information.domain.CompanyGongchengDO">
-		select `id`,`weixin`,`phone`,`principal`,`company_id`,`gongcheng_class`,`deleted`,`update_time`,`create_time`,`gongcheng_name`,`gongcheng_content`,`url` from company_gongcheng
+		select `id`,`weixin`,url,`phone`,`principal`,`company_id`,`gongcheng_class`,`deleted`,`update_time`,`create_time`,`gongcheng_name`,`gongcheng_content`,`url` from company_gongcheng
         where deleted=0
 		  		  <if test="id != null and id != ''"> and id = #{id} </if>
 		  		  <if test="weixin != null and weixin != ''"> and weixin = #{weixin} </if>

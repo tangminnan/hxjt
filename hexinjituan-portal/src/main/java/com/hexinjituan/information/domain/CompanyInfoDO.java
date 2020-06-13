@@ -3,7 +3,9 @@ package com.hexinjituan.information.domain;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -30,6 +32,15 @@ public class CompanyInfoDO implements Serializable {
 	private String weixin;
 	//负责人姓名
 	private String principal;
+	private List<CompanyGongchengDO> list = new ArrayList<CompanyGongchengDO>();
+
+	public List<CompanyGongchengDO> getList() {
+		return list;
+	}
+
+	public void setList(List<CompanyGongchengDO> list) {
+		this.list = list;
+	}
 
 	public String getIfJianjie() {
 		return ifJianjie;

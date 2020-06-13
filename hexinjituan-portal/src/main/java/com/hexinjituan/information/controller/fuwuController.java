@@ -23,7 +23,10 @@ public class fuwuController {
     String fuwu(Model model){
         Map<String,Object> map = new HashMap<>();
         map.put("leixing","SHOUYE");
-        JiezhengFuwuDO Jiezheng = jiezhengFuwuService.list(map).get(0);
+        JiezhengFuwuDO Jiezheng = new JiezhengFuwuDO();
+        List<JiezhengFuwuDO> l  = jiezhengFuwuService.list(map);
+        if(l.size()>0)
+            Jiezheng=l.get(0);
         model.addAttribute("Jiezheng",Jiezheng);
         List<JiezhengFuwuDO> Jiezhenglist = jiezhengFuwuService.fuwulist();
         model.addAttribute("Jiezhenglist",Jiezhenglist);

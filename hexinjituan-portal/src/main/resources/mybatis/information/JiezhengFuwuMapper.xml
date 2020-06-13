@@ -14,7 +14,7 @@
 
 	<select id="list" resultType="com.hexinjituan.information.domain.JiezhengFuwuDO">
 		select `id`,`deleted`,`update_time`,`create_time`,`fuwu_name`,`gongcheng_content`,`url`,`gongcheng_detail`,`iurl`,`leixing` from jiezheng_fuwu
-        <where>  
+        where deleted=0
 		  		  <if test="id != null and id != ''"> and id = #{id} </if>
 		  		  <if test="deleted != null and deleted != ''"> and deleted = #{deleted} </if>
 		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
@@ -25,7 +25,7 @@
 		  		  <if test="gongchengDetail != null and gongchengDetail != ''"> and gongcheng_detail = #{gongchengDetail} </if>
 		  		  <if test="iurl != null and iurl != ''"> and iurl = #{iurl} </if>
 		  		  <if test="leixing != null and leixing != ''"> and leixing = #{leixing} </if>
-		  		</where>
+
         <choose>
             <when test="sort != null and sort.trim() != ''">
                 order by ${sort} ${order}

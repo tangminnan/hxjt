@@ -1,8 +1,10 @@
 package com.hexinjituan.information.controller;
 
+import com.hexinjituan.information.domain.CompanyGongchengDO;
 import com.hexinjituan.information.domain.CompanyGongyiDO;
 import com.hexinjituan.information.domain.CompanyInfoDO;
 import com.hexinjituan.information.domain.StudentsElegantDO;
+import com.hexinjituan.information.service.CompanyGongchengService;
 import com.hexinjituan.information.service.CompanyGongyiService;
 import com.hexinjituan.information.service.CompanyInfoService;
 import com.hexinjituan.information.service.StudentsElegantService;
@@ -26,12 +28,17 @@ public class jianjieController {
     private StudentsElegantService studentsElegantService;
     @Autowired
     private CompanyGongyiService companyGongyiService;
+    @Autowired
+    private CompanyGongchengService companyGongchengService;
 
     @GetMapping("/jianjie")
     String jianjie(Model model){
         Map<String, Object> map = new HashMap<>();
         map.put("ifJianjie","COMPANY_JIANJIE");
-        CompanyInfoDO info = companyInfoService.list(map).get(0);
+        CompanyInfoDO info = new CompanyInfoDO();
+        List<CompanyInfoDO> companyInfoDOList = companyInfoService.list(map);
+        if(companyInfoDOList.size()>0)
+            info= companyInfoDOList.get(0);
         model.addAttribute("jinjie",info);
         Map<String,Object> map1 = new HashMap<String, Object>();
         map1.put("typeName","SHENGHUO_ZHAO");
@@ -46,7 +53,16 @@ public class jianjieController {
     String xiangqing(Model model, @PathVariable("id") Integer id){
         CompanyInfoDO companyInfoDO = companyInfoService.get(id);
         model.addAttribute("companyInfoDO",companyInfoDO);
-        return "information/pc_page/jiuye1";
+        if(companyInfoDO.getCompanyName().contains("装饰")){//装饰公司单独处理
+            Map<String,Object> map = new HashMap<String,Object>();
+            map.put("companyId",id);
+            List<CompanyGongchengDO> gongxheng = companyGongchengService.list(map);
+            model.addAttribute("gongcheng",gongxheng);
+            return "information/pc_page/zhuangshigongcheng";
+        }else{
+
+            return "information/pc_page/jiuye1";
+        }
     }
 
     @GetMapping("/gongyi")
@@ -75,6 +91,13 @@ public class jianjieController {
         CompanyGongyiDO gongyiDO = companyGongyiService.get(id);
         model.addAttribute("gongyiDO",gongyiDO);
         return "information/pc_page/gongyi-juankuananli";
+    }
+
+    @GetMapping("/jianjie/anlixiangqing/{id}")
+    public String jianjieanlixiangqing(@PathVariable("id") Integer id,Model model){
+        CompanyGongchengDO companyGongchengDO = companyGongchengService.get(id);
+        model.addAttribute("companyGongchengDO",companyGongchengDO);
+        return "information/pc_page/3Ddayin";
     }
 
 }

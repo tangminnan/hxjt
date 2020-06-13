@@ -86,7 +86,7 @@ function load() {
 									align : 'center',
 									formatter : function(value, row, index) {
 										var f='<button type="button" class="btn  btn-xs btn-primary" onclick="companyYeWu('+row.id+')">可添加案例</button>    ';
-                                        if(row.companyName.indexOf("装饰")>0)
+                                        if(row.companyName!=null &&  row.companyName.indexOf("装饰")>0)
 											return  f;
                                         else
                                         	return "";
@@ -99,7 +99,7 @@ function load() {
                                 formatter : function(value, row, index) {
                                     var g='<button type="button" class="btn  btn-xs btn-default" onclick="edit('+row.id+')">编辑</button>    ';
                                     var a='<button type="button" class="btn  btn-xs btn-danger" onclick="remove('+row.id+')">删除</button> ';
-                                    if(row.companyName.indexOf("装饰")>0)
+                                    if(row.companyName!=null &&  row.companyName.indexOf("装饰")>0)
                                     	return g;
                                     else
                                     	return  g+ a;

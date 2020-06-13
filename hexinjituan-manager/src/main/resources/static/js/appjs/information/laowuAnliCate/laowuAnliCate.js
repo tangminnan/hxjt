@@ -65,7 +65,7 @@ function load() {
                                         var g='<button type="button" class="btn  btn-xs btn-default" onclick="edit('+row.id+')">编辑</button>    ';
                                         var l='<button type="button" class="btn  btn-xs btn-default" onclick="anli('+row.id+')">案例</button>    ';
                                         var a='<button type="button" class="btn  btn-xs btn-danger" onclick="remove('+row.id+')">删除</button> ';
-                                        return  g+l+ a;
+                                        return  g+l;
 									}
 								} ]
 					});
