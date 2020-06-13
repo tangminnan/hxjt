@@ -3,10 +3,12 @@ package com.hexinjituan.information.service.impl;
 import com.hexinjituan.information.dao.HezuosheDao;
 import com.hexinjituan.information.domain.HezuosheDO;
 import com.hexinjituan.information.domain.HezuosheShouyeDO;
+import com.hexinjituan.information.domain.LaowuAnliCateDO;
 import com.hexinjituan.information.service.HezuosheService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -64,6 +66,11 @@ public class HezuosheServiceImpl implements HezuosheService {
 	@Override
 	public int saveHezuosheShouyeDO(HezuosheShouyeDO hezuosheShouyeDO) {
 		return hezuosheDao.saveHezuosheShouyeDO(hezuosheShouyeDO);
+	}
+
+	@Override
+	public List<LaowuAnliCateDO> listLaowuAll(String s) {
+		return hezuosheDao.listLaowuAll(s);
 	}
 
 }

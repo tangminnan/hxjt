@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+<head th:include="include :: header">
 <head>
 <meta charset="utf-8">
 <meta name="keywords" content="" />
@@ -36,11 +37,9 @@
 	<div class="main jiuYe">
 		<div class="breadNav">首页>劳务合作社>合作案例>案例>详情页</div>
 		<div class="gongyiTxt">
-			<h3>案例标题<span>时间：2020.05.26</span></h3>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
-     		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
-     		<img src="images/ertong.jpg" alt=""/>
-      		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
+			<h3 th:text="${laowuAnliDO.laowuTitle}"><span th:text="'时间：'+${laowuAnliDO.STR}"></span></h3>
+			<p id="detail"></p>
+			<input type="hidden" th:value="${laowuAnliDO.laowuContent}">
 		</div>
 	</div>
 
@@ -74,8 +73,15 @@
 			</div>
 		</div>
 	</div>
+	<div th:include="include::footer"></div>
+
 </body>
 </html>
 <script type="text/javascript">
 	jQuery(".RYtableBox").slide({trigger:"click"});
+	$(function(){
+        var detail = $("#detail").next().val();
+        $('#detail').summernote('code', detail);
+        $('#detail').summernote('destroy');
+	})
 </script>

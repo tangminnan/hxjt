@@ -1,5 +1,5 @@
 hexinjituan:
-  uploadPath: /var/uploaded_files/
+  uploadPath: D:/www/uploaded_files/
 logging:
   level:
     root: info
