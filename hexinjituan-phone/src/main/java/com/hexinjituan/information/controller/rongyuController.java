@@ -30,6 +30,6 @@ public class rongyuController {
         model.addAttribute("xueyuan",xueyuan);
         model.addAttribute("guzhu",guzhu);
         model.addAttribute("qiye",qiye);
-        return "information/phone_page/rongyu";
+        return "information/phone_page/qiyerongyu";
     }
 }

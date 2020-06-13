@@ -23,18 +23,18 @@
 
 <div class="topNav font-20 bgW p20 m6">
 	<ul>
-		<li><a href="">首页</a></li>
-		<li><a href="">企业荣誉</a></li>
-		<li><a href="">集团简介</a></li>
-		<li><a href="">家政服务</a></li>
-		<li><a href="">送技术下乡</a></li>
+		<li><a href="/index">首页</a></li>
+		<li><a href="/rongyu">企业荣誉</a></li>
+		<li><a href="/jianjie">集团简介</a></li>
+		<li><a href="/fuwu">家政服务</a></li>
+		<li><a href="/xiaxiang">送技术下乡</a></li>
 		<li><a href="">技能培训</a></li>
-		<li><a href="">劳务合作社</a></li>
-		<li><a href="">人力资源</a></li>
+		<li><a href="/hezuo">劳务合作社</a></li>
+		<li><a href="/renli">人力资源</a></li>
 		<li><a href="">装饰工程</a></li>
-		<li><a href="">招贤纳士</a></li>
-		<li><a href="">联系我们</a></li>
-		<li><a href="">合作加盟</a></li>
+		<li><a href="/zhaoxian">招贤纳士</a></li>
+		<li><a href="/lianxi">联系我们</a></li>
+		<li><a href="/jiameng.html">合作加盟</a></li>
 	</ul>
 </div>
 
@@ -46,9 +46,9 @@
 	<h3>我要留言</h3>
 	<p>尊敬的朋友，您有什么需求，可以留下联系方式，我们的工作人员会第一时间给予你回复！</p>
 	<div class="lyBox">
-		<input type="text" placeholder="输入姓名"/>
-		<input type="text" placeholder="输入手机号"/>
-		<textarea name="" id="" cols="30" rows="10" placeholder="输入留言内容..."></textarea>
+		<input type="text" id="leaveName" placeholder="输入姓名"/>
+		<input type="text" id="phone" placeholder="输入手机号"/>
+		<textarea name="" id="content" cols="30" rows="10" placeholder="输入留言内容..."></textarea>
 	</div>
 	<input class="tijiao" type="button" value="提交留言"/>
 </div>
@@ -134,6 +134,54 @@
 		});
 		});
 		});
+
+    $("input[class='tijiao']").click(function () {
+        var leaveName = $("#leaveName").val();
+        var phone = $("#phone").val();
+        var content = $("#content").val();
+        if (leaveName.length<=0 || leaveName=="") {
+            alert("姓名不能为空！！！");
+            return false;
+        }
+        if (phone.length<=0 || phone=="" || !(/^1[3456789]\d{9}$/.test(phone))) {
+            alert("手机号格式不正确！！！");
+            return false;
+        }
+        if (content.length<=0 || content=="") {
+            alert("留言内容不能为空！！！");
+            return false;
+        }
+        $.ajax({
+            cache:true,
+            type:"post",
+            url:"/save/leaveMsg",
+            async : false,
+            data:{
+                leaveName : leaveName,
+                phone: phone,
+                content:content
+            },
+            error:function(res){
+
+            },
+            success:function (data) {
+                if (data.code == 0){
+                    alert(data.msg);
+                    $("#leaveName").val("");
+                    $("#phone").val("");
+                    $("#content").val("");
+                }else {
+                    alert(data.msg)
+                    $("#leaveName").val("");
+                    $("#phone").val("");
+                    $("#content").val("");
+                }
+            }
+        })
+    });
+
+
+
  </script>
 
 
