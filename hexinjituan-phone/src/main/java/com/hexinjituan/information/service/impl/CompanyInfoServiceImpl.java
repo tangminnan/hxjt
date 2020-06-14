@@ -49,5 +49,14 @@ public class CompanyInfoServiceImpl implements CompanyInfoService {
 	public int batchRemove(Integer[] ids){
 		return companyInfoDao.batchRemove(ids);
 	}
-	
+
+	/**
+	 * 根据关键字模糊查询公司
+	 * @return
+	 */
+	@Override
+	public CompanyInfoDO getLikeZhuangShi() {
+		return companyInfoDao.getLikeZhuangShi();
+	}
+
 }

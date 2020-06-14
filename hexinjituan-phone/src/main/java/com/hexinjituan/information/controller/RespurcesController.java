@@ -31,7 +31,7 @@ public class RespurcesController {
 		if(list.size()>0)
 			respurcesDO=list.get(0);
 		model.addAttribute("data",respurcesDO);
-		return "information/phone_page/renli";
+		return "information/phone_page/renliziyuan";
 	}
 
 

@@ -23,32 +23,15 @@
 
 <div class="cishananli font-24">
 	<img src="images/cishananli.jpg" alt=""/>
-	<div class="box">
-		<img src="images/laoren.jpg" alt=""/>
+	<div class="box" th:each="l:${list}">
+		<img th:src="${l.url}" alt=""/>
 		<dl>
-			<dt>资助贫困优秀儿童</dt>
-			<dd>Lorem ipsum dolor sit amet, consectetur adipiscing elit, </dd>
-		</dl>
-	</div>
-	<div class="box">
-		<img src="images/laoren.jpg" alt=""/>
-		<dl>
-			<dt>资助贫困优秀儿童</dt>
-			<dd>Lorem ipsum dolor sit amet, consectetur adipiscing elit, </dd>
-		</dl>
-	</div>
-	<div class="box">
-		<img src="images/laoren.jpg" alt=""/>
-		<dl>
-			<dt>资助贫困优秀儿童</dt>
-			<dd>Lorem ipsum dolor sit amet, consectetur adipiscing elit, </dd>
-		</dl>
-	</div>
-	<div class="box">
-		<img src="images/laoren.jpg" alt=""/>
-		<dl>
-			<dt>资助贫困优秀儿童</dt>
-			<dd>Lorem ipsum dolor sit amet, consectetur adipiscing elit, </dd>
+			<input type="hidden" name="id" th:value="${l.id}">
+			<dt th:text="${l.gongchengName}"></dt>
+			<dd>
+				<div name="cc" style="display: none" th:text="${l.gongchengJ}"></div>
+				<div name="anlicoment"></div>
+			</dd>
 		</dl>
 	</div>
 </div>
@@ -77,6 +60,7 @@
 <div id="back-to-top"></div>
 
 </body>
+<div th:include="include::footer"></div>
 </html>
 <script type="text/javascript">
 
@@ -103,6 +87,20 @@
 		});
 		});
 		});
+
+    $(function(){
+
+        $("div.box").each(function(){
+			var  com= $(this).find('[ name="cc"]').text();
+            $(this).find('[ name="anlicoment"]').summernote('code', com);
+            $(this).find('[ name="anlicoment"]').summernote('destroy');
+		});
+
+        $("div.box").click(function(){
+			var id = $(this).find("[name='id']").val();
+			window.location.href="/jukuanliXiangqing/"+id;
+		});
+    });
  </script>
 
 

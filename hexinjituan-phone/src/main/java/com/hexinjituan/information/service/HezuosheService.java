@@ -2,6 +2,7 @@ package com.hexinjituan.information.service;
 
 import com.hexinjituan.information.domain.HezuosheDO;
 import com.hexinjituan.information.domain.HezuosheShouyeDO;
+import com.hexinjituan.information.domain.LaowuAnliCateDO;
 
 import java.util.List;
 import java.util.Map;
@@ -34,4 +35,6 @@ public interface HezuosheService {
 	int updateHezuosheShouyeDO(HezuosheShouyeDO hezuosheShouyeDO);
 
 	int saveHezuosheShouyeDO(HezuosheShouyeDO hezuosheShouyeDO);
+
+    List<LaowuAnliCateDO> listLaowuAll(String s);
 }

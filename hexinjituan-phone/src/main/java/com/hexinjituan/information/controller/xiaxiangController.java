@@ -29,8 +29,12 @@ public class xiaxiangController {
     }
 
     @GetMapping("/xiaxiangList")
-    String xiaxiangList(){
-        return "information/phone_page/xiaxiangList";
+    String xiaxiangList(Model model){
+        Map<String , Object> map = new HashMap<>();
+        map.put("trainingClass","JINGDIAN_ANLI");
+        List<SkillTrainingDO> list = skillTrainingService.list(map);
+        model.addAttribute("list",list);
+        return "information/phone_page/xiaxianganli";
     }
 
     @GetMapping("/getxiaxianganli")
@@ -46,7 +50,7 @@ public class xiaxiangController {
     String xiaanliXiangqing(Model model, @PathVariable("id") Integer id){
         SkillTrainingDO skillTrainingDO = skillTrainingService.get(id);
         model.addAttribute("skillTraining",skillTrainingDO);
-        return "information/phone_page/xiaxiang-anliXQ";
+        return "information/phone_page/xiaxianganlidetail";
     }
 
     @GetMapping("/peixun")
@@ -56,5 +60,17 @@ public class xiaxiangController {
         List<SkillTrainingDO> list = skillTrainingService.list(map);
         model.addAttribute("list",list);
         return "information/phone_page/peixun";
+    }
+
+    @GetMapping("/peixunxiangqing")
+    String peixunxiangqing(Model model,String name){
+        System.out.println(name);
+        Map<String , Object> map = new HashMap<>();
+        map.put("trainingName",name);
+        List<SkillTrainingDO> list = skillTrainingService.list(map);
+        if(list.size()>0){
+            model.addAttribute("list",list.get(0));
+        }
+        return "information/phone_page/W-xiaxiang-yuyingyuan";
     }
 }

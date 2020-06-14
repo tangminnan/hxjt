@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="format-detection" content="telephone=no">
 <link rel="stylesheet" href="/css/base.css" type="text/css">
-<title>家政服务</title>
+<title>展示详情</title>
 <script type="text/javascript" src="/js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="/js/jquery.SuperSlide.2.1.1.js"></script>
 <script type="text/javascript" src="/js/TouchSlide.1.1.js"></script>
@@ -21,29 +21,10 @@
 	<img class="fr" src="/images/Tel.png" alt=""/>
 </div>
 
-<div class="fuwuZL font-28">
-	<h3 th:text="${fuwuDO.fuwuName}">家政服务</h3>
-	<div id="companyContent" style="display: none" th:text="${fuwuDO.gongchengDetail}"></div>
-	<div class="txt bgW" id="content_sn">
-
-	</div>
-	<div class="anniuS bgW">
-		<input type="button" value="立即预约"/>
-		<input type="button" value="立即参与"/>
-	</div>
-	<ul>
-		<li th:each="ul:${url}"><img th:src="${ul}" alt=""/></li>
-	</ul>
-</div>
-
-<!--预约弹框-->
-<div class="pop font-24">
-	<div class="txt">
-		<em>×</em>
-		<h3>立即预约</h3>
-		<div class="ewm"><img src="images/erweima.jpg" alt=""/>微信二维码</div>
-		<p><span>手机号：13053434274</span><span>电话：0534-7296999</span></p>
-	</div>
+<div class="zhanshiXQ font-24 bgW p20 lp2">
+	<h3 th:text="${laowuAnliDO.laowuTitle}"></h3>
+	<p id="detail"></p>
+	<input type="hidden" th:value="${laowuAnliDO.laowuContent}">
 </div>
 
 <div class="fotNav font-24 p20">
@@ -73,10 +54,8 @@
 <div th:include="include::footer"></div>
 </html>
 <script type="text/javascript">
-	//弹框
-	$(".anniuS input").click(function(){$(".pop").show();});
-	$(".pop em").click(function(){$(".pop").hide();});
-	
+
+	jQuery(".RYtableBox").slide({trigger:"click"});
 	//-------一键回顶部----------
 	 $(document).ready(function(){
 	  //首先将#back-to-top隐藏
@@ -99,10 +78,10 @@
 		});
 		});
 		});
-    $(function () {
-        var companyContent = $("#companyContent").text();
-        $('#content_sn').summernote('code', companyContent);
-        $('#content_sn').summernote('destroy');
+    $(function(){
+        var detail = $("#detail").next().val();
+        $('#detail').summernote('code', detail);
+        $('#detail').summernote('destroy');
     });
  </script>
 

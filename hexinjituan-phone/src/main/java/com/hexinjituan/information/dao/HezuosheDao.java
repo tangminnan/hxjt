@@ -2,6 +2,7 @@ package com.hexinjituan.information.dao;
 
 import com.hexinjituan.information.domain.HezuosheDO;
 import com.hexinjituan.information.domain.HezuosheShouyeDO;
+import com.hexinjituan.information.domain.LaowuAnliCateDO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -35,4 +36,6 @@ public interface HezuosheDao {
 	int updateHezuosheShouyeDO(HezuosheShouyeDO hezuosheShouyeDO);
 
 	int saveHezuosheShouyeDO(HezuosheShouyeDO hezuosheShouyeDO);
+
+    List<LaowuAnliCateDO> listLaowuAll(String s);
 }

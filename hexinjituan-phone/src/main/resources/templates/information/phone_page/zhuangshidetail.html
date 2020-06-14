@@ -8,11 +8,31 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="format-detection" content="telephone=no">
 <link rel="stylesheet" href="/css/base.css" type="text/css">
-<title>家政服务</title>
+<title>展示详情</title>
 <script type="text/javascript" src="/js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="/js/jquery.SuperSlide.2.1.1.js"></script>
 <script type="text/javascript" src="/js/TouchSlide.1.1.js"></script>
 <script type="text/javascript" src="/js/Font.js"></script>
+	<style>
+		.anliPic img {
+			width: 7.1rem;
+			margin-bottom: .1rem;
+		}
+		img {
+			max-width: 100%;
+			height: auto;
+		}
+
+		.anliPic p {
+			margin-bottom: .4rem;
+		}
+		.font-24 {
+			font-size: .24rem;
+		}
+		.lp2 {
+			letter-spacing: .02rem;
+		}
+	</style>
 </head>
 <body>
 <!--头部-->
@@ -21,29 +41,16 @@
 	<img class="fr" src="/images/Tel.png" alt=""/>
 </div>
 
-<div class="fuwuZL font-28">
-	<h3 th:text="${fuwuDO.fuwuName}">家政服务</h3>
-	<div id="companyContent" style="display: none" th:text="${fuwuDO.gongchengDetail}"></div>
-	<div class="txt bgW" id="content_sn">
+<div class="zhanshiXQ font-24 bgW p20 lp2 m6">
+	<input type="hidden" id="detail" th:value="${companyGongchengDO.gongchengDetail}">
+	<div id="comdetail">
 
 	</div>
-	<div class="anniuS bgW">
-		<input type="button" value="立即预约"/>
-		<input type="button" value="立即参与"/>
-	</div>
-	<ul>
-		<li th:each="ul:${url}"><img th:src="${ul}" alt=""/></li>
-	</ul>
 </div>
 
-<!--预约弹框-->
-<div class="pop font-24">
-	<div class="txt">
-		<em>×</em>
-		<h3>立即预约</h3>
-		<div class="ewm"><img src="images/erweima.jpg" alt=""/>微信二维码</div>
-		<p><span>手机号：13053434274</span><span>电话：0534-7296999</span></p>
-	</div>
+<div class="anliT"><h3>案例图</h3></div>
+<div class="anliPic p20 bgW">
+
 </div>
 
 <div class="fotNav font-24 p20">
@@ -71,12 +78,11 @@
 
 </body>
 <div th:include="include::footer"></div>
+
 </html>
 <script type="text/javascript">
-	//弹框
-	$(".anniuS input").click(function(){$(".pop").show();});
-	$(".pop em").click(function(){$(".pop").hide();});
-	
+
+	jQuery(".RYtableBox").slide({trigger:"click"});
 	//-------一键回顶部----------
 	 $(document).ready(function(){
 	  //首先将#back-to-top隐藏
@@ -99,11 +105,28 @@
 		});
 		});
 		});
+
     $(function () {
-        var companyContent = $("#companyContent").text();
-        $('#content_sn').summernote('code', companyContent);
-        $('#content_sn').summernote('destroy');
-    });
+        var ccoo = $("#detail").val();
+        console.info(ccoo);
+        $('#comdetail').summernote('code', ccoo);
+        $('#comdetail').summernote('destroy');
+		$(".anliPic img").attr('style','');
+    })
  </script>
+<script th:inline="javascript">
+    var iurl=[[${companyGongchengDO.iurl}]];
+    var url=iurl.split("::");
+    var inla="";
+    for(var i=0;i<url.length;i++){
+        if(url[i]!="") {
+            inla+='<div class="picS">';
+            inla+= '<em></em>';
+            inla+=  '<img  style="width: 380px;height: 230px;"  src="'+url[i]+'" alt=""/>';
+            inla+=   '</div>';
+        }
+    }
+    $("div.anliPic").append(inla);
+</script>
 
 

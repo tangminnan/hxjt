@@ -7,25 +7,25 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="format-detection" content="telephone=no">
-<link rel="stylesheet" href="css/base.css" type="text/css">
+<link rel="stylesheet" href="/css/base.css" type="text/css">
 <title>展示详情</title>
-<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
-<script type="text/javascript" src="js/TouchSlide.1.1.js"></script>
-<script type="text/javascript" src="js/Font.js"></script>
+<script type="text/javascript" src="/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/js/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="/js/TouchSlide.1.1.js"></script>
+<script type="text/javascript" src="/js/Font.js"></script>
 </head>
 <body>
 <!--头部-->
 <div class="top">
 	<p class="fl font-26">一人就业 全家安心</p>
-	<img class="fr" src="images/Tel.png" alt=""/>
+	<img class="fr" src="/images/Tel.png" alt=""/>
 </div>
 
 <div class="zhanshiXQ font-24 bgW p20 lp2">
-	<h3>山东合心家政服务集团有限公司</h3>
-	<p>合心集团根据国内外优秀家政服务模式，规范了一条完整的服务标准流程，高端，严苛，标准化服务模式受到市场的广泛关注，为您提供养老护理、育婴师、保姆、管家、保洁等优秀家政从业人员。我们将以专业优质的服务，精心打造高端家政行业领航者。</p>
-	<p>地址：山东省德州市禹城市盛雅依水苑商业街108铺<br/>电话：17653434569</p>
-	<img src="images/zhanshi-1.jpg" alt=""/>
+	<h3 th:text="${companyInfoDO.companyName}"></h3>
+	<div id="companyContent" style="display: none" th:text="${companyInfoDO.companyContent}"></div>
+	<p id="content_sn" class="summernote"></p>
+	<p><span th:text="'地址：'+${companyInfoDO.address}"></span><br/><span th:text="'电话：'+${companyInfoDO.phone}"></span></p>
 </div>
 
 <div class="fotNav font-24 p20">
@@ -52,6 +52,7 @@
 <div id="back-to-top"></div>
 
 </body>
+<div th:include="include::footer"></div>
 </html>
 <script type="text/javascript">
 
@@ -78,6 +79,12 @@
 		});
 		});
 		});
+    $(function () {
+        var companyContent = $("#companyContent").text();
+        console.info(companyContent);
+        $('#content_sn').summernote('code', companyContent);
+        $('#content_sn').summernote('destroy');
+    });
  </script>
 
 

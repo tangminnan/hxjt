@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="format-detection" content="telephone=no">
 <link rel="stylesheet" href="/css/base.css" type="text/css">
-<title>家政服务</title>
+<title>展示详情</title>
 <script type="text/javascript" src="/js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="/js/jquery.SuperSlide.2.1.1.js"></script>
 <script type="text/javascript" src="/js/TouchSlide.1.1.js"></script>
@@ -18,31 +18,33 @@
 <!--头部-->
 <div class="top">
 	<p class="fl font-26">一人就业 全家安心</p>
-	<img class="fr" src="/images/Tel.png" alt=""/>
+	<img class="fr" src="images/Tel.png" alt=""/>
 </div>
 
-<div class="fuwuZL font-28">
-	<h3 th:text="${fuwuDO.fuwuName}">家政服务</h3>
-	<div id="companyContent" style="display: none" th:text="${fuwuDO.gongchengDetail}"></div>
-	<div class="txt bgW" id="content_sn">
+<div class="zhanshiXQ font-24 bgW p20 lp2">
+	<h3 th:text="${companyInfoDO.companyName}"></h3>
+	<input type="hidden" th:value="${companyInfoDO.companyContent}">
+	<p id="gongchengContent"></p>
+</div>
+<div class="zhuangshiT bgW m6"><img  th:src="${companyInfoDO.url}" alt=""/></div>
 
-	</div>
-	<div class="anniuS bgW">
-		<input type="button" value="立即预约"/>
-		<input type="button" value="立即参与"/>
-	</div>
-	<ul>
-		<li th:each="ul:${url}"><img th:src="${ul}" alt=""/></li>
-	</ul>
+<div class="zhuangshiX m6 bgW font-24 p20">
+	<dl>
+		<dt>装饰工程项目</dt>
+		<dd><span th:text="'负责人：'+${companyInfoDO.principal}"></span><span th:text="'微信:'+${companyInfoDO.weixin}"></span><span th:text="'电话:'+${companyInfoDO.phone}"></span></dd>
+	</dl>
 </div>
 
-<!--预约弹框-->
-<div class="pop font-24">
-	<div class="txt">
-		<em>×</em>
-		<h3>立即预约</h3>
-		<div class="ewm"><img src="images/erweima.jpg" alt=""/>微信二维码</div>
-		<p><span>手机号：13053434274</span><span>电话：0534-7296999</span></p>
+<div class="zhuangshiB p20 font-30">
+	<div class="box" th:each="g:${gongcheng}">
+		<em></em>
+		<img th:src="${g.url}" style="width: 710px;height: 430px;" alt=""/>
+		<dl>
+			<input type="hidden" th:value="${g.gongchengContent}">
+			<input type="hidden" name="id" th:value="${g.id}">
+			<dt th:text="${g.gongchengName}"></dt>
+			<dd name="content"></dd>
+		</dl>
 	</div>
 </div>
 
@@ -68,15 +70,12 @@
 </div>
 
 <div id="back-to-top"></div>
-
 </body>
 <div th:include="include::footer"></div>
 </html>
 <script type="text/javascript">
-	//弹框
-	$(".anniuS input").click(function(){$(".pop").show();});
-	$(".pop em").click(function(){$(".pop").hide();});
-	
+
+	jQuery(".RYtableBox").slide({trigger:"click"});
 	//-------一键回顶部----------
 	 $(document).ready(function(){
 	  //首先将#back-to-top隐藏
@@ -100,9 +99,19 @@
 		});
 		});
     $(function () {
-        var companyContent = $("#companyContent").text();
-        $('#content_sn').summernote('code', companyContent);
-        $('#content_sn').summernote('destroy');
+        var gongchengContent = $("#gongchengContent").prev().val();
+		$("#gongchengContent").summernote('code', gongchengContent);
+        $("#gongchengContent").summernote('destroy');
+		$("#gongchengContent").attr('style','');
+        $("div.box").each(function () {
+            var content = $(this).find("input").val();
+            $(this).find("[name='content']").summernote('code', content);
+            $(this).find("[name='content']").summernote('destroy');
+        });
+        $("div.box").click(function(){
+            var id=$(this).find("[name='id']").val();
+            window.location.href="/jianjie/anlixiangqing/"+id;
+        });
     });
  </script>
 

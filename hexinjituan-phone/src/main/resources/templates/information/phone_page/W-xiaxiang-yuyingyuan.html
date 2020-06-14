@@ -22,17 +22,24 @@
 </div>
 
 <div class="W-xiaxiang font-28 lp2">
-	<h3>育婴员</h3>
+	<h3 th:text="${list.trainingName}"></h3>
     <dl>
-    	<dt>育婴师培训内容：</dt>
-        <dd>1、0—3岁婴儿解剖及生理发育特点：呼吸系统、心血管系统、消化系统、泌尿系统、内分泌系统、运动系统、神经系统、感觉系统。</dd>
-        <dd>2、0—3岁婴儿心理发展特点：感知觉能力、记忆能力、思维能力、想象能力、注意特性、人际交往能力、自我意识、情绪与情感、意志力、气质特征、言语能力。</dd>
-        <dd>3、0—3岁婴儿营养：热能、营养素的基本知识、营养需要、膳食评价与营养行为。</dd>
-        <dd>4、0—3岁婴儿教育：教育意义、教育特点与内容、教育原则与方法。</dd>
-        <dd>5、相关法律、法规知识：宪法的相关知识、母婴保健法的相关知识、未成年人保护法的相关知识、儿童权利公约的相关知识、中国儿童发展纲要的相关知识、食品卫生法的相关知识、劳动法的相关知识。</dd>
+		<div id="companyContent" style="display: none" th:text="${list.trainingContent}"></div>
+		<div class="ibox-content no-padding" style="border-color: #fff;">
+			<div id="content_sn" class="summernote"></div>
+		</div>
     </dl>
 	<input type="button" value="我要报名"/>
 </div>
+
+<!--<div class="pop">
+	<div class="txt">
+		<em>×</em>
+		<h3>我要报名</h3>
+		<div class="ewm"><img src="images/erweima.jpg" alt=""/>微信二维码</div>
+		<p><span>手机号：13053434274</span><span>电话：0534-7296999</span></p>
+	</div>
+</div>-->
 
 <div class="fotNav font-24 p20">
 	<ul>
@@ -58,8 +65,13 @@
 <div id="back-to-top"></div>
 
 </body>
+<div th:include="include::footer"></div>
 </html>
 <script type="text/javascript">
+
+    //弹框
+    $(":button").click(function(){$(".pop").show();});
+    $(".pop em").click(function(){$(".pop").hide();});
 
 	jQuery(".RYtableBox").slide({trigger:"click"});
 	//-------一键回顶部----------
@@ -84,6 +96,11 @@
 		});
 		});
 		});
+    $(function () {
+        var companyContent = $("#companyContent").text();
+        $('#content_sn').summernote('code', companyContent);
+        $('#content_sn').summernote('destroy');
+    });
  </script>
 
 

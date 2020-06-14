@@ -1,8 +1,10 @@
 package com.hexinjituan.information.controller;
 
+import com.hexinjituan.information.domain.CompanyGongchengDO;
 import com.hexinjituan.information.domain.CompanyGongyiDO;
 import com.hexinjituan.information.domain.CompanyInfoDO;
 import com.hexinjituan.information.domain.StudentsElegantDO;
+import com.hexinjituan.information.service.CompanyGongchengService;
 import com.hexinjituan.information.service.CompanyGongyiService;
 import com.hexinjituan.information.service.CompanyInfoService;
 import com.hexinjituan.information.service.StudentsElegantService;
@@ -26,12 +28,17 @@ public class jianjieController {
     private StudentsElegantService studentsElegantService;
     @Autowired
     private CompanyGongyiService companyGongyiService;
+    @Autowired
+    private CompanyGongchengService companyGongchengService;
 
     @GetMapping("/jianjie")
     String jianjie(Model model){
         Map<String, Object> map = new HashMap<>();
         map.put("ifJianjie","COMPANY_JIANJIE");
-        CompanyInfoDO info = companyInfoService.list(map).get(0);
+        CompanyInfoDO info = new CompanyInfoDO();
+        List<CompanyInfoDO> companyInfoDOList = companyInfoService.list(map);
+        if(companyInfoDOList.size()>0)
+            info= companyInfoDOList.get(0);
         model.addAttribute("jinjie",info);
         Map<String,Object> map1 = new HashMap<String, Object>();
         map1.put("typeName","SHENGHUO_ZHAO");
@@ -39,26 +46,39 @@ public class jianjieController {
         model.addAttribute("shenghuo",shenghuo);
         List<CompanyInfoDO> list = companyInfoService.list(new HashMap<>());
         model.addAttribute("list",list);
-        return "information/phone_page/jianjie";
+        return "information/phone_page/jituanjianjie";
     }
 
     @GetMapping("/jianjie/xiangqing/{id}")
     String xiangqing(Model model, @PathVariable("id") Integer id){
         CompanyInfoDO companyInfoDO = companyInfoService.get(id);
         model.addAttribute("companyInfoDO",companyInfoDO);
-        return "information/phone_page/jiuye1";
+        if(companyInfoDO.getCompanyName().contains("装饰")){//装饰公司单独处理
+            Map<String,Object> map = new HashMap<String,Object>();
+            map.put("companyId",id);
+            List<CompanyGongchengDO> gongxheng = companyGongchengService.list(map);
+            model.addAttribute("gongcheng",gongxheng);
+            return "information/phone_page/zhuangshi";
+        }else{
+
+            return "information/phone_page/xiangqing";
+        }
     }
 
     @GetMapping("/gongyi")
     String gongyi(Model model){
         CompanyGongyiDO newGongyi = companyGongyiService.getNewGongyi();
         model.addAttribute("newGongyi",newGongyi);
-        return "information/phone_page/gongyi";
+        return "information/phone_page/gongyizaixingdong";
     }
 
     @GetMapping("/gongyiList")
-    String gongyiList(){
-        return "information/phone_page/gongyiList";
+    String gongyiList(Model model){
+        Map<String,Object> map = new HashMap<String,Object>();
+        map.put("gongyiClass","JUANKUAN_ANLI");
+        List<CompanyGongyiDO> list  = companyGongyiService.list(map);
+        model.addAttribute("list",list);
+        return "information/phone_page/cishananli";
     }
 
     @GetMapping("/getjuankuananli")
@@ -75,6 +95,24 @@ public class jianjieController {
         CompanyGongyiDO gongyiDO = companyGongyiService.get(id);
         model.addAttribute("gongyiDO",gongyiDO);
         return "information/phone_page/gongyi-juankuananli";
+    }
+
+    @GetMapping("/zhuangshi")
+    String xiangqing(Model model){
+        CompanyInfoDO companyInfoDO = companyInfoService.getLikeZhuangShi();
+        model.addAttribute("companyInfoDO",companyInfoDO);
+            Map<String,Object> map = new HashMap<String,Object>();
+            map.put("companyId",companyInfoDO.getId());
+            List<CompanyGongchengDO> gongxheng = companyGongchengService.list(map);
+            model.addAttribute("gongcheng",gongxheng);
+            return "information/phone_page/zhuangshi";
+    }
+
+    @GetMapping("/jianjie/anlixiangqing/{id}")
+    public String jianjieanlixiangqing(@PathVariable("id") Integer id,Model model){
+        CompanyGongchengDO companyGongchengDO = companyGongchengService.get(id);
+        model.addAttribute("companyGongchengDO",companyGongchengDO);
+        return "information/phone_page/zhuangshidetail";
     }
 
 }

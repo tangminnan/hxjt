@@ -104,5 +104,9 @@
 			#{id}
 		</foreach>
 	</delete>
+	
+	<select id="getLikeZhuangShi" resultType="com.hexinjituan.information.domain.CompanyInfoDO">
+		select * from company_info where company_name like concat('%','装饰','%') order by create_time desc limit 1
+	</select>
 
 </mapper>

@@ -28,7 +28,7 @@ public class indexController {
         map.put("typeName","HEZUOSHE");
         List<StudentsElegantDO> hezuo = studentsElegantService.list(map);
         Map<String,Object> mapP = new HashMap<String, Object>();
-        mapP.put("typeName","QIYE_RONGYU");
+        mapP.put("typeName","RONGYU");
         List<StudentsElegantDO> rongyu = studentsElegantService.list(mapP);
         model.addAttribute("banner",banner);
         model.addAttribute("hezuo",hezuo);
@@ -43,7 +43,7 @@ public class indexController {
         map.put("typeName","HEZUOSHE");
         List<StudentsElegantDO> hezuo = studentsElegantService.list(map);
         Map<String,Object> mapP = new HashMap<String, Object>();
-        mapP.put("typeName","QIYE_RONGYU");
+        mapP.put("typeName","RONGYU");
         List<StudentsElegantDO> rongyu = studentsElegantService.list(mapP);
         model.addAttribute("banner",banner);
         model.addAttribute("hezuo",hezuo);

@@ -7,42 +7,30 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="format-detection" content="telephone=no">
-<link rel="stylesheet" href="/css/base.css" type="text/css">
-<title>家政服务</title>
-<script type="text/javascript" src="/js/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="/js/jquery.SuperSlide.2.1.1.js"></script>
-<script type="text/javascript" src="/js/TouchSlide.1.1.js"></script>
-<script type="text/javascript" src="/js/Font.js"></script>
+<link rel="stylesheet" href="css/base.css" type="text/css">
+<title>下乡案例</title>
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="js/TouchSlide.1.1.js"></script>
+<script type="text/javascript" src="js/Font.js"></script>
 </head>
 <body>
 <!--头部-->
 <div class="top">
 	<p class="fl font-26">一人就业 全家安心</p>
-	<img class="fr" src="/images/Tel.png" alt=""/>
+	<img class="fr" src="images/Tel.png" alt=""/>
 </div>
 
-<div class="fuwuZL font-28">
-	<h3 th:text="${fuwuDO.fuwuName}">家政服务</h3>
-	<div id="companyContent" style="display: none" th:text="${fuwuDO.gongchengDetail}"></div>
-	<div class="txt bgW" id="content_sn">
-
-	</div>
-	<div class="anniuS bgW">
-		<input type="button" value="立即预约"/>
-		<input type="button" value="立即参与"/>
-	</div>
-	<ul>
-		<li th:each="ul:${url}"><img th:src="${ul}" alt=""/></li>
-	</ul>
-</div>
-
-<!--预约弹框-->
-<div class="pop font-24">
-	<div class="txt">
-		<em>×</em>
-		<h3>立即预约</h3>
-		<div class="ewm"><img src="images/erweima.jpg" alt=""/>微信二维码</div>
-		<p><span>手机号：13053434274</span><span>电话：0534-7296999</span></p>
+<div class="cishananli font-24">
+	<img src="" alt=""/>
+	<div class="box" th:each="l:${list}">
+		<img th:src="${l.url}" alt=""/>
+		<dl>
+			<dt th:text="${l.trainingName}"></dt>
+			<input type="hidden" name="id" th:value="${l.id}">
+			<input type="hidden" name="content" th:value="${l.trainingContent}">
+			<dd name="content_sn"></dd>
+		</dl>
 	</div>
 </div>
 
@@ -73,10 +61,8 @@
 <div th:include="include::footer"></div>
 </html>
 <script type="text/javascript">
-	//弹框
-	$(".anniuS input").click(function(){$(".pop").show();});
-	$(".pop em").click(function(){$(".pop").hide();});
-	
+
+	jQuery(".RYtableBox").slide({trigger:"click"});
 	//-------一键回顶部----------
 	 $(document).ready(function(){
 	  //首先将#back-to-top隐藏
@@ -99,11 +85,18 @@
 		});
 		});
 		});
-    $(function () {
-        var companyContent = $("#companyContent").text();
-        $('#content_sn').summernote('code', companyContent);
-        $('#content_sn').summernote('destroy');
-    });
+	 
+	 $("div.box").each(function () {
+		 var input=$(this).find("[name='content']").val();
+		 console.info(input.substr(0,30));
+         $(this).find("[name='content_sn']").summernote('code', input.substr(0,80)+"...");
+         $(this).find("[name='content_sn']").summernote('destroy');
+     });
+
+	 $("div.box").click(function () {
+		 var id = $(this).find("[name='id']").val();
+         window.location.href="/xiaanliXiangqing/"+id;
+     })
  </script>
 
 

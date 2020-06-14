@@ -27,7 +27,7 @@ public class fuwuController {
         model.addAttribute("Jiezheng",Jiezheng);
         List<JiezhengFuwuDO> Jiezhenglist = jiezhengFuwuService.fuwulist();
         model.addAttribute("Jiezhenglist",Jiezhenglist);
-        return "information/phone_page/fuwu";
+        return "information/phone_page/fuwu-JZ";
     }
 
     @GetMapping("/fwxiangmu/info/{id}")
@@ -41,7 +41,7 @@ public class fuwuController {
             url.add(string);
         }
         model.addAttribute("url",url);
-        return "information/phone_page/fuwuZDG";
+        return "information/phone_page/fuwu-JZfw";
     }
 
 

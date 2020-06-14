@@ -28,4 +28,6 @@ public interface CompanyInfoDao {
 	int remove(Integer id);
 	
 	int batchRemove(Integer[] ids);
+
+    CompanyInfoDO getLikeZhuangShi();
 }

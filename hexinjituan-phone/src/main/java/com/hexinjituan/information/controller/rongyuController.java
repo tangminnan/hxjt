@@ -19,13 +19,13 @@ public class rongyuController {
     @GetMapping("/rongyu")
     String rongyu(Model model){
         Map<String,Object> map1 = new HashMap<String, Object>();
-        map1.put("typeName","XUEYUAN_RONGYU");
+        map1.put("typeName","RONGYU");
         List<StudentsElegantDO> xueyuan = studentsElegantService.list(map1);
         Map<String,Object> map2 = new HashMap<String, Object>();
-        map2.put("typeName","GUZHU_RONGYU");
+        map2.put("typeName","RONGYU");
         List<StudentsElegantDO> guzhu = studentsElegantService.list(map2);
         Map<String,Object> map3 = new HashMap<String, Object>();
-        map3.put("typeName","QIYE_RONGYU");
+        map3.put("typeName","RONGYU");
         List<StudentsElegantDO> qiye = studentsElegantService.list(map3);
         model.addAttribute("xueyuan",xueyuan);
         model.addAttribute("guzhu",guzhu);

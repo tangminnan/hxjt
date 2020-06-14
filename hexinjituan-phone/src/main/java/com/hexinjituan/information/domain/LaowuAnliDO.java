@@ -36,6 +36,17 @@ public class LaowuAnliDO implements Serializable {
 	//图片
 	private MultipartFile imgFile;
 
+	//时间格式字符串
+	private String str;
+
+	public String getStr() {
+		return str;
+	}
+
+	public void setStr(String str) {
+		this.str = str;
+	}
+
 	/**
 	 * 设置：主键
 	 */

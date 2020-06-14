@@ -7,21 +7,21 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="format-detection" content="telephone=no">
-<link rel="stylesheet" href="css/base.css" type="text/css">
+<link rel="stylesheet" href="/css/base.css" type="text/css">
 <title>劳务合作社案例</title>
-<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
-<script type="text/javascript" src="js/TouchSlide.1.1.js"></script>
-<script type="text/javascript" src="js/Font.js"></script>
+<script type="text/javascript" src="/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/js/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="/js/TouchSlide.1.1.js"></script>
+<script type="text/javascript" src="/js/Font.js"></script>
 </head>
 <body>
 <!--头部-->
 <div class="top">
 	<p class="fl font-26">一人就业 全家安心</p>
-	<img class="fr" src="images/Tel.png" alt=""/>
+	<img class="fr" src="/images/Tel.png" alt=""/>
 </div>
 
-<div class="W-hzsal bgW"><img src="images/W-hezuosheanli.jpg" alt=""/></div>
+<div class="W-hzsal bgW"><img src="/images/W-hezuosheanli.jpg" alt=""/></div>
 <div class="jianjie font-28 bgW m6 p20">
 	<div class="txt">
 		<p>农民劳务合作社不仅是市场经济主体，同时具有明显的公益性质，必须加强政策扶持，付出一定的心血和汗水。合作社免费提供劳务咨询，协调解决农民工在外务工期间的欠薪、工伤等有关问题，将城市化过程中创造的就业机会在同等条件下优先提供给劳务合作社，培养具有经营能力、奉献精神和群众拥护的合作社带头人，提高劳务合作社对外承揽劳务工程的市场竞争力。</p>
@@ -49,45 +49,10 @@
         </ul>
     </div>
 	<div class="bd bgW ov p20 font-28">
-        <ul>
-            <li><img src="images/laoren.jpg" alt=""/><p>案例标题1</p></li>
-            <li><img src="images/laoren.jpg" alt=""/><p>案例标1题</p></li>
-            <li><img src="images/laoren.jpg" alt=""/><p>案例标1题</p></li>
-            <li><img src="images/laoren.jpg" alt=""/><p>案例标1题</p></li>
-            <li><img src="images/laoren.jpg" alt=""/><p>案例标题1</p></li>
-            <li><img src="images/laoren.jpg" alt=""/><p>案例标题1</p></li>
-        </ul>
-        <ul>
-            <li><img src="images/laoren.jpg" alt=""/><p>案例标2题</p></li>
-            <li><img src="images/laoren.jpg" alt=""/><p>案例标题2</p></li>
-            <li><img src="images/laoren.jpg" alt=""/><p>案例标2题</p></li>
-            <li><img src="images/laoren.jpg" alt=""/><p>案例标2题</p></li>
-            <li><img src="images/laoren.jpg" alt=""/><p>案例标题2</p></li>
-            <li><img src="images/laoren.jpg" alt=""/><p>案例标2题</p></li>
-        </ul>
-        <ul>
-            <li><img src="images/laoren.jpg" alt=""/><p>案例标题3</p></li>
-            <li><img src="images/laoren.jpg" alt=""/><p>案例标3题</p></li>
-            <li><img src="images/laoren.jpg" alt=""/><p>案例标3题</p></li>
-            <li><img src="images/laoren.jpg" alt=""/><p>案例标3题</p></li>
-            <li><img src="images/laoren.jpg" alt=""/><p>案例标3题</p></li>
-            <li><img src="images/laoren.jpg" alt=""/><p>案例标3题</p></li>
-        </ul>
-        <ul>
-            <li><img src="images/laoren.jpg" alt=""/><p>案例标4题</p></li>
-            <li><img src="images/laoren.jpg" alt=""/><p>案例标4题</p></li>
-            <li><img src="images/laoren.jpg" alt=""/><p>案例标4题</p></li>
-            <li><img src="images/laoren.jpg" alt=""/><p>案例标4题</p></li>
-            <li><img src="images/laoren.jpg" alt=""/><p>案例标4题</p></li>
-            <li><img src="images/laoren.jpg" alt=""/><p>案例标4题</p></li>
-        </ul>
-        <ul>
-            <li><img src="images/laoren.jpg" alt=""/><p>案例标5题</p></li>
-            <li><img src="images/laoren.jpg" alt=""/><p>案例标5题</p></li>
-            <li><img src="images/laoren.jpg" alt=""/><p>案例标5题</p></li>
-            <li><img src="images/laoren.jpg" alt=""/><p>案例标5题</p></li>
-            <li><img src="images/laoren.jpg" alt=""/><p>案例标5题</p></li>
-            <li><img src="images/laoren.jpg" alt=""/><p>案例标5题</p></li>
+        <ul th:each= "list:${data}">
+            <li th:each="l:${list.laowuAnliDOList}"><img th:src="${l.url}" alt=""/><p th:text="${l.laowuTitle}"></p>
+                <input type="hidden" th:value="${l.id}">
+            </li>
         </ul>
     </div>
 </div>
@@ -148,5 +113,18 @@
 		});
 		});
  </script>
+
+<script th:inline="javascript">
+    var title=[[${title}]];
+    $("div.hd ul > li").each(function(){
+        if($(this).text()==title)
+            $(this).addClass("on").siblings().removeClass("on");
+    });
+
+    $(".bd li").click(function(){
+        var id = $(this).children("input").val();
+        window.location.href="/hezuo/anli/detail/"+id;
+    });
+</script>
 
 

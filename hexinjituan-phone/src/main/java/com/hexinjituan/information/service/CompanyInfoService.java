@@ -27,4 +27,10 @@ public interface CompanyInfoService {
 	int remove(Integer id);
 	
 	int batchRemove(Integer[] ids);
+
+	/**
+	 * 根据关键字模糊查询公司
+	 * @return
+	 */
+    CompanyInfoDO getLikeZhuangShi();
 }

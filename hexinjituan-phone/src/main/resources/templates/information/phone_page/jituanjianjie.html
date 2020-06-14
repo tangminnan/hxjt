@@ -23,18 +23,18 @@
 
 <div class="topNav font-20 bgW p20 m6">
 	<ul>
-		<li><a href="">首页</a></li>
-		<li><a href="">企业荣誉</a></li>
-		<li><a href="">集团简介</a></li>
-		<li><a href="">家政服务</a></li>
-		<li><a href="">送技术下乡</a></li>
-		<li><a href="">技能培训</a></li>
-		<li><a href="">劳务合作社</a></li>
-		<li><a href="">人力资源</a></li>
-		<li><a href="">装饰工程</a></li>
-		<li><a href="">招贤纳士</a></li>
-		<li><a href="">联系我们</a></li>
-		<li><a href="">合作加盟</a></li>
+		<li><a href="/index.html">首页</a></li>
+		<li><a href="/rongyu.html">企业荣誉</a></li>
+		<li><a href="/jianjie.html">集团简介</a></li>
+		<li><a href="/fuwu.html">家政服务</a></li>
+		<li><a href="/xiaxiang.html">送技术下乡</a></li>
+		<li><a href="/peixun">技能培训</a></li>
+		<li><a href="/hezuo.html">劳务合作社</a></li>
+		<li><a href="/renli.html">人力资源</a></li>
+		<li><a href="/zhuangshi.html">装饰工程</a></li>
+		<li><a href="/zhaoxian.html">招贤纳士</a></li>
+		<li><a href="/lianxi.html">联系我们</a></li>
+		<li><a href="/jiameng.html">合作加盟</a></li>
 	</ul>
 </div>
 
@@ -89,35 +89,10 @@
 <div class="zhanshi p20 m6 bgW font-24 ov">
 	<div class="SMtit">公司展示</div>
 	<ul>
-		<li>
-			<img src="images/zhanshi-1.jpg" alt=""/>
-			<p>山东合心家政服务集团有限公司</p>
-			<a href="">查看详情</a>
-		</li>
-		<li>
-			<img src="images/zhanshi-2.jpg" alt=""/>
-			<p>山东禹城智赢人力资源有限公司</p>
-			<a href="">查看详情</a>
-		</li>
-		<li>
-			<img src="images/zhanshi-1.jpg" alt=""/>
-			<p>山东合心家政服务集团有限公司</p>
-			<a href="">查看详情</a>
-		</li>
-		<li>
-			<img src="images/zhanshi-2.jpg" alt=""/>
-			<p>山东禹城智赢人力资源有限公司</p>
-			<a href="">查看详情</a>
-		</li>
-		<li>
-			<img src="images/zhanshi-1.jpg" alt=""/>
-			<p>山东合心家政服务集团有限公司</p>
-			<a href="">查看详情</a>
-		</li>
-		<li>
-			<img src="images/zhanshi-2.jpg" alt=""/>
-			<p>山东禹城智赢人力资源有限公司</p>
-			<a href="">查看详情</a>
+		<li th:each="ls:${list}">
+			<img th:src="${ls.url}" alt=""/>
+			<p th:text="${ls.companyName}"></p>
+			<a th:href="@{'/jianjie/xiangqing/'+${ls.id}}">查看详情</a>
 		</li>
 	</ul>
 </div>
@@ -139,16 +114,13 @@
 		<dd><i class="fl">1.</i><i class="fr">成立合心集团专项爱心基金会，用于爱心救助联盟，对需要帮助的儿童进行爱心救助。</i></dd>
 		<dd><i class="fl">2.</i><i class="fr">成立合心集团内部爱心基金会，用于应对合作加盟商出现经济为危机时，我们将给予全程扶持救助，不让任何一家兄弟合作商掉队。</i></dd>
 	</dl>
-	<a href=""><img src="images/GY-xingD.jpg" alt=""/></a>
-	<a href=""><img src="images/GY-juanK.jpg" alt=""/></a>
+	<a href="/gongyi.html"><img src="images/GY-xingD.jpg" alt=""/></a>
+	<a href="/gongyiList.html"><img src="images/GY-juanK.jpg" alt=""/></a>
 </div>
 
 <div class="xueyuan p20 m6 bgW">
 	<div class="SMtit">学员风采</div>
-	<img src="images/pic-4.jpg" alt=""/>
-	<img src="images/pic-5.jpg" alt=""/>
-	<img src="images/pic-4.jpg" alt=""/>
-	<img src="images/pic-5.jpg" alt=""/>
+	<img th:each="sh:${shenghuo}" th:src="${sh.url}" alt=""/>
 </div>
 
 <div class="fotNav font-24 p20">
@@ -175,6 +147,7 @@
 <div id="back-to-top"></div>
 
 </body>
+<div th:include="include::footer"></div>
 </html>
 <script type="text/javascript">
 	$("#show").click(function(){
@@ -203,6 +176,7 @@
 		});
 		});
 		});
+
  </script>
 
 

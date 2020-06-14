@@ -163,4 +163,30 @@
 		)
 	</insert>
 
+	<resultMap id="resultMap" type="com.hexinjituan.information.domain.LaowuAnliCateDO">
+		<id property="id" column="cateid"/>
+		<result property="title" column="title"/>
+		<collection property="laowuAnliDOList" ofType="com.hexinjituan.information.domain.LaowuAnliDO">
+			<id property="id" column="anliid"/>
+			<result property="laowuTitle" column="laowu_title"/>
+			<result property="url" column="url"/>
+		</collection>
+	</resultMap>
+
+	<select id="listLaowuAll" resultMap="resultMap">
+		SELECT
+		cate.id cateid,
+		cate.title,
+		anli.id anliid,
+		anli.laowu_title,
+		anli.url
+		FROM
+		laowu_anli_cate cate
+		LEFT JOIN laowu_anli anli ON cate.id = anli.cate_id
+		AND anli.deleted = 0
+		AND cate.deleted = 0
+		WHERE
+		cate.title = #{s}
+	</select>
+
 </mapper>

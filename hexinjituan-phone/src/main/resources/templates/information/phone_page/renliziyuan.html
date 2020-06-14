@@ -7,57 +7,52 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="format-detection" content="telephone=no">
-<link rel="stylesheet" href="css/base.css" type="text/css">
+<link rel="stylesheet" href="/css/base.css" type="text/css">
 <title>人力资源</title>
-<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
-<script type="text/javascript" src="js/TouchSlide.1.1.js"></script>
-<script type="text/javascript" src="js/Font.js"></script>
+<script type="text/javascript" src="/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/js/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="/js/TouchSlide.1.1.js"></script>
+<script type="text/javascript" src="/js/Font.js"></script>
 </head>
 <body>
 <!--头部-->
 <div class="top">
 	<p class="fl font-26">一人就业 全家安心</p>
-	<img class="fr" src="images/Tel.png" alt=""/>
+	<img class="fr" src="/images/Tel.png" alt=""/>
 </div>
 
 <div class="topNav font-20 bgW p20 m6">
 	<ul>
-		<li><a href="">首页</a></li>
-		<li><a href="">企业荣誉</a></li>
-		<li><a href="">集团简介</a></li>
-		<li><a href="">家政服务</a></li>
-		<li><a href="">送技术下乡</a></li>
-		<li><a href="">技能培训</a></li>
-		<li><a href="">劳务合作社</a></li>
-		<li><a href="">人力资源</a></li>
-		<li><a href="">装饰工程</a></li>
-		<li><a href="">招贤纳士</a></li>
-		<li><a href="">联系我们</a></li>
-		<li><a href="">合作加盟</a></li>
+		<li><a href="/index.html">首页</a></li>
+		<li><a href="/rongyu.html">企业荣誉</a></li>
+		<li><a href="/jianjie.html">集团简介</a></li>
+		<li><a href="/fuwu.html">家政服务</a></li>
+		<li><a href="/xiaxiang.html">送技术下乡</a></li>
+		<li><a href="/peixun">技能培训</a></li>
+		<li><a href="/hezuo.html">劳务合作社</a></li>
+		<li><a href="/renli.html">人力资源</a></li>
+		<li><a href="/zhuangshi.html">装饰工程</a></li>
+		<li><a href="/zhaoxian.html">招贤纳士</a></li>
+		<li><a href="/lianxi.html">联系我们</a></li>
+		<li><a href="/jiameng.html">合作加盟</a></li>
 	</ul>
 </div>
 
 <div class="renliziyuan font-28 bgW m6">
 	<div class="SMtit">人力资源</div>
-	<img src="images/renli.jpg" alt=""/>
+	<img th:src="${data.url}" alt=""/>
 </div>
 
 <div class="ziyuanguihua bgW p20 m6 ov font-24">
 	<div class="SMtit">人力资源规划</div>
-	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-	<ul>
-		<li><img src="images/hr-1.jpg" alt=""/></li>
-		<li><img src="images/hr-1.jpg" alt=""/></li>
-		<li><img src="images/hr-1.jpg" alt=""/></li>
-		<li><img src="images/hr-1.jpg" alt=""/></li>
-	</ul>
+	<input type="hidden" id="renliGuihua" th:value="${data.renliGuihua}">
+	<p id="content_snrenliGuihua"></p>
 </div>
 
 <div class="Hrzhiying bgW p20 font-24">
-	<div class="SMtit">公司直营店</div>
-	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-	<img src="images/renliHR.jpg" alt=""/>
+	<div class="SMtit">劳务派遣</div>
+	<input type="hidden" id="laowuPaiquan" th:value="${data.laowuPaiquan}">
+	<p id="content_snlaowuPaiquan"></p>
 </div>
 
 <div class="fotNav font-24 p20">
@@ -84,6 +79,7 @@
 <div id="back-to-top"></div>
 
 </body>
+<div th:include="include::footer"></div>
 </html>
 <script type="text/javascript">
 	$("#show").click(function(){
@@ -112,6 +108,15 @@
 		});
 		});
 		});
+    $(function () {
+        var renliGuihua = $("#renliGuihua").val();
+        $('#content_snrenliGuihua').summernote('code', renliGuihua);
+        $('#content_snrenliGuihua').summernote('destroy');
+        var laowuPaiquan = $("#laowuPaiquan").val();
+        $('#content_snlaowuPaiquan').summernote('code', laowuPaiquan);
+        $('#content_snlaowuPaiquan').summernote('destroy');
+        $("img").css("width","");
+    })
  </script>
 
 

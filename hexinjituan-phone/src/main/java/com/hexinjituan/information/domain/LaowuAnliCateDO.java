@@ -2,6 +2,7 @@ package com.hexinjituan.information.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -24,6 +25,15 @@ public class LaowuAnliCateDO implements Serializable {
 	private Date createTime;
 	//分类标题
 	private String title;
+	List<LaowuAnliDO> laowuAnliDOList;
+
+	public List<LaowuAnliDO> getLaowuAnliDOList() {
+		return laowuAnliDOList;
+	}
+
+	public void setLaowuAnliDOList(List<LaowuAnliDO> laowuAnliDOList) {
+		this.laowuAnliDOList = laowuAnliDOList;
+	}
 
 	/**
 	 * 设置：主键
