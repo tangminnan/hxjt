@@ -34,9 +34,7 @@ public class indexController {
         Map<String,Object> mapP = new HashMap<String, Object>();
         mapP.put("typeName","RONGYU");//此处模糊查询
         List<StudentsElegantDO> rongyu = studentsElegantService.list(mapP);
-        Map<String,Object> params = new HashMap<String,Object>();
-        params.put("leixing","FUWUTU");
-        List<JiezhengFuwuDO> list = jiezhengFuwuService.list(params);
+        List<JiezhengFuwuDO> list = jiezhengFuwuService.fuwulist();
         model.addAttribute("jiazheng",list);
         model.addAttribute("banner",banner);
         model.addAttribute("hezuo",hezuo);

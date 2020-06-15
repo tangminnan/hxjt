@@ -94,7 +94,7 @@ public class jianjieController {
     String jukuanliXiangqing(Model model,@PathVariable("id") Integer id){
         CompanyGongyiDO gongyiDO = companyGongyiService.get(id);
         model.addAttribute("gongyiDO",gongyiDO);
-        return "information/phone_page/gongyi-juankuananli";
+        return "information/phone_page/cishanjuankuananlidetail";
     }
 
     @GetMapping("/zhuangshi")

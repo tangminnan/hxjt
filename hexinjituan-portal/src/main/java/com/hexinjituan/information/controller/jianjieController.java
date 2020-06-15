@@ -73,7 +73,7 @@ public class jianjieController {
     }
 
     @GetMapping("/gongyiList")
-    String gongyiList(){
+    String gongyiList(Model model){
         return "information/pc_page/gongyiList";
     }
 
@@ -81,7 +81,7 @@ public class jianjieController {
     @ResponseBody
     List<CompanyGongyiDO> getjuankuananli(){
         Map<String, Object> map = new HashMap<>();
-        map.put("gongyiClass","慈善捐款案例");
+        map.put("gongyiClass","JUANKUAN_ANLI");
         List<CompanyGongyiDO> list = companyGongyiService.list(map);
         return list;
     }

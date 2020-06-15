@@ -54,6 +54,13 @@ public class hezuoController {
         return "information/phone_page/W-hezuosheanli";
     }
 
+    @GetMapping("/pc/hzfen/{id}")
+    String hzfen(Model model, @PathVariable("id") Integer id){
+        HezuosheDO hezuosheDO = hezuosheServiceImpl.get(id);
+        model.addAttribute("hezuosheDO",hezuosheDO);
+        return "information/phone_page/hezuoshefenshedetail";
+    }
+
     /**
      * 合作社案例详情
      */

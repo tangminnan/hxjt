@@ -33,43 +33,43 @@
 
 <div class="topNav font-20 bgW p20 m6">
 	<ul>
-		<li><a href="/index.html">首页</a></li>
-		<li><a href="/rongyu.html">企业荣誉</a></li>
-		<li><a href="/jianjie.html">集团简介</a></li>
-		<li><a href="/fuwu.html">家政服务</a></li>
-		<li><a href="/xiaxiang.html">送技术下乡</a></li>
-		<li><a href="/peixun">技能培训</a></li>
-		<li><a href="/hezuo.html">劳务合作社</a></li>
-		<li><a href="/renli.html">人力资源</a></li>
-		<li><a href="/zhuangshi.html">装饰工程</a></li>
-		<li><a href="/zhaoxian.html">招贤纳士</a></li>
-		<li><a href="/lianxi.html">联系我们</a></li>
-		<li><a href="/jiameng.html">合作加盟</a></li>
+		<a href="/index.html"><li>首页</li></a>
+		<a href="/rongyu.html"><li>企业荣誉</li></a>
+		<a href="/jianjie.html"><li>集团简介</li></a>
+		<a href="/fuwu.html"><li>家政服务</li></a>
+		<a href="/xiaxiang.html"><li>送技术下乡</li></a>
+		<a href="/peixun"><li>技能培训</li></a>
+		<a href="/hezuo.html"><li>劳务合作社</li></a>
+		<a href="/renli.html"><li>人力资源</li></a>
+		<a href="/zhuangshi.html"><li>装饰工程</li></a>
+		<a href="/zhaoxian.html"><li>招贤纳士</li></a>
+		<a href="/lianxi.html"><li>联系我们</li></a>
+		<a href="/jiameng.html"><li>合作加盟</li></a>
 	</ul>
 </div>
 
 <div class="xiaxiang bgW p20 m6 font-22 ov">
 	<div class="title font-30"><span>送技术下乡</span><p>免费技能培训（指定科目）</p></div>
 	<ul>
-		<li><a href=""><img src="images/xiaX-1.png" alt=""/>育婴员</a></li>
-		<li><a href=""><img src="images/xiaX-2.png" alt=""/>养老护理</a></li>
-		<li><a href=""><img src="images/xiaX-3.png" alt=""/>小儿推拿</a></li>
-		<li><a href=""><img src="images/xiaX-4.png" alt=""/>中式烹调</a></li>
-		<li><a href=""><img src="images/xiaX-5.png" alt=""/>中式面点</a></li>
-		<li><a href=""><img src="images/xiaX-6.png" alt=""/>营养配餐</a></li>
-		<li><a href=""><img src="images/xiaX-7.png" alt=""/>电工</a></li>
-		<li><a href=""><img src="images/xiaX-8.png" alt=""/>电焊</a></li>
-		<li><a href=""><img src="images/xiaX-9.png" alt=""/>美容</a></li>
-		<li><a href=""><img src="images/xiaX-10.png" alt=""/>美发</a></li>
-		<li><a href=""><img src="images/xiaX-11.png" alt=""/>高级母婴护理师</a></li>
-		<li><a href=""><img src="images/xiaX-12.png" alt=""/>电子商务专业</a></li>
+		<li><a th:href="@{'/peixunxiangqing?name='+育婴员}"><img src="images/xiaX-1.png" alt=""/>育婴员</a></li>
+		<li><a th:href="@{'/peixunxiangqing?name='+养老护理}"><img src="images/xiaX-2.png" alt=""/>养老护理</a></li>
+		<li><a th:href="@{'/peixunxiangqing?name='+小儿推拿}"><img src="images/xiaX-3.png" alt=""/>小儿推拿</a></li>
+		<li><a th:href="@{'/peixunxiangqing?name='+中式烹调}"><img src="images/xiaX-4.png" alt=""/>中式烹调</a></li>
+		<li><a th:href="@{'/peixunxiangqing?name='+中式面点}"><img src="images/xiaX-5.png" alt=""/>中式面点</a></li>
+		<li><a th:href="@{'/peixunxiangqing?name='+营养配餐}"><img src="images/xiaX-6.png" alt=""/>营养配餐</a></li>
+		<li><a th:href="@{'/peixunxiangqing?name='+电工}"><img src="images/xiaX-7.png" alt=""/>电工</a></li>
+		<li><a th:href="@{'/peixunxiangqing?name='+电焊}"><img src="images/xiaX-8.png" alt=""/>电焊</a></li>
+		<li><a th:href="@{'/peixunxiangqing?name='+美容}"><img src="images/xiaX-9.png" alt=""/>美容</a></li>
+		<li><a th:href="@{'/peixunxiangqing?name='+美发}"><img src="images/xiaX-10.png" alt=""/>美发</a></li>
+		<li><a th:href="@{'/peixunxiangqing?name='+高级母婴护理师}"><img src="images/xiaX-11.png" alt=""/>高级母婴护理师</a></li>
+		<li><a th:href="@{'/peixunxiangqing?name='+电子商务}"><img src="images/xiaX-12.png" alt=""/>电子商务专业</a></li>
 	</ul>
 </div>
 
 <div class="hezuoshe bgW p20 m6 ov">
 	<div class="title font-30"><span>劳务合作社</span></div>
 	<ul>
-		<li th:each="hz:${hezuo}"><a href=""><img th:src="${hz.url}" alt=""/></a></li>
+		<li th:each="hz:${hezuo}"><img th:src="${hz.url}" alt=""/></li>
 	</ul>
 </div>
 

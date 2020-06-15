@@ -2,7 +2,9 @@ package com.hexinjituan.information.controller;
 
 import com.hexinjituan.carousel.domain.BannerDO;
 import com.hexinjituan.carousel.service.BannerService;
+import com.hexinjituan.information.domain.JiezhengFuwuDO;
 import com.hexinjituan.information.domain.StudentsElegantDO;
+import com.hexinjituan.information.service.JiezhengFuwuService;
 import com.hexinjituan.information.service.StudentsElegantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,8 @@ public class indexController {
     private BannerService bannerService;
     @Autowired
     private StudentsElegantService studentsElegantService;
+    @Autowired
+    private JiezhengFuwuService jiezhengFuwuService;
 
     @GetMapping("")
     String shouye(Model model){
@@ -30,6 +34,8 @@ public class indexController {
         Map<String,Object> mapP = new HashMap<String, Object>();
         mapP.put("typeName","RONGYU");
         List<StudentsElegantDO> rongyu = studentsElegantService.list(mapP);
+        List<JiezhengFuwuDO> list = jiezhengFuwuService.fuwulist();
+        model.addAttribute("jiazheng",list);
         model.addAttribute("banner",banner);
         model.addAttribute("hezuo",hezuo);
         model.addAttribute("rongyu",rongyu);
