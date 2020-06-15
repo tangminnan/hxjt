@@ -53,6 +53,7 @@ public class JiezhengFuwuController {
 	public PageUtils list(@RequestParam Map<String, Object> params){
 		//查询列表数据
         Query query = new Query(params);
+		query.put("leixing","1");
 		List<JiezhengFuwuDO> jiezhengFuwuList = jiezhengFuwuService.list(query);
 		int total = jiezhengFuwuService.count(query);
 		PageUtils pageUtils = new PageUtils(jiezhengFuwuList, total);

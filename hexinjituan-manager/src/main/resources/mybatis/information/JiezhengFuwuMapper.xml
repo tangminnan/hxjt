@@ -19,7 +19,10 @@
 		  		  <if test="url != null and url != ''"> and url = #{url} </if>
 		  		  <if test="gongchengDetail != null and gongchengDetail != ''"> and gongcheng_detail = #{gongchengDetail} </if>
 		  		  <if test="iurl != null and iurl != ''"> and iurl = #{iurl} </if>
-		  		  <if test="leixing != null and leixing != ''"> and leixing = #{leixing} </if>
+					<if test="_parameter.leixing != null and _parameter.leixing != ''">
+						<if test='_parameter.leixing == "1" '>and leixing is null</if>
+						<if test='_parameter.leixing == "SHOUYE" '>and leixing = #{leixing}</if>
+					</if>
 
         <choose>
             <when test="sort != null and sort.trim() != ''">

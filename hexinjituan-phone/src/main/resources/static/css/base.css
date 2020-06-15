@@ -51,18 +51,18 @@ h1, h2, h3, h4, h5, h6{ font-size:100%;font-weight: normal;}
 .focus .hd ul .on{ background:#ee5356;}
 
 .topNav{overflow: hidden;padding-top:.5rem;}
-.topNav li{float: left;text-align: center;width:16.66%;height: 1.2rem;line-height:.3rem;margin-bottom: .4rem;padding-top:1rem;background:url(../images/icon-1.png) no-repeat top center;-webkit-background-size:.8rem .8rem;background-size:.8rem .8rem;}
-.topNav li:nth-child(2){background-image: url(../images/icon-2.png);}
-.topNav li:nth-child(3){background-image: url(../images/icon-3.png);}
-.topNav li:nth-child(4){background-image: url(../images/icon-4.png);}
-.topNav li:nth-child(5){background-image: url(../images/icon-5.png);}
-.topNav li:nth-child(6){background-image: url(../images/icon-6.png);}
-.topNav li:nth-child(7){background-image: url(../images/icon-7.png);}
-.topNav li:nth-child(8){background-image: url(../images/icon-8.png);}
-.topNav li:nth-child(9){background-image: url(../images/icon-9.png);}
-.topNav li:nth-child(10){background-image: url(../images/icon-10.png);}
-.topNav li:nth-child(11){background-image: url(../images/icon-11.png);}
-.topNav li:nth-child(12){background-image: url(../images/icon-12.png);}
+.topNav a{float: left;text-align: center;width:16.66%;height: 1.2rem;line-height:.3rem;margin-bottom: .4rem;padding-top:1rem;background:url(../images/icon-1.png) no-repeat top center;-webkit-background-size:.8rem .8rem;background-size:.8rem .8rem;}
+.topNav a:nth-child(2){background-image: url(../images/icon-2.png);}
+.topNav a:nth-child(3){background-image: url(../images/icon-3.png);}
+.topNav a:nth-child(4){background-image: url(../images/icon-4.png);}
+.topNav a:nth-child(5){background-image: url(../images/icon-5.png);}
+.topNav a:nth-child(6){background-image: url(../images/icon-6.png);}
+.topNav a:nth-child(7){background-image: url(../images/icon-7.png);}
+.topNav a:nth-child(8){background-image: url(../images/icon-8.png);}
+.topNav a:nth-child(9){background-image: url(../images/icon-9.png);}
+.topNav a:nth-child(10){background-image: url(../images/icon-10.png);}
+.topNav a:nth-child(11){background-image: url(../images/icon-11.png);}
+.topNav a:nth-child(12){background-image: url(../images/icon-12.png);}
 
 .title{text-align: center;margin:.4rem 0;}
 .title span{border-bottom:.02rem solid #f9363b;padding:0 .66rem .15rem;display: inline-block;}
