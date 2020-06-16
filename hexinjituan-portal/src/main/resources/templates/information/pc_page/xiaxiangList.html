@@ -141,7 +141,7 @@
                 }
                 $("#con").html(html);
                 for(var i = 0 ; i<data.length;i++){
-                    $('#content_sn'+data[i].id).summernote('code', data[i].trainingContent.substring(0,10));
+                    $('#content_sn'+data[i].id).summernote('code', data[i].trainingContent.substr(0,100)+"...");
                     $('#content_sn'+data[i].id).summernote('destroy');
                 }
             }

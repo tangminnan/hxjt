@@ -33,7 +33,7 @@
     		<li><a href="/jiameng.html">合作加盟</a></li>
     	</ul>
     </div>
-	<div class="main"><div class="breadNav">首页>送技术下乡>免费技能培训>项目详情页</div></div>
+	<div class="main"><div class="breadNav">首页>劳务合作社>案例>项目详情页</div></div>
 	<div class="main Anli">
 		<div class="hd">
 			<ul>
@@ -91,8 +91,10 @@
 <script th:inline="javascript">
 	var title=[[${title}]];
 	$("div.hd ul > li").each(function(){
-		if($(this).text()==title)
-			$(this).addClass("on").siblings().removeClass("on");
+		if($(this).text()==title) {
+            $(this).addClass("on").siblings().removeClass("on");
+            $(this).click();
+        }
 	});
 
 	$(".bd li").click(function(){
