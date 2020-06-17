@@ -41,7 +41,7 @@
 		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
 		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
 		  		  <if test="userId != null and userId != ''"> and user_id = #{userId} </if>
-
+		<if test="ifJianjie != null and ifJianjie != ''"> and if_jianjie = #{ifJianjie} </if>
 	</select>
 	 
 	<insert id="save" parameterType="com.hexinjituan.information.domain.CompanyInfoDO" useGeneratedKeys="true" keyProperty="id">

@@ -87,6 +87,16 @@ function load() {
 						title : '广告名称'
 					},
                     {
+                        field : 'place',
+                        title : '图片位置',
+                        formatter : function(value, row, index) {
+                        	if(value==1)
+                        		return "pc端";
+                        	if(value==2)
+                        		return "phone端";
+                        }
+                    },
+                    {
                         field : 'sort',
                         title : '轮播顺序'
                     },

@@ -15,6 +15,8 @@ public class BannerDO implements Serializable {
 	private String typeName;//广告名称
 	//状态   0=启用  1=禁用
 	private int isEnable;//启用状态
+	//图片位置  1=pc端  2=phone端
+	private int place;
 	private String url;//图片地址
 	private Date addTime;//添加时间
 	private Date updateTime;//修改时间
@@ -52,6 +54,14 @@ public class BannerDO implements Serializable {
 	}
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
+	}
+
+	public int getPlace() {
+		return place;
+	}
+
+	public void setPlace(int place) {
+		this.place = place;
 	}
 
 	public Long getUserId() {

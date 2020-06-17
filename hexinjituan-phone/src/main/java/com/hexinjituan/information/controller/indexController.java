@@ -51,6 +51,8 @@ public class indexController {
         Map<String,Object> mapP = new HashMap<String, Object>();
         mapP.put("typeName","RONGYU");
         List<StudentsElegantDO> rongyu = studentsElegantService.list(mapP);
+        List<JiezhengFuwuDO> list = jiezhengFuwuService.fuwulist();
+        model.addAttribute("jiazheng",list);
         model.addAttribute("banner",banner);
         model.addAttribute("hezuo",hezuo);
         model.addAttribute("rongyu",rongyu);

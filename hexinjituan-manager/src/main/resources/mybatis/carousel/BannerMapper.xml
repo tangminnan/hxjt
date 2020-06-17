@@ -4,17 +4,17 @@
 <mapper namespace="com.hexinjituan.carousel.dao.BannerDao">
 
 	<select id="get" resultType="com.hexinjituan.carousel.domain.BannerDO">
-		select id,type_name,type,is_enable,add_time,update_time,url,sort from t_banner where id=#{id}
+		select id,type_name,place, type,is_enable,add_time,update_time,url,sort from t_banner where id=#{id}
 	</select>
 
 	<select id="list" resultType="com.hexinjituan.carousel.domain.BannerDO">
-		SELECT id,type_name,type,is_enable,add_time,update_time,url,sort from t_banner
+		SELECT id,type_name,place, type,is_enable,add_time,update_time,url,sort from t_banner
 		where delete_flag=0
 			<if test="id != null and id != ''"> and id = #{id} </if>
 			<if test="typeName != null and typeName != ''"> and type_name=#{typeName} </if>
 			<if test="types != null and types != ''"> and type = #{types} </if>
 			<if test="isEnable != null and isEnable != ''"> and is_enable = #{isEnable} </if>
-
+		    <if test="place != null and place != ''"> and place = #{place} </if>
 		<choose>
 			<when test="sort != null and sort.trim() != ''">
 				order by ${sort} ${order}
@@ -37,7 +37,7 @@
 	</select>
 	 
 	<insert id="save" parameterType="com.hexinjituan.carousel.domain.BannerDO" useGeneratedKeys="true" keyProperty="id">
-		INSERT into t_banner (type,type_name,is_enable,add_time,update_time,user_id,url,sort,delete_flag)
+		INSERT into t_banner (type,type_name,is_enable,add_time,update_time,user_id,url,sort,delete_flag,place)
 		values
 		(
 			#{type},
@@ -48,7 +48,8 @@
 			#{userId},
 			#{url},
 			#{sort},
-			#{deleteFlag}
+			#{deleteFlag},
+			#{place}
 		)
 	</insert>
 	 
@@ -62,7 +63,8 @@
 			<if test="userId != null">`user_id` = #{userId}, </if>
 			<if test="url != null">`url` = #{url}, </if>
 			<if test="sort != null">`sort` = #{sort} ,</if>
-			<if test="deleteFlag != null">`delete_flag` = #{deleteFlag} </if>
+			<if test="deleteFlag != null">`delete_flag` = #{deleteFlag}, </if>
+			<if test="place != null">`place` = #{place} </if>
 		</set>
 		where id = #{id}
 	</update>

@@ -97,7 +97,7 @@ h1, h2, h3, h4, h5, h6{ font-size:100%;font-weight: normal;}
 
 .breadNav{font-size: 14px;margin:20px 0;}
 .gongyiTxt img{display: block;margin:35px auto;}
-.gongyiTxt p{font-size: 16px;margin-bottom: 10px;line-height: 24px;} /*text-indent:32px;*/
+.gongyiTxt p{font-size: 16px;text-indent:32px;margin-bottom: 10px;line-height: 24px;}
 .gongyiTxt h3{font-size: 24px;color: #ef2329;margin:30px 0;text-align: center;}
 .gongyiTxt h3 span{display: block;font-size: 14px;color: #333;margin-top:15px;}
 .jiuYe {margin-bottom: 100px;}
@@ -152,7 +152,7 @@ h1, h2, h3, h4, h5, h6{ font-size:100%;font-weight: normal;}
 .XXleft{width:24%;}
 .XXleft li{margin-bottom:10px;}
 .XXright{width: 76%;}
-.XXright p{margin-bottom: 30px;} /*text-indent: 32px;*/
+.XXright p{text-indent: 32px;margin-bottom: 30px;}
 .XXright img{display: block;margin:0 auto 30px;}
 
 /*=======劳务合作社========*/
@@ -199,14 +199,19 @@ h1, h2, h3, h4, h5, h6{ font-size:100%;font-weight: normal;}
 .pop .txt p span{display: inline-block;font-size: 18px;margin:40px;letter-spacing:2px;}
 .pop .txt em{font-size: 60px;position: absolute;right:30px;top: 0;cursor: pointer;}
 
-.popQQ{width: 200px;border:1px solid #34aefb;box-shadow:0 0 10px #ddd;position: fixed;top:20%;border-radius:10px;overflow: hidden;background: #fff;}
-.popQQ h3{color: #fff;font-size: 20px;line-height: 80px;background:#34aefb url(../images/QQ.png) no-repeat 26px center;text-indent:75px;}
+.popQQ{width: 200px;border:1px solid #34aefb;box-shadow:0 0 10px #ddd;position: fixed;top:20%;border-radius:10px;background: #fff;}
+.popQQ h3{color: #fff;font-size: 20px;line-height: 80px;background:#34aefb url(../images/QQ.png) no-repeat 26px center;text-indent:75px;border-top-left-radius:10px;border-top-right-radius:10px;}
 .popQQ ul{padding:0 3px;}
-.popQQ ul li{border-bottom:1px solid #e5e5e5;padding:20px;}
+.popQQ ul li{border-bottom:1px solid #e5e5e5;padding:20px;background: #fff;}
 .QQ{left: 2%;}
 .WX{right:2%;border:1px solid #4bcd57;}
 .WX h3{background-color: #4bcd57;background-image: url(../images/WX.png);}
 .popZX{width: 125px;height: 125px;background:url(../images/djzx.png) no-repeat center;position: fixed;right:2%;top:45%;}
+.WX li{position: relative;cursor: pointer;}
+.WX li img{position: absolute;right:-1000%;top: 0;width:80px;height:80px;transition:.3s linear;}
+.WX li:hover{color: #4bcd57;}
+.WX li:hover img{left:-85px;}
+
 
 .lianxi{margin:26px 130px;padding:40px 70px;box-shadow:0 0 8px #ddd;text-align: center;font-size: 16px;}
 .lianxi h3{font-size: 24px;margin-bottom: 20px;}
@@ -288,4 +293,5 @@ h1, h2, h3, h4, h5, h6{ font-size:100%;font-weight: normal;}
 .anlitu li em{width: 80px;height: 80px;background:url(../images/hebiao.jpg) no-repeat center;position: absolute;left: 0;top: 0;}
 
 .gongyiTxt li{float: left;width: 25%;text-align: center;margin-bottom:50px;}
+.BWchuxin{position: absolute;top:200px;right:5%;}
 

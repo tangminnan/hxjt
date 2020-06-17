@@ -9,7 +9,7 @@
 
 	<select id="list" resultType="com.hexinjituan.carousel.domain.BannerDO">
 		SELECT id,type_name,type,is_enable,add_time,update_time,url,sort from t_banner
-		where delete_flag=0 and is_enable = 0
+		where delete_flag=0 and is_enable = 0 and place=1
 			<if test="id != null and id != ''"> and id = #{id} </if>
 			<if test="typeName != null and typeName != ''"> and type_name=#{typeName} </if>
 			<if test="types != null and types != ''"> and type = #{types} </if>
