@@ -52,11 +52,27 @@ h1, h2, h3, h4, h5, h6{ font-size:100%;font-weight: normal;}
 
 .scrollBox{position:relative;overflow:hidden;}			
 .scrollBox .piclist{ overflow:hidden; zoom:1;}	
-.scrollBox .ohbox{overflow:hidden; position:relative;width:1190px;}		
-.scrollBox .piclist li{float:left;width:290px;margin-right:10px;}	
+.scrollBox .ohbox{overflow:hidden; position:relative;width:1190px;}
+.scrollBox .piclist li{float:left;width:290px;margin-right:10px;}
 .scrollBox .pageBtn span{ background:url(../images/arr-l.png) no-repeat; display:block;width:29px;height:75px;position:absolute;top:50%;margin-top:-37px;cursor:pointer;}
 .scrollBox .pageBtn .prev{left:0;}	
 .scrollBox .pageBtn .next{right:10px;background-image: url(../images/arr-r.png);}
+
+.scroll{position:relative;overflow:hidden;}
+.scroll .piclist{ overflow:hidden; zoom:1;}
+.scroll .ohbox{overflow:hidden; position:relative;width:1200px;}
+.scroll .piclist li{float:left;width:31%;border:1px solid #e5e5e5;margin-left:30px;margin-bottom: 30px;height: 420px;}
+.scroll .piclist li h3{text-align: center;font-size: 20px;margin:20px;height: 60px;font-weight: bold;}
+.scroll .pageBtn span{ background:url(../images/arr-l.png) no-repeat; display:block;width:29px;height:75px;position:absolute;top:50%;margin-top:-37px;cursor:pointer;}
+.scroll .pageBtn .prev{left:0;}
+.scroll .pageBtn .next{right:10px;background-image: url(../images/arr-r.png);}
+.scroll li p{overflow: hidden;font-size: 16px;margin-bottom: 12px;padding:0 12px;}
+.scroll li p span{float: left;width: 23%;text-align:right;background:url(../images/tele.png) no-repeat left center;}
+.scroll li p em{float: left;width: 77%;}
+.scroll li p:nth-of-type(2) span{background-image: url(../images/add.png);}
+
+
+
 .fuwu li{float: left;width: 24%;text-align: center;margin:0 .5% 10px;position: relative;border-radius:10px;overflow: hidden;}
 .fuwu li span{width: 100%;line-height: 200px;font-size: 30px;color:#fff;position:absolute;left: 0;top: 0;text-shadow:0 0 5px #000;background:rgba(0,0,0,.2);}	
 .about .txt{width:666px;font-size: 16px;background:url(../images/JJ.png) no-repeat 0 38px;padding-top: 90px;}	
@@ -100,6 +116,7 @@ h1, h2, h3, h4, h5, h6{ font-size:100%;font-weight: normal;}
 .gongyiTxt p{font-size: 16px;text-indent:32px;margin-bottom: 10px;line-height: 24px;}
 .gongyiTxt h3{font-size: 24px;color: #ef2329;margin:30px 0;text-align: center;}
 .gongyiTxt h3 span{display: block;font-size: 14px;color: #333;margin-top:15px;}
+gongyiTxtcc  p{font-size: 16px;margin-bottom: 10px;line-height: 24px;}
 .jiuYe {margin-bottom: 100px;}
 .jiuYe h1{border-bottom:2px solid #7d7d7d;font-size: 30px;padding:10px 15px;margin-bottom: 45px;}
 .jiuYe .box{margin-bottom: 40px;overflow: hidden;}
@@ -117,7 +134,7 @@ h1, h2, h3, h4, h5, h6{ font-size:100%;font-weight: normal;}
 .cishan{margin-bottom: 100px;}
 .CSpic{display: block;margin:10px auto 30px;}
 .cishan .box{border:1px solid #bfbfbf;margin-bottom: 14px;overflow: hidden;cursor: pointer;}
-.cishan .box span{float: left;line-height: 230px;font-size: 60px;color: #fff;background: #f54248;width: 135px;text-align: center;}
+.cishan .box sp{float: left;line-height: 230px;font-size: 60px;color: #fff;background: #f54248;width: 135px;text-align: center;}
 .cishan .box img{float: left;margin-left: 40px;width: 200px;height: 200px;margin-top: 15px;}
 .cishan .box dl{float: left;margin-left: 40px;font-size: 14px;width: 62%;}
 .cishan .box dl dt{font-size: 20px;margin:30px 0 15px;font-weight: bold;}
@@ -126,7 +143,7 @@ h1, h2, h3, h4, h5, h6{ font-size:100%;font-weight: normal;}
 .jiaM p{width: 970px;margin:55px auto 10px;font-size: 20px;font-weight: bold;line-height: 30px;}
 .jiaM p span{color: #ef2329;display: block;}
 .jiaM img{display: block;margin:0 auto 100px;}
-.zhiying li{float: left;width: 31%;border:1px solid #e5e5e5;margin-right:2%;margin-bottom: 30px;height: 420px;}
+.zhiying li{float: left;width: 372px;border:1px solid #e5e5e5;margin-right:2%;margin-bottom: 30px;height: 420px;}
 .zhiying li h3{text-align: center;font-size: 20px;margin:20px;height: 60px;font-weight: bold;}
 .zhiying li p{overflow: hidden;font-size: 16px;margin-bottom: 12px;padding:0 12px;}
 .zhiying li p span{float: left;width: 23%;text-align:right;background:url(../images/tele.png) no-repeat left center;}

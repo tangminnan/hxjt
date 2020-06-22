@@ -128,7 +128,7 @@
                 for (var i = data.length-1;i>=0;i--){
                     html += '<a href="/xiaanliXiangqing/'+data[i].id+'" style="color: #333;">'
                     html += '<div class="box" style="height: 232px;">'
-                    html += '        <span>'+(i+1)+'</span>'
+                    html += '        <span class="sp">'+(i+1)+'</span>'
                     html += '        <img src="'+data[i].url+'" alt=""/>'
                     html += '        <dl>'
                     html += '        <dt>'+data[i].trainingName+'</dt>'
@@ -143,6 +143,7 @@
                 for(var i = 0 ; i<data.length;i++){
                     $('#content_sn'+data[i].id).summernote('code', data[i].trainingContent.substr(0,100)+"...");
                     $('#content_sn'+data[i].id).summernote('destroy');
+
                 }
             }
         }

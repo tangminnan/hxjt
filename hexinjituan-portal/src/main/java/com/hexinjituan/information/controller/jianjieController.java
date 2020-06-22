@@ -44,7 +44,9 @@ public class jianjieController {
         map1.put("typeName","SHENGHUO_ZHAO");
         List<StudentsElegantDO> shenghuo = studentsElegantService.list(map1);
         model.addAttribute("shenghuo",shenghuo);
-        List<CompanyInfoDO> list = companyInfoService.list(new HashMap<>());
+        Map<String,Object> map11 = new HashMap<String,Object>();
+        map11.put("ifJianjie","NOT_JIANJIE");
+        List<CompanyInfoDO> list = companyInfoService.list(map11);
         model.addAttribute("list",list);
         return "information/pc_page/jianjie";
     }

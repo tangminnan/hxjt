@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="css/css.css" type="text/css">
 <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
+
 </head>
 <body>
     <div class="top">
@@ -38,145 +39,39 @@
 		<img src="images/jiamengPic.jpg" alt=""/>
 	</div>
 	<div class="titbreak"><span>公司直营店</span></div>
-	<div class="main zhiying">
-		<ul>
-			<li th:each="ls:${list}">
-				<img th:src="${ls.url}" alt=""/>
-				<h3 th:text="${ls.jiamengName}">糖城广场分店</h3>
-				<p>
-					<span>电话：</span>
-					<em th:text="${ls.jiamengPhone}">17653434569</em>
-				</p>
-				<p>
-					<span>地址：</span>
-					<em th:text="${ls.jiamengAddress}">山东省德州市禹城市盛雅依水苑商业街108铺</em>
-				</p>
-			</li>
-
-			<!--<li>
-				<img src="images/jiameng-1.jpg" alt=""/>
-				<h3>糖城广场分店</h3>
-				<p>
-					<span>电话：</span>
-					<em>17653434569</em>
-				</p>
-				<p>
-					<span>地址：</span>
-					<em>山东省德州市禹城市盛雅依水苑商业街108铺</em>
-				</p>
-			</li>
-			<li>
-				<img src="images/jiameng-2.jpg" alt=""/>
-				<h3>禹王大市场分店</h3>
-				<p>
-					<span>电话：</span>
-					<em>18953451938</em>
-				</p>
-				<p>
-					<span>地址：</span>
-					<em>山东省德州市禹城市开拓路中段路南（房管局对面）</em>
-				</p>
-			</li>
-			<li>
-				<img src="images/jiameng-1.jpg" alt=""/>
-				<h3>山东国际商贸港分店</h3>
-				<p>
-					<span>电话：</span>
-					<em>15621237198</em>
-				</p>
-				<p>
-					<span>地址：</span>
-					<em>山东国际商贸港A区B座D1馆102铺</em>
-				</p>
-			</li>
-			<li>
-				<img src="images/jiameng-2.jpg" alt=""/>
-				<h3>北京市石景山区海特花园<br/>社区营业网点</h3>
-				<p>
-					<span>电话：</span>
-					<em>15010215382</em>
-				</p>
-				<p>
-					<span>地址：</span>
-					<em>北京市石景山区海特花园社区57号楼3单元307号</em>
-				</p>
-			</li>
-			<li>
-				<img src="images/jiameng-1.jpg" alt=""/>
-				<h3>北京市合心家政办事处</h3>
-				<p>
-					<span>电话：</span>
-					<em>010-51956237</em>
-				</p>
-				<p>
-					<span>地址：</span>
-					<em>北京市石景山海特花园44号楼406</em>
-				</p>
-			</li>
-			<li>
-				<img src="images/jiameng-2.jpg" alt=""/>
-				<h3>青岛西海岸新区莲花山社区分店</h3>
-				<p>
-					<span>电话：</span>
-					<em>13156202077</em>
-				</p>
-				<p>
-					<span>地址：</span>
-					<em>青岛西海岸新区莲花山社区565号</em>
-				</p>
-			</li>
-			<li>
-				<img src="images/jiameng-2.jpg" alt=""/>
-				<h3>青岛市四方区分店</h3>
-				<p>
-					<span>电话：</span>
-					<em>18663925018</em>
-				</p>
-				<p>
-					<span>地址：</span>
-					<em>青岛市四方区杭州花园保利百合花园升平路小区</em>
-				</p>
-			</li>
-			<li>
-				<img src="images/jiameng-2.jpg" alt=""/>
-				<h3>青岛李沧区分店</h3>
-				<p>
-					<span>电话：</span>
-					<em>18953250047</em>
-				</p>
-				<p>
-					<span>地址：</span>
-					<em>青岛市李沧区福临家园百通馨苑卓越皇后道小区</em>
-				</p>
-			</li>
-			<li>
-				<img src="images/jiameng-2.jpg" alt=""/>
-				<h3>济南市槐荫区分店</h3>
-				<p>
-					<span>电话：</span>
-					<em>15865295168</em>
-				</p>
-				<p>
-					<span>地址：</span>
-					<em>济南市槐荫区美里路丽水华庭小区</em>
-				</p>
-			</li>
-			<li>
-				<img src="images/jiameng-2.jpg" alt=""/>
-				<h3>济南市平阴县分店</h3>
-				<p>
-					<span>电话：</span>
-					<em>18615311118</em>
-				</p>
-				<p>
-					<span>地址：</span>
-					<em>济南市平阴县府前街文鼎嘉苑南门梓皙专卖店</em>
-				</p>
-			</li>-->
-		</ul>
+	<div class="main scroll" id="jiamenglunbo">
+		<div class="ohbox">
+			<ul class="piclist">
+				<li th:each="ls:${list}">
+					<img th:src="${ls.url}" alt=""/>
+					<h3 th:text="${ls.jiamengName}">糖城广场分店</h3>
+					<p>
+						<span>电话：</span>
+						<em th:text="${ls.jiamengPhone}">17653434569</em>
+					</p>
+					<p>
+						<span>地址：</span>
+						<em th:text="${ls.jiamengAddress}">山东省德州市禹城市盛雅依水苑商业街108铺</em>
+					</p>
+				</li>
+			</ul>
+		</div>
+		<div class="pageBtn">
+			<span class="prev"></span>
+			<span class="next"></span>
+		</div>
 	</div>
 	<div class="titbreak"><span>加盟店</span></div>
 	<input class="btn" type="button" value="加盟热线：400-7169-518">
+	<!--微信浮窗-->
+	<div class="popQQ WX">
+		<h3>企业微信</h3>
+		<ul>
+			<li>糖城广场分店微信<br/>hexin17653434569 <img src="/images/tangchengguangchang17653434569.jpg" alt=""/></li>
+			<li>禹王大市场分店微信<br/>18953451938 <img src="/images/yuwangdashichang18953451938.jpg" alt=""/></li>
+			<li>山东国际商贸港分店<br/>15621237198 <img src="/images/shangmaogang15621237198.jpg" alt=""/></li>
+		</ul>
+	</div>
 	
 	<!--底部-->
 	<div class="foot">
@@ -212,4 +107,5 @@
 </html>
 <script type="text/javascript">
 	jQuery(".RYtableBox").slide({trigger:"click"});
+    jQuery("#jiamenglunbo").slide({ mainCell:".piclist", effect:"leftLoop",vis:4,scroll:1,delayTime:800,trigger:"click",easing:"easeOutCirc"});
 </script>

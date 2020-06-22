@@ -13,6 +13,9 @@
 <script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
 <script type="text/javascript" src="js/TouchSlide.1.1.js"></script>
 <script type="text/javascript" src="js/Font.js"></script>
+	<style>
+
+	</style>
 </head>
 <body>
 <!--头部-->
@@ -41,7 +44,7 @@
 <div class="jianjie font-28 bgW m6 p20">
 	<div class="SMtit">劳务合作社</div>
 	<div id="companyContent1" style="display: none" th:text="${hezuosheShouye.hezuosheJianjie}"></div>
-	<div class="txt">
+	<div class="txtc">
 		<h3>简介</h3>
 		<div id="content_sn1" class="summernote1"></div>
 	</div>
@@ -162,6 +165,8 @@
     $("ul.anlip li").click(function(){
         window.location.href="/hezuo/anli/"+$(this).text();
     });
+
+    $("#content_sn1").find("span").attr('style','');
  </script>
 
 
