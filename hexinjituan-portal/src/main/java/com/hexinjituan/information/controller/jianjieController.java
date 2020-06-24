@@ -102,4 +102,20 @@ public class jianjieController {
         return "information/pc_page/3Ddayin";
     }
 
+    /**
+     * 装饰工程
+     */
+    @GetMapping("/zhuangshigongcheng")
+    public String zhuangshigongcheng(Model model){
+        CompanyInfoDO companyInfoDO = companyGongchengService.getG();
+        model.addAttribute("companyInfoDO",companyInfoDO);
+        Map<String,Object> map = new HashMap<String,Object>();
+        if(companyInfoDO!=null) {
+            map.put("companyId", companyInfoDO.getId());
+            List<CompanyGongchengDO> gongxheng = companyGongchengService.list(map);
+            model.addAttribute("gongcheng", gongxheng);
+        }
+        return "information/pc_page/zhuangshigongcheng";
+    }
+
 }

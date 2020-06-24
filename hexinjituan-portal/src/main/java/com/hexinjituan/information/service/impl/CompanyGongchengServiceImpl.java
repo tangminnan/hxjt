@@ -2,6 +2,7 @@ package com.hexinjituan.information.service.impl;
 
 import com.hexinjituan.information.dao.CompanyGongchengDao;
 import com.hexinjituan.information.domain.CompanyGongchengDO;
+import com.hexinjituan.information.domain.CompanyInfoDO;
 import com.hexinjituan.information.service.CompanyGongchengService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,5 +50,13 @@ public class CompanyGongchengServiceImpl implements CompanyGongchengService {
 	public int batchRemove(Integer[] ids){
 		return companyGongchengDao.batchRemove(ids);
 	}
-	
+
+	/**
+	 * 获取装饰工程
+	 */
+	@Override
+	public CompanyInfoDO getG() {
+		return companyGongchengDao.getG();
+	}
+
 }

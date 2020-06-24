@@ -120,5 +120,9 @@
 			#{id}
 		</foreach>
 	</delete>
+	
+	<select id="getG" resultType="com.hexinjituan.information.domain.CompanyInfoDO">
+		select * from company_info where company_name like '%装饰%' limit 1
+	</select>
 
 </mapper>

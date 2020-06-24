@@ -52,27 +52,29 @@
 	<div class="title"><span>送技术下乡</span><em>免费技能培训（指定科目）</em></div>
 	<div class="main xiaX">
 		<ul>
-			<li><img src="images/xiaX-1.png" alt=""/>育婴员</li>
-			<li><img src="images/xiaX-2.png" alt=""/>养老护理</li>
-			<li><img src="images/xiaX-3.png" alt=""/>小儿推拿</li>
-			<li><img src="images/xiaX-4.png" alt=""/>中式烹调</li>
-			<li><img src="images/xiaX-5.png" alt=""/>中式面点</li>
-			<li><img src="images/xiaX-6.png" alt=""/>营养配餐</li>
-			<li><img src="images/xiaX-7.png" alt=""/>电工</li>
-			<li><img src="images/xiaX-8.png" alt=""/>电焊</li>
-			<li><img src="images/xiaX-9.png" alt=""/>美容</li>
-			<li><img src="images/xiaX-10.png" alt=""/>美发</li>
-			<li><img src="images/xiaX-11.png" alt=""/>高级母婴护理师</li>
-			<li><img src="images/xiaX-12.png" alt=""/>电子商务专业</li>
+			<li><a th:href="@{'/peixunxiangqing?name='+育婴员}"><img src="images/xiaX-1.png" alt=""/>育婴员</a></li>
+			<li><a th:href="@{'/peixunxiangqing?name='+养老护理}"><img src="images/xiaX-2.png" alt=""/>养老护理</a></li>
+			<li><a th:href="@{'/peixunxiangqing?name='+小儿推拿}"><img src="images/xiaX-3.png" alt=""/>小儿推拿</a></li>
+			<li><a th:href="@{'/peixunxiangqing?name='+中式烹调}"><img src="images/xiaX-4.png" alt=""/>中式烹调</a></li>
+			<li><a th:href="@{'/peixunxiangqing?name='+中式面点}"><img src="images/xiaX-5.png" alt=""/>中式面点</a></li>
+			<li><a th:href="@{'/peixunxiangqing?name='+营养配餐}"><img src="images/xiaX-6.png" alt=""/>营养配餐</a></li>
+			<li><a th:href="@{'/peixunxiangqing?name='+电工}"><img src="images/xiaX-7.png" alt=""/>电工</a></li>
+			<li><a th:href="@{'/peixunxiangqing?name='+电焊}"><img src="images/xiaX-8.png" alt=""/>电焊</a></li>
+			<li><a th:href="@{'/peixunxiangqing?name='+美容}"><img src="images/xiaX-9.png" alt=""/>美容</a></li>
+			<li><a th:href="@{'/peixunxiangqing?name='+美发}"><img src="images/xiaX-10.png" alt=""/>美发</a></li>
+			<li><a th:href="@{'/peixunxiangqing?name='+高级母婴护理师}"><img src="images/xiaX-11.png" alt=""/>高级母婴护理师</a></li>
+			<li><a th:href="@{'/peixunxiangqing?name='+电子商务}"><img src="images/xiaX-12.png" alt=""/>电子商务专业</a></li>
 		</ul>
 	</div>
 	<!--劳务合作社-->
 	<div class="title"><span>劳务合作社</span></div>
 	<div class="main scrollBox" id="hezuo">
 		<div class="ohbox">
-			<ul class="piclist" >
-				<li th:each="hz:${hezuo}"><img th:src="${hz.url}" alt=""/></li>
-			</ul>
+			<a href="/hezuo.html">
+				<ul class="piclist" >
+					<li th:each="hz:${hezuo}"><img th:src="${hz.url}" alt=""/></li>
+				</ul>
+			</a>
 		</div>
 		<div class="pageBtn"> 
 			<span class="prev"></span> 
@@ -83,17 +85,23 @@
 	<div class="title"><span>家政服务</span></div>
 	<div class="main fuwu">
 		<ul>
-			<li th:each="jia:${jiazheng}"><img th:src="${jia.url}" alt=""/><span th:text="${jia.fuwuName}"></span></li>
+			<li th:each="jia:${jiazheng}">
+				<a th:href="@{'/fwxiangmu/info/'+${jia.id}}">
+					<img th:src="${jia.url}" alt=""/><span th:text="${jia.fuwuName}"></span>
+				</a>
+			</li>
 		</ul>
 	</div>
 	<!--关于我们-->
 	<div class="title"><span>关于我们</span></div>
 	<div class="main about">
-		<img class="fl" src="images/jianjie.png" alt=""/>
-		<div class="fr txt">
-			<p>山东合心集团【AAA级信用单位】是一家集技能型人才培训，家政服务培训和外派人力资源管理等为一体的综合性服务机构，我们拥有专业的培训设计策划团队，将为您提供更优质的服务。山东合心家政服务集团有限公司的前身是禹城市职业介绍中心，自从1998年开始本单位一直从事人力资源开发及家政服务从业人员的培训安置工作。</p>
-			<p>为扩大就业规范化经营，2016年单位法人范国瑞高中毕业后成立山东合心家政服务集团有限公司：2家人力资源公司（企业下设的人力资源公司：与本市农业农村局、税务局、总工会、农商银行、畜牧局、禹泽水利工程公司等10余家单位达成劳务代理、派遣合作300余人，社会保险参保率达90%以上。）、2家家政服务机构，2家培训机构等7家家庭服务类机构，集团内部设立培训机构，我们集中面对农村剩余劳动力和下岗职工的培训和再就业。企业下设的人力资源公司：与本市农业农村局、税务局、总工会、农商银行、畜牧局、禹泽水利工程公司等10余家单位达成劳务代理、派遣合作300余人，社会保险参保率达90%以上。</p>
-		</div>
+		<a href="/jianjie.html">
+			<img class="fl" src="images/jianjie.png" alt=""/>
+			<div class="fr txt">
+				<p>山东合心集团【AAA级信用单位】是一家集技能型人才培训，家政服务培训和外派人力资源管理等为一体的综合性服务机构，我们拥有专业的培训设计策划团队，将为您提供更优质的服务。山东合心家政服务集团有限公司的前身是禹城市职业介绍中心，自从1998年开始本单位一直从事人力资源开发及家政服务从业人员的培训安置工作。</p>
+				<p>为扩大就业规范化经营，2016年单位法人范国瑞高中毕业后成立山东合心家政服务集团有限公司：2家人力资源公司（企业下设的人力资源公司：与本市农业农村局、税务局、总工会、农商银行、畜牧局、禹泽水利工程公司等10余家单位达成劳务代理、派遣合作300余人，社会保险参保率达90%以上。）、2家家政服务机构，2家培训机构等7家家庭服务类机构，集团内部设立培训机构，我们集中面对农村剩余劳动力和下岗职工的培训和再就业。企业下设的人力资源公司：与本市农业农村局、税务局、总工会、农商银行、畜牧局、禹泽水利工程公司等10余家单位达成劳务代理、派遣合作300余人，社会保险参保率达90%以上。</p>
+			</div>
+		</a>
 	</div>
 	<!--企业荣誉-->
 	<div class="title"><span>企业荣誉</span></div>

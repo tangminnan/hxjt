@@ -1,6 +1,7 @@
 package com.hexinjituan.information.service;
 
 import com.hexinjituan.information.domain.CompanyGongchengDO;
+import com.hexinjituan.information.domain.CompanyInfoDO;
 
 import java.util.List;
 import java.util.Map;
@@ -27,4 +28,9 @@ public interface CompanyGongchengService {
 	int remove(Integer id);
 	
 	int batchRemove(Integer[] ids);
+
+	/**
+	 *  获取装饰工程
+	 */
+    CompanyInfoDO getG();
 }

@@ -74,7 +74,8 @@
 </html>
 <script type="text/javascript">
 	//弹框
-	$(".anniuS input").click(function(){$(".pop").show();});
+	$(".anniuS input").click(function(){   var title = $(this).val();
+        $(".pop").find("h3").text(title);            $(".pop").show();});
 	$(".pop em").click(function(){$(".pop").hide();});
 	
 	//-------一键回顶部----------

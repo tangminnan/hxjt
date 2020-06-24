@@ -107,7 +107,11 @@
 </html>
 <script type="text/javascript">
 	//弹框
-	$("#Now input").click(function(){$(".pop").show();});
+	$("#Now input").click(function(){
+	    var title = $(this).val();
+	    $(".pop").find("h3").text(title);
+	    $(".pop").show();
+	});
 	$(".pop em").click(function(){$(".pop").hide();});
 
     $(function () {

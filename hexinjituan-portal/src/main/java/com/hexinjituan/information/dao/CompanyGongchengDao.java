@@ -1,6 +1,7 @@
 package com.hexinjituan.information.dao;
 
 import com.hexinjituan.information.domain.CompanyGongchengDO;
+import com.hexinjituan.information.domain.CompanyInfoDO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -28,4 +29,6 @@ public interface CompanyGongchengDao {
 	int remove(Integer id);
 	
 	int batchRemove(Integer[] ids);
+
+	CompanyInfoDO getG();
 }
