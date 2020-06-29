@@ -180,7 +180,7 @@ gongyiTxtcc  p{font-size: 16px;margin-bottom: 10px;line-height: 24px;}
 .fenshe li{float: left;width:19%;text-align: center;border:1px solid #e5e5e5;margin:0 .5% 26px;}
 .fenshe li h3{font-size: 18px;font-weight: bold;margin:15px 0;}
 .fenshe li a{display: block;width: 112px;line-height: 30px;margin:0 auto 20px;background: #ebeaea;border-radius:30px;}
-.hezuoanli p{text-indent: 24px;line-height:26px;color: #666;}
+.hezuoanli p{text-indent: 24px;line-height:26px;}
 .hezuoanli li{float: left;width:19%;margin:40px .5% 80px;text-align: center;height: 250px;border-radius:8px;border:1px solid #fa4c52;font-size: 20px;color: #ef2329;background:url(../images/anli1-b.png) no-repeat center 50px;padding-top:170px;font-weight: bold;cursor: pointer;}
 .hezuoanli li:nth-child(2){background-image: url(../images/anli2-b.png);}
 .hezuoanli li:nth-child(3){background-image: url(../images/anli3-b.png);}
