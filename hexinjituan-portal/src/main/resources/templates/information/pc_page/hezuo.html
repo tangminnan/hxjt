@@ -163,7 +163,7 @@
 		
 		<div class="titbreak"><span>人员需求</span></div>
 		<div class="xuqiu">
-			<input class="btn" type="button" value="点击查看招聘岗位"/>
+			<input class="btn" type="button" value="点击查看招聘岗位" onclick="lookzhaoxian()"/>
 			<div class="baoM">
 				<span>报名电话：</span>
 				<ul>
@@ -232,4 +232,8 @@
     $("ul.anli li").click(function(){
 		window.location.href="/hezuo/anli/"+$(this).text();
 	});
+
+    function lookzhaoxian(){
+        window.location.href="/zhaoxian.html";
+	}
 </script>

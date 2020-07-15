@@ -194,13 +194,14 @@
                     html += '        <div id="content_sn'+data[i].id+'" class="summernote"></div>'
                     html += '        </dd>'
                     html += '    </dl>'
-                    html += '    <span>我要应聘</span>'
+                    html += '    <span class="sod">我要应聘</span>'
                     html += '</div>'
                 }
                 $("#con").html(html);
                 for(var i = 0 ; i<data.length;i++){
                     $('#content_sn'+data[i].id).summernote('code', data[i].content);
                     $('#content_sn'+data[i].id).summernote('destroy');
+
                 }
             }
         }

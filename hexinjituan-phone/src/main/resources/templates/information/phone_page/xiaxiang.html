@@ -114,6 +114,7 @@
         var companyContent = $("#companyContent").text();
         $('#content_sn').summernote('code', companyContent);
         $('#content_sn').summernote('destroy');
+        $("#content_sn").find("img").removeAttr("style");
     });
  </script>
 
