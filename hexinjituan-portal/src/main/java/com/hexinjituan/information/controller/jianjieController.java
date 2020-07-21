@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
@@ -32,7 +33,7 @@ public class jianjieController {
     private CompanyGongchengService companyGongchengService;
 
     @GetMapping("/jianjie")
-    String jianjie(Model model){
+    String jianjie(@RequestParam(value = "ad",required = false) String ad, Model model){
         Map<String, Object> map = new HashMap<>();
         map.put("ifJianjie","COMPANY_JIANJIE");
         CompanyInfoDO info = new CompanyInfoDO();
@@ -48,6 +49,7 @@ public class jianjieController {
         map11.put("ifJianjie","NOT_JIANJIE");
         List<CompanyInfoDO> list = companyInfoService.list(map11);
         model.addAttribute("list",list);
+        model.addAttribute("ad",ad==null?"":ad);
         return "information/pc_page/jianjie";
     }
 

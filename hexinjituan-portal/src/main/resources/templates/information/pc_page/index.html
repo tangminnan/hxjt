@@ -18,18 +18,66 @@
     	</div>
 	</div>
    	<div class="topnav">
-    	<ul class="main">
-    		<li class="on"><a href="/index.html">首页</a></li>
-    		<li><a href="/rongyu.html">企业荣誉</a></li>
-    		<li><a href="/jianjie.html">集团简介</a></li>
-    		<li><a href="/fuwu.html">家政服务</a></li>
-    		<li><a href="/xiaxiang.html">送技术下乡</a></li>
-			<li><a href="/peixun">技能培训</a></li>
-    		<li><a href="/hezuo.html">劳务合作社</a></li>
-			<li><a href="/renli.html">人力资源</a></li>
-    		<li><a href="/zhaoxian.html">招贤纳士</a></li>
-    		<li><a href="/lianxi.html">联系我们</a></li>
-    		<li><a href="/jiameng.html">合作加盟</a></li>
+    	<ul id="nav" class="nav clearfix">
+    		<li class="nLi on">
+				<h3><a href="/index.html">首页</a></h3>
+			</li>
+    		<li  class="nLi">
+				<h3><a href="/rongyu.html">企业荣誉</a></h3>
+			</li>
+    		<li  class="nLi">
+				<h3><a href="/jianjie.html">集团简介</a></h3>
+				<ul class="sub">
+					<li><a href="/jianjie?&ad=QIYEWENHUA">企业文化</a></li>
+					<li><a href="/jianjie?&ad=JITUANJINGSHEN">集团精神</a></li>
+					<li><a href="/jianjie?&ad=JITUANYUANJING">集团愿景</a></li>
+					<li><a href="/jianjie?&ad=JITUANLINIAN">集团理念</a></li>
+					<li><a href="/jianjie?&ad=GONGSIZHANSHI">公司展示</a></li>
+					<li><a href="/jianjie?&ad=SHEHUIZEREN">社会责任</a></li>
+					<li><a href="/jianjie?&ad=ZUZHIKUANGJIA">公司人员组织框架</a></li>
+					<li><a href="/jianjie?&ad=CISHANGONGYI">慈善公益</a></li>
+					<li><a href="/jianjie?&ad=XUEYUANFENGCAI">学员风采</a></li>
+				</ul>
+			</li>
+    		<li  class="nLi">
+				<h3><a href="/fuwu.html">家政服务</a></h3>
+			</li>
+    		<li  class="nLi">
+				<h3><a href="/xiaxiang.html">送技术下乡</a></h3>
+			</li>
+			<li  class="nLi">
+				<h3><a href="/peixun">技能培训</a></h3>
+			</li>
+    		<li  class="nLi">
+				<h3><a href="/hezuo.html">劳务合作社</a></h3>
+				<ul class="sub">
+					<li><a href="/hezuo?ad=JIANJIE">劳务合作社简介</a></li>
+					<li><a href="/hezuo?ad=ZHAOPIAN">合作社照片</a></li>
+					<li><a href="/hezuo?ad=FENSHE">合作社分社</a></li>
+					<li><a href="/hezuo?ad=ANLI">合作社案例</a></li>
+					<li><a href="/hezuo?ad=PEIXUN">定向培训</a></li>
+					<li><a href="/hezuo?ad=XUQIU ">人员需求</a></li>
+				</ul>
+			</li>
+			<li  class="nLi">
+				<h3><a href="/renli.html">人力资源</a></h3>
+			</li>
+    		<li  class="nLi">
+				<h3><a href="/zhaoxian.html">招贤纳士</a></h3>
+			</li>
+    		<li  class="nLi">
+				<h3><a href="/lianxi.html">联系我们</a></h3>
+				<ul class="sub">
+					<li><a href="/lianxi?ad=JITUANDIZHI">集团地址</a></li>
+				</ul>
+			</li>
+    		<li  class="nLi">
+				<h3><a href="/jiameng.html">合作加盟</a></h3>
+				<ul class="sub">
+					<li><a href="/jiameng?ad=ZHIYING">公司直营店</a></li>
+					<li><a href="/jiameng?ad=JIAMENG">加盟店</a></li>
+				</ul>
+			</li>
     	</ul>
     </div>
     <!--头部轮播-->
@@ -83,7 +131,7 @@
 	</div>
 	<!--家政服务-->
 	<div class="title"><span>家政服务</span></div>
-	<div class="main fuwu">
+	<div class="fuwu">
 		<ul>
 			<li th:each="jia:${jiazheng}">
 				<a th:href="@{'/fwxiangmu/info/'+${jia.id}}">
@@ -129,9 +177,9 @@
 	<div class="popQQ WX">
 		<h3>企业微信</h3>
 		<ul>
-			<li>糖城广场分店微信<br/>hexin17653434569 <img src="/images/tangchengguangchang17653434569.jpg" alt=""/></li>
-			<li>禹王大市场分店微信<br/>18953451938 <img src="/images/yuwangdashichang18953451938.jpg" alt=""/></li>
-			<li>山东国际商贸港分店<br/>15621237198 <img src="/images/shangmaogang15621237198.jpg" alt=""/></li>
+			<li><p>糖城广场分店微信<br/>hexin17653434569</p> <img src="/images/tangchengguangchang17653434569.jpg" alt=""/></li>
+			<li><p>禹王大市场分店微信<br/>18953451938</p> <img src="/images/yuwangdashichang18953451938.jpg" alt=""/></li>
+			<li><p>山东国际商贸港分店<br/>15621237198</p> <img src="/images/shangmaogang15621237198.jpg" alt=""/></li>
 		</ul>
 	</div>
 	<!--底部-->
@@ -139,13 +187,13 @@
 		<div class="main">
 			<div class="fl leftTxt">
 				<div class="fotnav">
-					<a href="">首页</a>
-					<a href="lianxi.html">联系我们</a>
-					<a href="lianxi.html">投诉意见</a>
-					<a href="hezuo.html">免费培训</a>
-					<a href="zhaoxian.html">人才招聘</a>
-					<a href="jiameng.html">连锁加盟</a>
-					<a href="jianjie.html">寻求帮助</a>
+					<a href="/index.html">首页</a>
+					<a href="/lianxi.html">联系我们</a>
+					<a href="">投诉意见</a>
+					<a href="/peixun">免费培训</a>
+					<a href="/zhaoxian.html">人才招聘</a>
+					<a href="/jiameng.html">连锁加盟</a>
+					<a href="">寻求帮助</a>
 				</div>
 				<p>地址：山东省德州市禹城建设路中段633号（人社局沿街一楼）</p>
 			</div>
@@ -154,11 +202,9 @@
 				<div class="link">
 					<p>友情链接：</p>
 					<div class="friend">
-						<a href="">中国家庭服务业协会</a>
-						<a href="">山东妇女网</a>
-						<a href="">德州市人社局</a>
-						<a href="">德州市人社局</a>
-						<a href="">德州市人社局</a>
+						<a href="http://wang119665.qiyegongqiu.net/">中国家庭服务业协会</a>
+						<a href="http://www.sdwomen.org.cn/">山东妇女网</a>
+						<a href="http://hrss.dezhou.gov.cn/">德州市人社局</a>
 					</div>
 				</div>
 			</div>
@@ -169,6 +215,15 @@
 </body>
 </html>
 <script type="text/javascript">
+    jQuery("#nav").slide({
+        type:"menu",// 效果类型，针对菜单/导航而引入的参数（默认slide）
+        titCell:".nLi", //鼠标触发对象
+        targetCell:".sub", //titCell里面包含的要显示/消失的对象
+        effect:"slideDown", //targetCell下拉效果
+        delayTime:300 , //效果时间
+        triggerTime:0, //鼠标延迟触发时间（默认150）
+        returnDefault:true //鼠标移走后返回默认状态，例如默认频道是“预告片”，鼠标移走后会返回“预告片”（默认false）
+    });
 	//头部轮播
 	jQuery(".slideBox").slide({mainCell:".bd ul",autoPlay:true});
 	//劳务合作社轮播

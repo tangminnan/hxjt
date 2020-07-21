@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -27,7 +28,7 @@ public class hezuoController {
     public static final String[] ARRAY={"帮社员讨薪","为社员协商工伤问题","技能提升", "就业安置","农民积极入社"};
 
     @GetMapping("/hezuo")
-    String hezuo(Model model){
+    String hezuo(@RequestParam(value = "ad",required = false) String ad, Model model){
         Map<String,Object> map = new HashMap<>();
         map.put("type","HEZUOSHE_SHOUYE");
         HezuosheShouyeDO hezuosheShouyeDOS = hezuosheServiceImpl.listHezuosheShouyeDO(map).get(0);
@@ -38,6 +39,7 @@ public class hezuoController {
         model.addAttribute("hezuoshetu",list);
         List<HezuosheDO> list1 = hezuosheServiceImpl.list(new HashMap<>());
         model.addAttribute("hezuoshefenshe",list1);
+        model.addAttribute("ad",ad==null?"":ad);
         return "information/pc_page/hezuo";
     }
 
